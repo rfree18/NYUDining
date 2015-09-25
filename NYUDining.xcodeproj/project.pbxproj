@@ -16,6 +16,7 @@
 		FA22EFC31B9F1F3400763C9A /* NYUDiningTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22EFC21B9F1F3400763C9A /* NYUDiningTests.m */; };
 		FA22EFCE1B9F227700763C9A /* DiningLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22EFCD1B9F227700763C9A /* DiningLocation.m */; };
 		FA22EFD11B9F238A00763C9A /* LocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22EFD01B9F238A00763C9A /* LocationsViewController.m */; };
+		FA392DF61BB4A41C00A08A9F /* LocationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA392DF51BB4A41C00A08A9F /* LocationDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,8 @@
 		FA22EFCD1B9F227700763C9A /* DiningLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiningLocation.m; sourceTree = "<group>"; };
 		FA22EFCF1B9F238A00763C9A /* LocationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationsViewController.h; sourceTree = "<group>"; };
 		FA22EFD01B9F238A00763C9A /* LocationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationsViewController.m; sourceTree = "<group>"; };
+		FA392DF41BB4A41C00A08A9F /* LocationDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDetailViewController.h; sourceTree = "<group>"; };
+		FA392DF51BB4A41C00A08A9F /* LocationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +115,8 @@
 				FA22EFAB1B9F1F3400763C9A /* AppDelegate.m */,
 				FA22EFCC1B9F227700763C9A /* DiningLocation.h */,
 				FA22EFCD1B9F227700763C9A /* DiningLocation.m */,
+				FA392DF41BB4A41C00A08A9F /* LocationDetailViewController.h */,
+				FA392DF51BB4A41C00A08A9F /* LocationDetailViewController.m */,
 				FA22EFCF1B9F238A00763C9A /* LocationsViewController.h */,
 				FA22EFD01B9F238A00763C9A /* LocationsViewController.m */,
 				FA22EFB01B9F1F3400763C9A /* Main.storyboard */,
@@ -194,11 +199,12 @@
 		FA22EF9B1B9F1F3400763C9A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Ross Freeman";
 				TargetAttributes = {
 					FA22EFA21B9F1F3400763C9A = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 247UT9T8WT;
 					};
 					FA22EFBB1B9F1F3400763C9A = {
 						CreatedOnToolsVersion = 6.4;
@@ -283,6 +289,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA392DF61BB4A41C00A08A9F /* LocationDetailViewController.m in Sources */,
 				FA22EFAC1B9F1F3400763C9A /* AppDelegate.m in Sources */,
 				FA22EFA91B9F1F3400763C9A /* main.m in Sources */,
 				FA22EFCE1B9F227700763C9A /* DiningLocation.m in Sources */,
@@ -349,6 +356,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -413,9 +421,14 @@
 			baseConfigurationReference = 47B38739EA923A0FD7408330 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = NYUDining/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rossfreeman.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -424,9 +437,14 @@
 			baseConfigurationReference = 8CC4EF66899FF587015DA0F3 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = NYUDining/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rossfreeman.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -444,6 +462,7 @@
 				);
 				INFOPLIST_FILE = NYUDiningTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rossfreeman.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NYUDining.app/NYUDining";
 			};
@@ -459,6 +478,7 @@
 				);
 				INFOPLIST_FILE = NYUDiningTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rossfreeman.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NYUDining.app/NYUDining";
 			};
