@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AFNetworking/AFNetworking.h>
+#import <Parse/Parse.h>
 #import "DiningLocation.h"
 
 @interface LocationsViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>

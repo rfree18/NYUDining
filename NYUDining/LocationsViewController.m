@@ -7,6 +7,7 @@
 //
 
 #import "LocationsViewController.h"
+#import "LocationDetailViewController.h"
 
 @interface LocationsViewController ()
 
@@ -19,34 +20,19 @@
     
     _diningLocations = [[NSMutableArray alloc] initWithCapacity:0];
     
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    
-    [manager GET:@"http://www.nyuapi.com/dining.json" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        NSArray *locations = [responseObject objectForKey:@"dining"];
-        
-        for (NSDictionary *location in locations) {
-            DiningLocation *diningLocation = [[DiningLocation alloc] initWithData:location];
-            [_diningLocations addObject:diningLocation];
+    PFQuery *query = [PFQuery queryWithClassName:@"Locations"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            for (PFObject *object in objects) {
+                DiningLocation *location = [[DiningLocation alloc] initWithData:object];
+                [_diningLocations addObject:location];
+            }
+            
+            [self.locationTable reloadData];
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
-        
-        [_locationTable reloadData];
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@", error.localizedDescription);
-        
-        
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                       message:error.localizedDescription
-                                                                preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                              handler:^(UIAlertAction * action) {}];
-        
-        [alert addAction:defaultAction];
-        [self presentViewController:alert animated:YES completion:nil];
     }];
 }
 
@@ -72,17 +58,36 @@
     cell.textLabel.text = [_diningLocations[indexPath.row] name];
     NSLog(@"%@", [_diningLocations[indexPath.row] name]);
     
+    if ([_diningLocations [indexPath.row] isOpen] == YES) {
+        cell.detailTextLabel.text = @"Open";
+        cell.detailTextLabel.textColor = [UIColor greenColor];
+    }
+    
+    else if ([_diningLocations [indexPath.row] isOpenTest] == NO) {
+        cell.detailTextLabel.text = @"Closed";
+        cell.detailTextLabel.textColor = [UIColor redColor];
+    }
+    
+    else {
+        cell.detailTextLabel.text = @"Unknown";
+        cell.detailTextLabel.textColor = [UIColor grayColor];
+    }
+    
     return cell;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"showDetails" sender:indexPath];
 }
-*/
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSIndexPath *path = (NSIndexPath *)sender;
+    
+    DiningLocation *selectedLocation = _diningLocations[path.row];
+    LocationDetailViewController *dest = segue.destinationViewController;
+    dest.location = selectedLocation;
+}
+
 
 @end

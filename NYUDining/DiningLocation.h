@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Parse/Parse.h>
 
 @interface DiningLocation : NSObject
 
@@ -17,6 +18,9 @@
 @property (strong, nonatomic) NSMutableArray *hours;
 @property (strong, nonatomic) NSString *address;
 
--(id)initWithData:(NSDictionary *)data;
+-(id)initWithData:(PFObject *)data;
+-(BOOL)isOpen;
+-(BOOL)isOpenTest;
+-(NSDate *)convertTimeRangeToDate:(NSString *)time;
 
 @end
