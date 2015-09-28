@@ -3,9 +3,10 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Dining Locations-->
+        <!--NYUDining-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="LocationsViewController" sceneMemberID="viewController">
@@ -34,7 +35,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="d8Y-0M-KAw">
@@ -66,7 +67,7 @@
                             <constraint firstItem="pwH-or-2ib" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="fA6-fi-YWE"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Dining Locations" id="eMG-9c-3mT"/>
+                    <navigationItem key="navigationItem" title="NYUDining" id="eMG-9c-3mT"/>
                     <connections>
                         <outlet property="locationTable" destination="pwH-or-2ib" id="RZ5-qP-S0V"/>
                         <segue destination="FG6-dc-Nvr" kind="push" identifier="showDetails" id="BqN-Dg-9HK"/>
@@ -87,10 +88,49 @@
                     <view key="view" contentMode="scaleToFill" id="olh-bf-aj1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ao-CC-zTQ">
+                                <rect key="frame" x="210" y="72" width="94" height="31.5"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Sf-K3-vl9">
+                                <rect key="frame" x="16" y="72" width="186" height="135"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="135" id="tKv-lU-eT3"/>
+                                    <constraint firstAttribute="width" constant="186" id="vcX-ex-dnJ"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9mS-qS-AFf" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="283" width="320" height="285"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.1764705882" green="0.1843137255" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="9ao-CC-zTQ" secondAttribute="trailing" id="1as-GO-BbI"/>
+                            <constraint firstAttribute="trailing" secondItem="9mS-qS-AFf" secondAttribute="trailing" id="203-1y-sDf"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="5Sf-K3-vl9" secondAttribute="leading" id="BnZ-Lg-cGW"/>
+                            <constraint firstItem="MTt-Fy-Smh" firstAttribute="top" secondItem="9mS-qS-AFf" secondAttribute="bottom" id="Cbp-OR-uJm"/>
+                            <constraint firstItem="5Sf-K3-vl9" firstAttribute="top" secondItem="9LU-mn-SWr" secondAttribute="bottom" constant="8" id="Mdz-30-MqN"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="5Sf-K3-vl9" secondAttribute="leading" id="ZQ3-tH-kBC"/>
+                            <constraint firstItem="9mS-qS-AFf" firstAttribute="top" secondItem="5Sf-K3-vl9" secondAttribute="bottom" constant="76" id="fXh-hW-Gxb"/>
+                            <constraint firstItem="9ao-CC-zTQ" firstAttribute="leading" secondItem="olh-bf-aj1" secondAttribute="leadingMargin" constant="194" id="gHk-1z-sTN"/>
+                            <constraint firstItem="9ao-CC-zTQ" firstAttribute="top" secondItem="9LU-mn-SWr" secondAttribute="bottom" constant="8" id="gMJ-Np-JTI"/>
+                            <constraint firstItem="9mS-qS-AFf" firstAttribute="leading" secondItem="olh-bf-aj1" secondAttribute="leading" id="pLG-S3-ltA"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9pz-Oz-zxM"/>
+                    <connections>
+                        <outlet property="locationLogo" destination="5Sf-K3-vl9" id="51G-rj-vrH"/>
+                        <outlet property="locationStatusLabel" destination="9ao-CC-zTQ" id="0cP-a0-din"/>
+                        <outlet property="mapView" destination="9mS-qS-AFf" id="7gx-TT-Ipp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="35S-En-3Ld" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -106,7 +146,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.54240080640855037" green="0.30231720111410942" blue="0.94794511795043945" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.33725490196078434" green="0.078431372549019607" blue="0.54117647058823526" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

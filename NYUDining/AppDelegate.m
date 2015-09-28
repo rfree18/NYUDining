@@ -9,6 +9,8 @@
 #import <Parse/Parse.h>
 #import "AppDelegate.h"
 
+@import GoogleMaps;
+
 @interface AppDelegate ()
 
 @end
@@ -24,6 +26,8 @@
     
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    [GMSServices provideAPIKey:@"AIzaSyBN_4cWF6QUZ7RvjhuocQcErs6i3QqtKtk"];
     
     return YES;
 }
@@ -43,7 +47,11 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    UIViewController *activeController = _window.rootViewController;
+    if ([activeController isKindOfClass:[UINavigationController class]]) {
+        activeController = [(UINavigationController*)_window.rootViewController topViewController];
+    }
+    [activeController viewDidAppear:NO];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

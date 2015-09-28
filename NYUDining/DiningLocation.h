@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 #import <Parse/Parse.h>
 
 @interface DiningLocation : NSObject
@@ -17,6 +18,7 @@
 @property (strong, nonatomic) NSString *phoneNumber;
 @property (strong, nonatomic) NSMutableArray *hours;
 @property (strong, nonatomic) NSString *address;
+@property (strong, nonatomic) NSMutableArray *coordinates;
 
 -(id)initWithData:(PFObject *)data;
 -(BOOL)isOpen;

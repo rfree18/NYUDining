@@ -36,6 +36,15 @@
     }];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [self.locationTable reloadData];
+    
+    for (NSIndexPath *indexPath in _locationTable.indexPathsForSelectedRows) {
+        [_locationTable deselectRowAtIndexPath:indexPath animated:NO];
+    }
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -60,7 +69,7 @@
     
     if ([_diningLocations [indexPath.row] isOpen] == YES) {
         cell.detailTextLabel.text = @"Open";
-        cell.detailTextLabel.textColor = [UIColor greenColor];
+        cell.detailTextLabel.textColor = [UIColor colorWithRed:0.133f green:0.580f blue:0.282f alpha:1.00f];
     }
     
     else if ([_diningLocations [indexPath.row] isOpenTest] == NO) {
