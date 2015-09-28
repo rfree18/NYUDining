@@ -7,10 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+
+#import <AFNetworking/AFNetworking.h>
+#import <GoogleMaps/GoogleMaps.h>
+
 #import "DiningLocation.h"
 
 @interface LocationDetailViewController : UIViewController
 
 @property (strong, nonatomic) DiningLocation *location;
+@property (weak, nonatomic) IBOutlet UIImageView *locationLogo;
+@property (weak, nonatomic) IBOutlet UILabel *locationStatusLabel;
+@property (weak, nonatomic) IBOutlet GMSMapView *mapView;
 
 @end
