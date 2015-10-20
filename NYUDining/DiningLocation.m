@@ -53,13 +53,8 @@
     
     NSInteger timeA = 0;
     NSInteger timeB = 0;
-    
-    BOOL am1 = false;
-    BOOL am2 = false;
-    
+
     [outputFormatter setDateFormat:@"a"];
-    
-    NSString *timeOfDay = [outputFormatter stringFromDate:now];
     
     NSString *hoursToday = @"";
     
@@ -277,7 +272,7 @@
              
              */
             
-            if (currentHour >= timeA && currentHour < timeB) {
+            if ((currentHour >= timeA && currentHour < timeB) || (currentHour >= timeA && timeB == 0)) {
                 return YES;
             }
             

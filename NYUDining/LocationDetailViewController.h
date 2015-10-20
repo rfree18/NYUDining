@@ -10,6 +10,7 @@
 
 #import <AFNetworking/AFNetworking.h>
 #import <GoogleMaps/GoogleMaps.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 
 #import "DiningLocation.h"
 
@@ -19,5 +20,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *locationLogo;
 @property (weak, nonatomic) IBOutlet UILabel *locationStatusLabel;
 @property (weak, nonatomic) IBOutlet GMSMapView *mapView;
+@property (weak, nonatomic) IBOutlet UILabel *hoursLabel;
+
+-(NSString *)getHoursString;
 
 @end

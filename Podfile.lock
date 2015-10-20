@@ -22,18 +22,21 @@ PODS:
     - AFNetworking/NSURLSession
   - Bolts/Tasks (1.2.1)
   - GoogleMaps (1.10.3)
+  - MBProgressHUD (0.9.1)
   - Parse (1.8.2):
     - Bolts/Tasks (>= 1.2.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - GoogleMaps
+  - MBProgressHUD (~> 0.9.1)
   - Parse
 
 SPEC CHECKSUMS:
   AFNetworking: 79f7eb1a0fcfa7beb409332b2ca49afe9ce53b05
   Bolts: 7686a5cb204d1ac54cee26f12d9b7622db3f80d1
   GoogleMaps: 945e4ac3b74bcca3ddada51df256eb7beddb474d
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   Parse: 188601c6cd91fae55906badd283b513104a3a8c9
 
 COCOAPODS: 0.38.2
