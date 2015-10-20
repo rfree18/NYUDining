@@ -19,11 +19,23 @@
     
     self.navigationItem.title = _location.name;
     
-    NSString *urlString = _location.logoURL;
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSData *data = [NSData dataWithContentsOfURL:url];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        
+        NSString *urlString = _location.logoURL;
+        NSURL *url = [NSURL URLWithString:urlString];
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        
+        _locationLogo.image = [UIImage imageWithData:data];
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    });
     
-    _locationLogo.image = [UIImage imageWithData:data];
+    
+    
+    [_hoursLabel setPreferredMaxLayoutWidth:200];
+    _hoursLabel.text = self.getHoursString;
     
     
     if ([_location isOpen]) {
@@ -66,6 +78,42 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(NSString *)getHoursString {
+    
+    NSMutableString *hoursString = [[NSMutableString alloc] init];
+    NSString *todaysHours;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"EEEE"];
+    NSString *dayOfWeek = [dateFormatter stringFromDate:[NSDate date]];
+    
+    if([dayOfWeek isEqualToString:@"Sunday"]) {
+        todaysHours = _location.hours[0];
+    }
+    else if([dayOfWeek isEqualToString:@"Monday"]) {
+        todaysHours = _location.hours[1];
+    }
+    else if([dayOfWeek isEqualToString:@"Tuesday"]) {
+        todaysHours = _location.hours[2];
+    }
+    else if([dayOfWeek isEqualToString:@"Wednesday"]) {
+        todaysHours = _location.hours[3];
+    }
+    else if([dayOfWeek isEqualToString:@"Thursday"]) {
+        todaysHours = _location.hours[4];
+    }
+    else if([dayOfWeek isEqualToString:@"Friday"]) {
+        todaysHours = _location.hours[5];
+    }
+    else
+        todaysHours = _location.hours[6];
+    
+    hoursString = [[todaysHours stringByReplacingOccurrencesOfString:@"," withString:@"\n"] mutableCopy];
+    
+    
+    return hoursString;
 }
 
 /*

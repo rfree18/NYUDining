@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 #import "DiningLocation.h"
 
 @interface LocationsViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>

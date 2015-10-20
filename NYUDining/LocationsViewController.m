@@ -21,6 +21,9 @@
     _diningLocations = [[NSMutableArray alloc] initWithCapacity:0];
     
     PFQuery *query = [PFQuery queryWithClassName:@"Locations"];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             for (PFObject *object in objects) {
@@ -28,11 +31,20 @@
                 [_diningLocations addObject:location];
             }
             
+            _diningLocations = [[_diningLocations sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+                NSString *name1 = [(DiningLocation *)a name];
+                NSString *name2 = [(DiningLocation *)b name];
+                return [name1 compare:name2];
+                
+            }] mutableCopy];
+            
             [self.locationTable reloadData];
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
         }
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
 }
 
