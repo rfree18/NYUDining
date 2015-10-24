@@ -16,7 +16,7 @@
 		FA22EFC31B9F1F3400763C9A /* NYUDiningTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22EFC21B9F1F3400763C9A /* NYUDiningTests.m */; };
 		FA22EFCE1B9F227700763C9A /* DiningLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22EFCD1B9F227700763C9A /* DiningLocation.m */; };
 		FA22EFD11B9F238A00763C9A /* LocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22EFD01B9F238A00763C9A /* LocationsViewController.m */; };
-		FA392DF61BB4A41C00A08A9F /* LocationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA392DF51BB4A41C00A08A9F /* LocationDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
+		FA392DF61BB4A41C00A08A9F /* LocationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA392DF51BB4A41C00A08A9F /* LocationDetailViewController.m */; };
 		FADFFA2A1BB8C8FC00C58CF5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FADFFA291BB8C8FC00C58CF5 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
