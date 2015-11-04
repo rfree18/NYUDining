@@ -25,12 +25,16 @@ PODS:
   - MBProgressHUD (0.9.1)
   - Parse (1.8.2):
     - Bolts/Tasks (>= 1.2.1)
+  - ParseCrashReporting (1.8.2):
+    - Bolts/Tasks (>= 1.2.1)
+    - Parse (~> 1.8.2)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - GoogleMaps
   - MBProgressHUD (~> 0.9.1)
   - Parse
+  - ParseCrashReporting
 
 SPEC CHECKSUMS:
   AFNetworking: 79f7eb1a0fcfa7beb409332b2ca49afe9ce53b05
@@ -38,5 +42,6 @@ SPEC CHECKSUMS:
   GoogleMaps: 945e4ac3b74bcca3ddada51df256eb7beddb474d
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   Parse: 188601c6cd91fae55906badd283b513104a3a8c9
+  ParseCrashReporting: 437b722377462faaeba60ffde23af95fcc486c28
 
 COCOAPODS: 0.38.2

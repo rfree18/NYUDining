@@ -17,6 +17,7 @@
 		FA22EFCE1B9F227700763C9A /* DiningLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22EFCD1B9F227700763C9A /* DiningLocation.m */; };
 		FA22EFD11B9F238A00763C9A /* LocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22EFD01B9F238A00763C9A /* LocationsViewController.m */; };
 		FA392DF61BB4A41C00A08A9F /* LocationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA392DF51BB4A41C00A08A9F /* LocationDetailViewController.m */; };
+		FA3C7A0C1BDFC95000778DF0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA3C7A0B1BDFC95000778DF0 /* SystemConfiguration.framework */; };
 		FADFFA2A1BB8C8FC00C58CF5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FADFFA291BB8C8FC00C58CF5 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		FA22EFD01B9F238A00763C9A /* LocationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationsViewController.m; sourceTree = "<group>"; };
 		FA392DF41BB4A41C00A08A9F /* LocationDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDetailViewController.h; sourceTree = "<group>"; };
 		FA392DF51BB4A41C00A08A9F /* LocationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDetailViewController.m; sourceTree = "<group>"; };
+		FA3C7A0B1BDFC95000778DF0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		FAAADD0E1BB89665008FAA77 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		FADFFA291BB8C8FC00C58CF5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -60,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA3C7A0C1BDFC95000778DF0 /* SystemConfiguration.framework in Frameworks */,
 				FADFFA2A1BB8C8FC00C58CF5 /* CoreLocation.framework in Frameworks */,
 				3C5504FA32AFD8B8E3B8A398 /* libPods.a in Frameworks */,
 			);
@@ -78,6 +81,7 @@
 		2229E7348960834A3370311B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FA3C7A0B1BDFC95000778DF0 /* SystemConfiguration.framework */,
 				FADFFA291BB8C8FC00C58CF5 /* CoreLocation.framework */,
 				FAAADD0E1BB89665008FAA77 /* MapKit.framework */,
 				9BACD7A0D44025B005581105 /* libPods.a */,

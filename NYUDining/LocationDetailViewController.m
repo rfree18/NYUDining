@@ -111,6 +111,7 @@
         todaysHours = _location.hours[6];
     
     hoursString = [[todaysHours stringByReplacingOccurrencesOfString:@"," withString:@"\n"] mutableCopy];
+    hoursString = [[hoursString stringByReplacingOccurrencesOfString:@"-" withString:@" - "] mutableCopy];
     
     
     return hoursString;

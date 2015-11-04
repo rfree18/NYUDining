@@ -18,14 +18,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _timer = [NSTimer scheduledTimerWithTimeInterval:12.0 target:self selector:@selector(showAlert) userInfo:nil repeats:NO];
+    
     _diningLocations = [[NSMutableArray alloc] initWithCapacity:0];
     
-    PFQuery *query = [PFQuery queryWithClassName:@"Locations"];
+    [self grabInformationFromServer];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [self.locationTable reloadData];
+    
+    for (NSIndexPath *indexPath in _locationTable.indexPathsForSelectedRows) {
+        [_locationTable deselectRowAtIndexPath:indexPath animated:NO];
+    }
+}
+
+- (void)grabInformationFromServer {
+    _query = [PFQuery queryWithClassName:@"Locations"];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+    [_query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
+            [_timer invalidate];
+            
             for (PFObject *object in objects) {
                 DiningLocation *location = [[DiningLocation alloc] initWithData:object];
                 [_diningLocations addObject:location];
@@ -43,19 +59,36 @@
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
             [MBProgressHUD hideHUDForView:self.view animated:YES];
+            
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                           message:error.localizedDescription
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *retryAction = [UIAlertAction actionWithTitle:@"Retry" style:UIAlertActionStyleDefault
+                                                                handler:^(UIAlertAction * action) {
+                                                                    [self viewDidLoad];
+                                                                }];
+            [alert addAction:retryAction];
+            [self presentViewController:alert animated:YES completion:^{}];
         }
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [self.locationTable reloadData];
+- (void)showAlert {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
     
-    for (NSIndexPath *indexPath in _locationTable.indexPathsForSelectedRows) {
-        [_locationTable deselectRowAtIndexPath:indexPath animated:NO];
-    }
+    [_query cancel];
+    
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Connection Error"
+                                                                   message:@"It looks like you're not connected to the internet :("
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *retryAction = [UIAlertAction actionWithTitle:@"Retry" style:UIAlertActionStyleDefault
+                                                        handler:^(UIAlertAction * action) {
+                                                            [self grabInformationFromServer];
+                                                        }];
+    [alert addAction:retryAction];
+    [self presentViewController:alert animated:YES completion:^{}];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
