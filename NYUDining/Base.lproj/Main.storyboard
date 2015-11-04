@@ -97,23 +97,18 @@
                                     <constraint firstAttribute="height" constant="135" id="hyU-f7-ia7"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9mS-qS-AFf" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="283" width="320" height="285"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.1764705882" green="0.1843137255" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today's Hours" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcC-PA-fy9">
                                 <rect key="frame" x="202" y="111" width="117" height="48"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hours Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBq-bT-Pqj">
-                                <rect key="frame" x="202" y="167" width="96" height="20.5"/>
+                                <rect key="frame" x="202" y="167" width="104" height="20.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ao-CC-zTQ">
@@ -123,6 +118,11 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9mS-qS-AFf" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="284" width="320" height="284"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.1764705882" green="0.1843137255" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -131,17 +131,17 @@
                             <constraint firstAttribute="trailingMargin" secondItem="9ao-CC-zTQ" secondAttribute="trailing" constant="-4" id="IcI-Fy-7Xb"/>
                             <constraint firstItem="9ao-CC-zTQ" firstAttribute="leading" secondItem="5Sf-K3-vl9" secondAttribute="trailing" constant="4" id="IiL-lh-YHC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jcC-PA-fy9" secondAttribute="trailing" constant="-15" id="Ipy-7g-KdL"/>
-                            <constraint firstAttribute="trailing" secondItem="9mS-qS-AFf" secondAttribute="trailing" id="NBL-aR-qQV"/>
                             <constraint firstItem="jcC-PA-fy9" firstAttribute="top" secondItem="9ao-CC-zTQ" secondAttribute="bottom" constant="7.5" id="W7N-nL-L9L"/>
-                            <constraint firstItem="MTt-Fy-Smh" firstAttribute="top" secondItem="9mS-qS-AFf" secondAttribute="bottom" id="dCO-JM-49h"/>
+                            <constraint firstItem="9mS-qS-AFf" firstAttribute="top" secondItem="5Sf-K3-vl9" secondAttribute="bottom" constant="77" id="WeN-cs-wbn"/>
+                            <constraint firstItem="9mS-qS-AFf" firstAttribute="leading" secondItem="olh-bf-aj1" secondAttribute="leading" id="Xtq-F9-YJA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MBq-bT-Pqj" secondAttribute="trailing" constant="-2" id="a5G-Ya-r5E"/>
                             <constraint firstItem="MBq-bT-Pqj" firstAttribute="leading" secondItem="5Sf-K3-vl9" secondAttribute="trailing" constant="4" id="eRq-xI-2V2"/>
                             <constraint firstItem="5Sf-K3-vl9" firstAttribute="leading" secondItem="olh-bf-aj1" secondAttribute="leadingMargin" constant="-4" id="gJ7-63-12I"/>
                             <constraint firstItem="9ao-CC-zTQ" firstAttribute="top" secondItem="9LU-mn-SWr" secondAttribute="bottom" constant="8" id="gOF-DD-shs"/>
                             <constraint firstItem="MBq-bT-Pqj" firstAttribute="top" secondItem="jcC-PA-fy9" secondAttribute="bottom" constant="8" id="h9k-Tz-uyd"/>
-                            <constraint firstItem="9mS-qS-AFf" firstAttribute="leading" secondItem="olh-bf-aj1" secondAttribute="leading" id="keB-r4-6fC"/>
-                            <constraint firstItem="9mS-qS-AFf" firstAttribute="top" secondItem="5Sf-K3-vl9" secondAttribute="bottom" constant="76" id="nAx-tq-QaO"/>
+                            <constraint firstAttribute="trailing" secondItem="9mS-qS-AFf" secondAttribute="trailing" id="rAY-WM-S5s"/>
                             <constraint firstItem="5Sf-K3-vl9" firstAttribute="top" secondItem="9LU-mn-SWr" secondAttribute="bottom" constant="8" id="tFd-xj-pPW"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="MBq-bT-Pqj" secondAttribute="trailing" constant="6" id="xck-Te-wBx"/>
+                            <constraint firstItem="MTt-Fy-Smh" firstAttribute="top" secondItem="9mS-qS-AFf" secondAttribute="bottom" id="zmQ-EN-hPk"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9pz-Oz-zxM"/>

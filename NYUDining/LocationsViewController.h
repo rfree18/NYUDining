@@ -15,5 +15,10 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *locationTable;
 @property (strong, nonatomic) NSMutableArray *diningLocations;
+@property (strong, nonatomic) NSTimer *timer;
+@property (strong, nonatomic) PFQuery *query;
+
+- (void)showAlert;
+- (void)grabInformationFromServer;
 
 @end

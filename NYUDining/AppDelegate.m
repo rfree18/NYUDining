@@ -7,6 +7,7 @@
 //
 
 #import <Parse/Parse.h>
+#import <ParseCrashReporting/ParseCrashReporting.h>
 #import "AppDelegate.h"
 
 @import GoogleMaps;
@@ -20,6 +21,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    [ParseCrashReporting enable];
     
     // Initialize Parse.
     [Parse setApplicationId:@"8VAOyRguvMpTYDZJk91HCf90dKs7UarU79p7s2l0"

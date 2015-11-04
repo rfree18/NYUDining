@@ -22,6 +22,6 @@
 @property (weak, nonatomic) IBOutlet GMSMapView *mapView;
 @property (weak, nonatomic) IBOutlet UILabel *hoursLabel;
 
--(NSString *)getHoursString;
+- (NSString *)getHoursString;
 
 @end
