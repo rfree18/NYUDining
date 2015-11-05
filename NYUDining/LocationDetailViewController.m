@@ -19,6 +19,8 @@
     
     self.navigationItem.title = _location.name;
     
+    _hoursLabel.lineBreakMode = NSLineBreakByClipping;
+    
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
@@ -111,7 +113,6 @@
         todaysHours = _location.hours[6];
     
     hoursString = [[todaysHours stringByReplacingOccurrencesOfString:@"," withString:@"\n"] mutableCopy];
-    hoursString = [[hoursString stringByReplacingOccurrencesOfString:@"-" withString:@" - "] mutableCopy];
     
     
     return hoursString;

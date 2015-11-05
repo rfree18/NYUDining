@@ -47,9 +47,13 @@
     
     NSDate *now = [NSDate date];
     NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
-    [outputFormatter setDateFormat:@"HH"];
+    [outputFormatter setDateFormat:@"HH:mm"];
     NSString *currentTime = [outputFormatter stringFromDate:now];
-    NSInteger currentHour = [currentTime doubleValue];
+    NSArray *times = [currentTime componentsSeparatedByString:@":"];
+    NSInteger currentHour = [times[0] doubleValue];
+    NSInteger currentMinute = [times[1] doubleValue];
+    NSLog(@"Current time: %d:%d", currentHour, currentMinute);
+    NSInteger timeDouble = currentHour + currentMinute/60;
     
     NSInteger timeA = 0;
     NSInteger timeB = 0;
@@ -169,7 +173,7 @@
                 }
             }
             
-            if (currentHour >= timeA && currentHour < timeB) {
+            if (timeDouble >= timeA && timeDouble < timeB) {
                 return YES;
             }
             
@@ -226,8 +230,6 @@
                 }
             }
             
-            
-            
             if ([times[1] containsString:@"am"]) {
                 if ([times[1] containsString:@"12"]) {
                     timeB = 0;
@@ -260,7 +262,7 @@
                 }
             }
             
-            if ((currentHour >= timeA && currentHour < timeB) || (currentHour >= timeA && timeB == 0)) {
+            if ((timeDouble >= timeA && timeDouble < timeB) || (timeDouble >= timeA && timeB == 0)) {
                 return YES;
             }
             
@@ -273,11 +275,11 @@
     return YES;
 }
 
--(BOOL)isOpenTest {
+- (BOOL)isOpenTest {
     return NO;
 }
 
--(NSDate *)convertTimeRangeToDate:(NSString *)time {
+- (NSDate *)convertTimeRangeToDate:(NSString *)time {
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     NSDate *formattedTime = [formatter dateFromString:time];
