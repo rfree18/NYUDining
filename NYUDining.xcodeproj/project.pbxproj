@@ -18,6 +18,7 @@
 		FA22EFD11B9F238A00763C9A /* LocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22EFD01B9F238A00763C9A /* LocationsViewController.m */; };
 		FA392DF61BB4A41C00A08A9F /* LocationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA392DF51BB4A41C00A08A9F /* LocationDetailViewController.m */; };
 		FA3C7A0C1BDFC95000778DF0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA3C7A0B1BDFC95000778DF0 /* SystemConfiguration.framework */; };
+		FAAF239B1BEBA2BA00F2CE1B /* HoursTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAF239A1BEBA2BA00F2CE1B /* HoursTableViewController.m */; };
 		FADFFA2A1BB8C8FC00C58CF5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FADFFA291BB8C8FC00C58CF5 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,8 @@
 		FA392DF51BB4A41C00A08A9F /* LocationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDetailViewController.m; sourceTree = "<group>"; };
 		FA3C7A0B1BDFC95000778DF0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		FAAADD0E1BB89665008FAA77 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		FAAF23991BEBA2BA00F2CE1B /* HoursTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HoursTableViewController.h; sourceTree = "<group>"; };
+		FAAF239A1BEBA2BA00F2CE1B /* HoursTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HoursTableViewController.m; sourceTree = "<group>"; };
 		FADFFA291BB8C8FC00C58CF5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -125,10 +128,12 @@
 				FA22EFAB1B9F1F3400763C9A /* AppDelegate.m */,
 				FA22EFCC1B9F227700763C9A /* DiningLocation.h */,
 				FA22EFCD1B9F227700763C9A /* DiningLocation.m */,
-				FA392DF41BB4A41C00A08A9F /* LocationDetailViewController.h */,
-				FA392DF51BB4A41C00A08A9F /* LocationDetailViewController.m */,
 				FA22EFCF1B9F238A00763C9A /* LocationsViewController.h */,
 				FA22EFD01B9F238A00763C9A /* LocationsViewController.m */,
+				FA392DF41BB4A41C00A08A9F /* LocationDetailViewController.h */,
+				FA392DF51BB4A41C00A08A9F /* LocationDetailViewController.m */,
+				FAAF23991BEBA2BA00F2CE1B /* HoursTableViewController.h */,
+				FAAF239A1BEBA2BA00F2CE1B /* HoursTableViewController.m */,
 				FA22EFB01B9F1F3400763C9A /* Main.storyboard */,
 				FA22EFB31B9F1F3400763C9A /* Images.xcassets */,
 				FA22EFB51B9F1F3400763C9A /* LaunchScreen.xib */,
@@ -320,6 +325,7 @@
 				FA22EFA91B9F1F3400763C9A /* main.m in Sources */,
 				FA22EFCE1B9F227700763C9A /* DiningLocation.m in Sources */,
 				FA22EFD11B9F238A00763C9A /* LocationsViewController.m in Sources */,
+				FAAF239B1BEBA2BA00F2CE1B /* HoursTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
