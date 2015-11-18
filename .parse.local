@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "NYUDining": {
+      "applicationId": "8VAOyRguvMpTYDZJk91HCf90dKs7UarU79p7s2l0"
+    },
+    "_default": {
+      "link": "NYUDining"
+    }
+  }
+}
