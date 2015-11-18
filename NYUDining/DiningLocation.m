@@ -45,23 +45,25 @@
     [dateFormatter setDateFormat:@"EEEE"];
     NSString *dayOfWeek = [dateFormatter stringFromDate:[NSDate date]];
     
+    // Finds the current time and stores it as a double
     NSDate *now = [NSDate date];
     NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
     [outputFormatter setDateFormat:@"HH:mm"];
     NSString *currentTime = [outputFormatter stringFromDate:now];
     NSArray *times = [currentTime componentsSeparatedByString:@":"];
-    NSInteger currentHour = [times[0] doubleValue];
-    NSInteger currentMinute = [times[1] doubleValue];
-    NSLog(@"Current time: %d:%d", currentHour, currentMinute);
-    NSInteger timeDouble = currentHour + currentMinute/60;
+    double currentHour = [times[0] doubleValue];
+    double currentMinute = [times[1] doubleValue];
+    NSLog(@"Current time: %ld:%ld", (long)currentHour, (long)currentMinute);
+    double timeDouble = currentHour + currentMinute/60;
     
-    NSInteger timeA = 0;
-    NSInteger timeB = 0;
+    double timeA = 0;
+    double timeB = 0;
 
     [outputFormatter setDateFormat:@"a"];
     
     NSString *hoursToday = @"";
     
+    // Get hours for today
     if ([dayOfWeek isEqualToString:@"Sunday"]) {
         hoursToday = _hours[0];
     }
@@ -90,6 +92,7 @@
         hoursToday = _hours[6];
     }
     
+    // Check if location closes mid-day
     if ([hoursToday containsString:@","]) {
         NSArray *timeSlots = [hoursToday componentsSeparatedByString:@","];
         
@@ -287,7 +290,6 @@
     NSLog(@"%@", formattedTime);
     
     return formattedTime;
-    
     
 }
 
