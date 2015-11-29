@@ -38,7 +38,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"hours"];
     
-    int index = indexPath.row;
+    int index = (int)indexPath.row;
     NSString *hours = _diningLocation.hours[index];
     NSLog(@"%@", hours);
     

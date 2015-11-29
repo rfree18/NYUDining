@@ -1,4 +1,5 @@
 PODS:
+  - ActionSheetPicker-3.0 (2.0.3)
   - AFNetworking (2.6.0):
     - AFNetworking/NSURLConnection (= 2.6.0)
     - AFNetworking/NSURLSession (= 2.6.0)
@@ -30,6 +31,7 @@ PODS:
     - Parse (~> 1.8.2)
 
 DEPENDENCIES:
+  - ActionSheetPicker-3.0 (~> 2.0.3)
   - AFNetworking (~> 2.0)
   - GoogleMaps
   - MBProgressHUD (~> 0.9.1)
@@ -37,6 +39,7 @@ DEPENDENCIES:
   - ParseCrashReporting
 
 SPEC CHECKSUMS:
+  ActionSheetPicker-3.0: 11f2053085d3088dc1ef9d38a9f11c18b528dd9e
   AFNetworking: 79f7eb1a0fcfa7beb409332b2ca49afe9ce53b05
   Bolts: 7686a5cb204d1ac54cee26f12d9b7622db3f80d1
   GoogleMaps: 945e4ac3b74bcca3ddada51df256eb7beddb474d
