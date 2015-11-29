@@ -19,8 +19,10 @@
 @property (strong, nonatomic) NSMutableArray *hours;
 @property (strong, nonatomic) NSString *address;
 @property (strong, nonatomic) NSMutableArray *coordinates;
+@property (strong, nonatomic) PFObject *data;
 
 -(id)initWithData:(PFObject *)data;
+-(void)setNewHours:(NSString *)option;
 -(BOOL)isOpen;
 -(BOOL)isOpenTest;
 -(NSDate *)convertTimeRangeToDate:(NSString *)time;

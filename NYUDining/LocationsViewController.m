@@ -34,7 +34,45 @@
 }
 
 - (void)grabInformationFromServer {
-    _query = [PFQuery queryWithClassName:@"Locations"];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    PFQuery *paramQuery = [PFQuery queryWithClassName:@"Parameters"];
+    
+    [paramQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if (!error) {
+            
+            PFObject *obj = objects[0];
+            
+            self.hoursOptions = [obj objectForKey:@"Hours_Options"];
+            self.tableName = [obj objectForKey:@"Location_Table"];
+            
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            
+            [self grabLocationsFromServer];
+            
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                           message:error.localizedDescription
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *retryAction = [UIAlertAction actionWithTitle:@"Retry" style:UIAlertActionStyleDefault
+                                                                handler:^(UIAlertAction * action) {
+                                                                    [self viewDidLoad];
+                                                                }];
+            [alert addAction:retryAction];
+            [self presentViewController:alert animated:YES completion:^{}];
+        }
+    }];
+    
+   
+}
+
+- (void)grabLocationsFromServer {
+    _query = [PFQuery queryWithClassName:self.tableName];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
@@ -72,6 +110,24 @@
         }
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
+}
+
+- (IBAction)selectCal:(id)sender {
+    NSInteger currentOption = [self.hoursOptions indexOfObject:self.navigationItem.title];
+    
+    [ActionSheetStringPicker showPickerWithTitle:@"Select Schedule" rows:self.hoursOptions initialSelection:currentOption doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
+        
+        for (DiningLocation *location in self.diningLocations) {
+            [location setNewHours:self.hoursOptions[selectedIndex]];
+        }
+        
+        [self.locationTable reloadData];
+        
+        self.navigationItem.title = self.hoursOptions[selectedIndex];
+        
+    } cancelBlock:^(ActionSheetStringPicker *picker) {
+        
+    } origin:sender];
 }
 
 - (void)showAlert {
@@ -115,11 +171,15 @@
     if ([_diningLocations [indexPath.row] isOpen] == YES) {
         cell.detailTextLabel.text = @"Open";
         cell.detailTextLabel.textColor = [UIColor colorWithRed:0.133f green:0.580f blue:0.282f alpha:1.00f];
+        
+        cell.textLabel.textColor = cell.detailTextLabel.textColor;
     }
     
     else if ([_diningLocations [indexPath.row] isOpenTest] == NO) {
         cell.detailTextLabel.text = @"Closed";
         cell.detailTextLabel.textColor = [UIColor redColor];
+        
+        cell.textLabel.textColor = cell.detailTextLabel.textColor;
     }
     
     else {
@@ -142,6 +202,5 @@
     LocationDetailViewController *dest = segue.destinationViewController;
     dest.location = selectedLocation;
 }
-
 
 @end

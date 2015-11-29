@@ -17,9 +17,9 @@
         _hours = [[NSMutableArray alloc] initWithCapacity:0];
         _paymentTypes = [[NSMutableArray alloc] initWithCapacity:0];
         _coordinates = [[NSMutableArray alloc] initWithCapacity:0];
+        self.data = data;
         
-        
-        _hours = [data objectForKey:@"Hours"];
+        _hours = [data objectForKey:@"Regular_Hours"];
         _name = [data objectForKey:@"Name"];
         _logoURL = [data objectForKey:@"logo_URL"];
         _address = [data objectForKey:@"Address"];
@@ -32,10 +32,18 @@
             }
         }
         
-        
     }
     
     return self;
+}
+
+// Changes hours selection
+-(void)setNewHours:(NSString *)option {
+    option = [option stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+    
+    _hours = [self.data objectForKey:option];
+    
+    [self isOpen];
 }
 
 

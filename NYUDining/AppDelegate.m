@@ -27,10 +27,16 @@
     [Parse setApplicationId:@"8VAOyRguvMpTYDZJk91HCf90dKs7UarU79p7s2l0"
                   clientKey:@"AmaAAD3a4EemgfH8ftspXjLH7Qn1x0loUUir2bra"];
     
+    // Store the deviceToken in the current Installation and save it to Parse
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation saveInBackground];
+    
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     [GMSServices provideAPIKey:@"AIzaSyBN_4cWF6QUZ7RvjhuocQcErs6i3QqtKtk"];
+    
+    application.applicationIconBadgeNumber = 0;
     
     return YES;
 }

@@ -9,3 +9,5 @@ platform :ios, '8.1'
 pod 'GoogleMaps'
 
 pod 'MBProgressHUD', '~> 0.9.1'
+
+pod 'ActionSheetPicker-3.0', '~> 2.0.3'

@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import <MBProgressHUD/MBProgressHUD.h>
+#import <ActionSheetPicker-3.0/ActionSheetPicker.h>
+
 #import "DiningLocation.h"
 
 @interface LocationsViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
@@ -17,8 +19,12 @@
 @property (strong, nonatomic) NSMutableArray *diningLocations;
 @property (strong, nonatomic) NSTimer *timer;
 @property (strong, nonatomic) PFQuery *query;
+@property (strong, nonatomic) NSArray *hoursOptions;
+@property (strong, nonatomic) NSString *tableName;
 
 - (void)showAlert;
 - (void)grabInformationFromServer;
+- (void)grabLocationsFromServer;
+- (IBAction)selectCal:(id)sender;
 
 @end
