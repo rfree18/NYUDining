@@ -6,13 +6,13 @@
 //  Copyright © 2015 Ross Freeman. All rights reserved.
 //
 
-#import "HoursTableViewController.h"
+#import "RFHoursTableViewController.h"
 
-@interface HoursTableViewController ()
+@interface RFHoursTableViewController ()
 
 @end
 
-@implementation HoursTableViewController
+@implementation RFHoursTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
