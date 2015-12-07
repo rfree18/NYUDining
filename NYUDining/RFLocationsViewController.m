@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Ross Freeman. All rights reserved.
 //
 
-#import "LocationsViewController.h"
-#import "LocationDetailViewController.h"
+#import "RFLocationsViewController.h"
+#import "RFLocationDetailViewController.h"
 
 @interface LocationsViewController ()
 
@@ -81,13 +81,13 @@
             [_timer invalidate];
             
             for (PFObject *object in objects) {
-                DiningLocation *location = [[DiningLocation alloc] initWithData:object];
+                RFDiningLocation *location = [[RFDiningLocation alloc] initWithData:object];
                 [_diningLocations addObject:location];
             }
             
             _diningLocations = [[_diningLocations sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
-                NSString *name1 = [(DiningLocation *)a name];
-                NSString *name2 = [(DiningLocation *)b name];
+                NSString *name1 = [(RFDiningLocation *)a name];
+                NSString *name2 = [(RFDiningLocation *)b name];
                 return [name1 compare:name2];
                 
             }] mutableCopy];
@@ -117,7 +117,7 @@
     
     [ActionSheetStringPicker showPickerWithTitle:@"Select Schedule" rows:self.hoursOptions initialSelection:currentOption doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
         
-        for (DiningLocation *location in self.diningLocations) {
+        for (RFDiningLocation *location in self.diningLocations) {
             [location setNewHours:self.hoursOptions[selectedIndex]];
         }
         
@@ -198,7 +198,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     NSIndexPath *path = (NSIndexPath *)sender;
     
-    DiningLocation *selectedLocation = _diningLocations[path.row];
+    RFDiningLocation *selectedLocation = _diningLocations[path.row];
     LocationDetailViewController *dest = segue.destinationViewController;
     dest.location = selectedLocation;
 }

@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DiningLocation.h"
+#import "RFDiningLocation.h"
 
-@interface HoursTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface RFHoursTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *hoursTable;
-@property (strong, nonatomic) DiningLocation *diningLocation;
+@property (strong, nonatomic) RFDiningLocation *diningLocation;
 
 @end

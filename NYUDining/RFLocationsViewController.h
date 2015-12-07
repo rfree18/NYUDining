@@ -11,9 +11,9 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <ActionSheetPicker-3.0/ActionSheetPicker.h>
 
-#import "DiningLocation.h"
+#import "RFDiningLocation.h"
 
-@interface LocationsViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+@interface RFLocationsViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *locationTable;
 @property (strong, nonatomic) NSMutableArray *diningLocations;

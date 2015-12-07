@@ -10,7 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <Parse/Parse.h>
 
-@interface DiningLocation : NSObject
+@interface RFDiningLocation : NSObject
 
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *logoURL;

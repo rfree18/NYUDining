@@ -6,14 +6,14 @@
 //  Copyright © 2015 Ross Freeman. All rights reserved.
 //
 
-#import "LocationDetailViewController.h"
-#import "HoursTableViewController.h"
+#import "RFLocationDetailViewController.h"
+#import "RFHoursTableViewController.h"
 
-@interface LocationDetailViewController ()
+@interface RFLocationDetailViewController ()
 
 @end
 
-@implementation LocationDetailViewController
+@implementation RFLocationDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -123,7 +123,7 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    HoursTableViewController *dest = (HoursTableViewController *)[segue destinationViewController];
+    RFHoursTableViewController *dest = (RFHoursTableViewController *)[segue destinationViewController];
     dest.diningLocation = _location;
 }
 

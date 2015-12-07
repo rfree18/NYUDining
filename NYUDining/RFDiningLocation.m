@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Ross Freeman. All rights reserved.
 //
 
-#import "DiningLocation.h"
+#import "RFDiningLocation.h"
 
-@implementation DiningLocation
+@implementation RFDiningLocation
 
 -(id)initWithData:(PFObject *)data {
     self = [super init];

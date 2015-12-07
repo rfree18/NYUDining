@@ -12,11 +12,11 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 
-#import "DiningLocation.h"
+#import "RFDiningLocation.h"
 
-@interface LocationDetailViewController : UIViewController
+@interface RFLocationDetailViewController : UIViewController
 
-@property (strong, nonatomic) DiningLocation *location;
+@property (strong, nonatomic) RFDiningLocation *location;
 @property (weak, nonatomic) IBOutlet UIImageView *locationLogo;
 @property (weak, nonatomic) IBOutlet UILabel *locationStatusLabel;
 @property (weak, nonatomic) IBOutlet GMSMapView *mapView;
