@@ -125,7 +125,10 @@
                     [time0 deleteCharactersInRange:[time0 rangeOfString:@"am"]];
                     
                     if ([time0 containsString:@":"]) {
-                        timeA = [times[0] doubleValue] + 0.5;
+                        NSArray *timeArray = [time0 componentsSeparatedByString:@":"];
+                        NSString *minute = timeArray[1];
+                        double minuteInHour = [minute doubleValue] / 60.0;
+                        timeA = [times[0] doubleValue] + minuteInHour;
                     }
                     
                     else
@@ -138,7 +141,10 @@
                 
                 
                 if ([time0 containsString:@":"]) {
-                    timeA = [times[0] doubleValue] + 0.5;
+                    NSArray *timeArray = [time0 componentsSeparatedByString:@":"];
+                    NSString *minute = timeArray[1];
+                    double minuteInHour = [minute doubleValue] / 60.0;
+                    timeA = [times[0] doubleValue] + minuteInHour;
                 }
                 
                 else
@@ -160,7 +166,10 @@
                     [time1 deleteCharactersInRange:[time1 rangeOfString:@"am"]];
                     
                     if ([time1 containsString:@":"]) {
-                        timeB = [times[1] doubleValue] + 0.5;
+                        NSArray *timeArray = [time1 componentsSeparatedByString:@":"];
+                        NSString *minute = timeArray[1];
+                        double minuteInHour = [minute doubleValue] / 60.0;
+                        timeB = [times[1] doubleValue] + minuteInHour;
                     }
                     
                     else
@@ -218,7 +227,10 @@
                     [time0 deleteCharactersInRange:[time0 rangeOfString:@"am"]];
                     
                     if ([time0 containsString:@":"]) {
-                        timeA = [times[0] doubleValue] + 0.5;
+                        NSArray *timeArray = [time0 componentsSeparatedByString:@":"];
+                        NSString *minute = timeArray[1];
+                        double minuteInHour = [minute doubleValue] / 60.0;
+                        timeA = [times[0] doubleValue] + minuteInHour;
                     }
                     
                     else
@@ -230,7 +242,10 @@
                 [time0 deleteCharactersInRange:[time0 rangeOfString:@"pm"]];
                 
                 if ([time0 containsString:@":"]) {
-                    timeA = [times[0] doubleValue] + 0.5;
+                    NSArray *timeArray = [time0 componentsSeparatedByString:@":"];
+                    NSString *minute = timeArray[1];
+                    double minuteInHour = [minute doubleValue] / 60.0;
+                    timeA = [times[0] doubleValue] + minuteInHour;
                 }
                 
                 else
@@ -250,7 +265,10 @@
                     [time1 deleteCharactersInRange:[time1 rangeOfString:@"am"]];
                     
                     if ([time1 containsString:@":"]) {
-                        timeB = [times[1] doubleValue] + 0.5;
+                        NSArray *timeArray = [time1 componentsSeparatedByString:@":"];
+                        NSString *minute = timeArray[1];
+                        double minuteInHour = [minute doubleValue] / 60.0;
+                        timeB = [times[1] doubleValue] + minuteInHour;
                     }
                     
                     else
@@ -262,7 +280,10 @@
                 [time1 deleteCharactersInRange:[time1 rangeOfString:@"pm"]];
                 
                 if ([time1 containsString:@":"]) {
-                    timeB = [times[1] doubleValue] + 0.5;
+                    NSArray *timeArray = [time1 componentsSeparatedByString:@":"];
+                    NSString *minute = timeArray[1];
+                    double minuteInHour = [minute doubleValue] / 60.0;
+                    timeB = [times[1] doubleValue] + minuteInHour;
                 }
                 
                 else

@@ -9,11 +9,11 @@
 #import "RFLocationsViewController.h"
 #import "RFLocationDetailViewController.h"
 
-@interface LocationsViewController ()
+@interface RFLocationsViewController ()
 
 @end
 
-@implementation LocationsViewController
+@implementation RFLocationsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -199,7 +199,7 @@
     NSIndexPath *path = (NSIndexPath *)sender;
     
     RFDiningLocation *selectedLocation = _diningLocations[path.row];
-    LocationDetailViewController *dest = segue.destinationViewController;
+    RFLocationDetailViewController *dest = segue.destinationViewController;
     dest.location = selectedLocation;
 }
 
