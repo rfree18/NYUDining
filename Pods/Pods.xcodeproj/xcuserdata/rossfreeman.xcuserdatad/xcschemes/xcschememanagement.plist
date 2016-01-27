@@ -34,6 +34,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ParseUI.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,11 +47,6 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>12AC7CBAD660A5ECAC7396CCFBD85002</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>1923D3614BAAB0EBF81EEC04BD369BF0</key>
 		<dict>
 			<key>primary</key>
@@ -67,7 +67,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>8CA35C64D88625843811D21D8F290E5A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>960A6BC377BC3426655C94898BD5BCAA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CD2B367A6ADAD06EE4F327DD0F8F1B6E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

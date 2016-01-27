@@ -14,6 +14,7 @@
 
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *logoURL;
+@property (strong, nonatomic) NSString *menuURL;
 @property (strong, nonatomic) NSMutableArray *paymentTypes;
 @property (strong, nonatomic) NSString *phoneNumber;
 @property (strong, nonatomic) NSMutableArray *hours;
