@@ -29,6 +29,9 @@ PODS:
   - ParseCrashReporting (1.8.2):
     - Bolts/Tasks (>= 1.2.1)
     - Parse (~> 1.8.2)
+  - ParseUI (1.1.6):
+    - Bolts/Tasks (~> 1.2)
+    - Parse (~> 1.8)
 
 DEPENDENCIES:
   - ActionSheetPicker-3.0 (~> 2.0.3)
@@ -37,6 +40,7 @@ DEPENDENCIES:
   - MBProgressHUD (~> 0.9.1)
   - Parse
   - ParseCrashReporting
+  - ParseUI
 
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: 11f2053085d3088dc1ef9d38a9f11c18b528dd9e
@@ -46,5 +50,6 @@ SPEC CHECKSUMS:
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   Parse: 188601c6cd91fae55906badd283b513104a3a8c9
   ParseCrashReporting: 437b722377462faaeba60ffde23af95fcc486c28
+  ParseUI: 8a22e448c03f825203d8c379c80523517f68baa3
 
 COCOAPODS: 0.39.0

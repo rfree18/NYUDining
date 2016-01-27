@@ -13,6 +13,7 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 
 #import "RFDiningLocation.h"
+#import "RFMenuBrowserViewController.h"
 
 @interface RFLocationDetailViewController : UIViewController
 
@@ -21,7 +22,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *locationStatusLabel;
 @property (weak, nonatomic) IBOutlet GMSMapView *mapView;
 @property (weak, nonatomic) IBOutlet UILabel *hoursLabel;
+@property (weak, nonatomic) IBOutlet UIButton *menuButton;
 
 - (NSString *)getHoursString;
+- (IBAction)showMenu:(id)sender;
 
 @end

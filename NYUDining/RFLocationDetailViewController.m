@@ -40,6 +40,11 @@
     [_hoursLabel setPreferredMaxLayoutWidth:200];
     _hoursLabel.text = self.getHoursString;
     
+    // Disable menu button if no menu is available
+    if(_location.menuURL == nil) {
+        _menuButton.hidden = YES;
+    }
+    
     
     if ([_location isOpen]) {
         _locationStatusLabel.text = @"Open";
@@ -119,12 +124,22 @@
     return hoursString;
 }
 
+- (IBAction)showMenu:(id)sender {
+}
+
 
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    RFHoursTableViewController *dest = (RFHoursTableViewController *)[segue destinationViewController];
-    dest.diningLocation = _location;
+    if ([segue.identifier isEqualToString:@"showMenu"]) {
+        RFMenuBrowserViewController *dest = (RFMenuBrowserViewController *)[segue destinationViewController];
+        dest.location = _location;
+    }
+    
+    else {
+        RFHoursTableViewController *dest = (RFHoursTableViewController *)[segue destinationViewController];
+        dest.diningLocation = _location;
+    }
 }
 
 @end

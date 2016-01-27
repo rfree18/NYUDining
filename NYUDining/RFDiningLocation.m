@@ -22,6 +22,7 @@
         _hours = [data objectForKey:@"Regular_Hours"];
         _name = [data objectForKey:@"Name"];
         _logoURL = [data objectForKey:@"logo_URL"];
+        _menuURL = [data objectForKey:@"menu_url"];
         _address = [data objectForKey:@"Address"];
         _phoneNumber = [data objectForKey:@"phone"];
         _coordinates = [[data objectForKey:@"Coordinates"] mutableCopy];
