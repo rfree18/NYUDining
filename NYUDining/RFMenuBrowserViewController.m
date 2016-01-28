@@ -31,7 +31,7 @@
 }
 
 - (void)showAlert {
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
     
     [_webView stopLoading];
     
@@ -42,7 +42,11 @@
                                                         handler:^(UIAlertAction * action) {
                                                             [self loadWebPage];
                                                         }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
     [alert addAction:retryAction];
+    [alert addAction:cancelAction];
     [self presentViewController:alert animated:YES completion:^{}];
 }
 
@@ -55,12 +59,12 @@
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
     _timer = [NSTimer scheduledTimerWithTimeInterval:12.0 target:self selector:@selector(showAlert) userInfo:nil repeats:NO];
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     [_timer invalidate];
-    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:YES];
 }
 
 /*
