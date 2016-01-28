@@ -119,9 +119,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QDT-B0-S0m">
-                                <rect key="frame" x="238" y="197" width="43" height="33"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Menu"/>
+                                <rect key="frame" x="203.5" y="196.5" width="112" height="30"/>
+                                <color key="backgroundColor" red="0.30588235294117649" green="0.066666666666666666" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Menu">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="5"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="showMenu:" destination="FG6-dc-Nvr" eventType="touchUpInside" id="Rc7-lC-Xfc"/>
                                     <segue destination="HQO-b1-HAq" kind="push" identifier="showMenu" id="Eyl-7L-bnw"/>
@@ -133,6 +138,8 @@
                             <constraint firstItem="jcC-PA-fy9" firstAttribute="leading" secondItem="5Sf-K3-vl9" secondAttribute="trailing" constant="5" id="ChI-O4-s5V"/>
                             <constraint firstItem="jcC-PA-fy9" firstAttribute="top" secondItem="9ao-CC-zTQ" secondAttribute="bottom" constant="8" id="Ger-Sm-FjB"/>
                             <constraint firstItem="9ao-CC-zTQ" firstAttribute="top" secondItem="9LU-mn-SWr" secondAttribute="bottom" constant="17" id="Isj-GY-JSX"/>
+                            <constraint firstItem="QDT-B0-S0m" firstAttribute="width" secondItem="MBq-bT-Pqj" secondAttribute="width" id="JQs-PK-etg"/>
+                            <constraint firstItem="9mS-qS-AFf" firstAttribute="top" secondItem="QDT-B0-S0m" secondAttribute="bottom" constant="2.5" id="Ki1-HB-yJt"/>
                             <constraint firstItem="9ao-CC-zTQ" firstAttribute="leading" secondItem="5Sf-K3-vl9" secondAttribute="trailing" constant="5" id="Kov-Fm-OVW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="MBq-bT-Pqj" secondAttribute="trailing" constant="-11" id="P5U-Yb-d62"/>
                             <constraint firstItem="QDT-B0-S0m" firstAttribute="top" secondItem="MBq-bT-Pqj" secondAttribute="bottom" id="Rqy-iv-Xhq"/>
