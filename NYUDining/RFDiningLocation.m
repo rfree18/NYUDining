@@ -40,10 +40,12 @@
 
 // Changes hours selection
 -(void)setNewHours:(NSString *)option {
+    
     option = [option stringByReplacingOccurrencesOfString:@" " withString:@"_"];
     
     _hours = [self.data objectForKey:option];
     
+    // Recalculate status based on new times
     [self isOpen];
 }
 
@@ -308,6 +310,8 @@
     return YES;
 }
 
+// For dev purposes ONLY
+// Do not use
 - (BOOL)isOpenTest {
     return NO;
 }

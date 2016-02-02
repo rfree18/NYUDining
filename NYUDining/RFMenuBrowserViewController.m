@@ -17,11 +17,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    // Prevents UIWebView from displaying under nav bar
     self.navigationController.navigationBar.translucent = NO;
     self.navigationItem.title = @"Menu";
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    // Prevents UIWebView from caching web pages
+    // Caching can cause old menus to be displayed
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
+    [[NSURLCache sharedURLCache] setDiskCapacity:0];
+    [[NSURLCache sharedURLCache] setMemoryCapacity:0];
+    
     [self loadWebPage];
 }
 
