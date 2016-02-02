@@ -26,6 +26,7 @@
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         
+        // Get image at URL
         NSString *urlString = _location.logoURL;
         NSURL *url = [NSURL URLWithString:urlString];
         NSData *data = [NSData dataWithContentsOfURL:url];

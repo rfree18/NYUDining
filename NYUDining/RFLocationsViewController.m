@@ -112,7 +112,10 @@
     }];
 }
 
+// Change holiday calendar
 - (IBAction)selectCal:(id)sender {
+    
+    // Current schedule selected by default
     NSInteger currentOption = [self.hoursOptions indexOfObject:self.navigationItem.title];
     
     [ActionSheetStringPicker showPickerWithTitle:@"Select Schedule" rows:self.hoursOptions initialSelection:currentOption doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
