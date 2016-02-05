@@ -8,15 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "RFDiningLocation.h"
-#import <MBProgressHUD/MBProgressHUD.h>
 
 @interface RFMenuBrowserViewController : UIViewController <UIWebViewDelegate>
 
 @property (strong, nonatomic) RFDiningLocation *location;
-@property (strong, nonatomic) NSTimer *timer;
+@property (strong, nonatomic) NSTimer *pageTimeout;
+@property (strong, nonatomic) NSTimer *progressTime;
+@property (strong, nonatomic) IBOutlet UIProgressView *progressView;
+@property (assign, nonatomic) BOOL didLoad;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 - (void)showAlert;
 - (void)loadWebPage;
+- (void)timerCallback;
 
 @end
