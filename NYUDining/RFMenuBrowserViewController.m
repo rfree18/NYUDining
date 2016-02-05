@@ -16,7 +16,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     // Prevents UIWebView from displaying under nav bar
     self.navigationController.navigationBar.translucent = NO;
@@ -39,8 +38,6 @@
 }
 
 - (void)showAlert {
-    [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
-    
     [_webView stopLoading];
     
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Connection Error"
@@ -66,13 +63,35 @@
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
-    _timer = [NSTimer scheduledTimerWithTimeInterval:12.0 target:self selector:@selector(showAlert) userInfo:nil repeats:NO];
-    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    _pageTimeout = [NSTimer scheduledTimerWithTimeInterval:12.0 target:self selector:@selector(showAlert) userInfo:nil repeats:NO];
+    // [MBProgressHUD showHUDAddedTo:self.view.window animated:YES];
+    
+    self.progressView.progress = 0;
+    self.didLoad = false;
+    self.progressTime = [NSTimer scheduledTimerWithTimeInterval:0.01667 target:self selector:@selector(timerCallback) userInfo:nil repeats:YES];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    [_timer invalidate];
-    [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:YES];
+    self.didLoad = true;
+    [_pageTimeout invalidate];
+}
+
+-(void)timerCallback {
+    if (self.didLoad) {
+        if (self.progressView.progress >= 1) {
+            self.progressView.hidden = true;
+            [self.progressTime invalidate];
+        }
+        else {
+            self.progressView.progress += 0.1;
+        }
+    }
+    else {
+        self.progressView.progress += 0.05;
+        if (self.progressView.progress >= 0.95) {
+            self.progressView.progress = 0.95;
+        }
+    }
 }
 
 /*

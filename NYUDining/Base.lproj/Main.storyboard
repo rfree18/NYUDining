@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="HN5-hS-vDW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="HN5-hS-vDW">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -194,17 +194,25 @@
                                     <outlet property="delegate" destination="HQO-b1-HAq" id="G2s-pK-iXY"/>
                                 </connections>
                             </webView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="opa-Xp-zae">
+                                <rect key="frame" x="85" y="283" width="150" height="2.5"/>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="opa-Xp-zae" firstAttribute="leading" secondItem="ipn-Dm-HCU" secondAttribute="leading" constant="85" id="1a8-iD-PrH"/>
                             <constraint firstItem="Hcy-70-Xey" firstAttribute="top" secondItem="ipn-Dm-HCU" secondAttribute="top" id="5YF-sw-jxb"/>
+                            <constraint firstItem="opa-Xp-zae" firstAttribute="centerX" secondItem="ipn-Dm-HCU" secondAttribute="centerX" id="AZ1-QE-Iwg"/>
                             <constraint firstItem="Hcy-70-Xey" firstAttribute="leading" secondItem="ipn-Dm-HCU" secondAttribute="leading" id="Cfd-9K-iue"/>
+                            <constraint firstItem="opa-Xp-zae" firstAttribute="centerY" secondItem="ipn-Dm-HCU" secondAttribute="centerY" id="cY7-fG-i5I"/>
                             <constraint firstAttribute="trailing" secondItem="Hcy-70-Xey" secondAttribute="trailing" id="iKq-aD-evT"/>
                             <constraint firstItem="iDn-qi-QAn" firstAttribute="top" secondItem="Hcy-70-Xey" secondAttribute="bottom" id="ken-ps-b5W"/>
+                            <constraint firstAttribute="trailing" secondItem="opa-Xp-zae" secondAttribute="trailing" constant="85" id="xma-Xr-2UZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fu3-b5-2FX"/>
                     <connections>
+                        <outlet property="progressView" destination="opa-Xp-zae" id="Mmx-PI-KUf"/>
                         <outlet property="webView" destination="Hcy-70-Xey" id="jKG-sj-qyq"/>
                     </connections>
                 </viewController>
