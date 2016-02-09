@@ -20,6 +20,7 @@
     // Prevents UIWebView from displaying under nav bar
     self.navigationController.navigationBar.translucent = NO;
     self.navigationItem.title = @"Menu";
+    [self loadWebPage];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -29,7 +30,7 @@
     [[NSURLCache sharedURLCache] setDiskCapacity:0];
     [[NSURLCache sharedURLCache] setMemoryCapacity:0];
     
-    [self loadWebPage];
+    
 }
 
 - (void)didReceiveMemoryWarning {
