@@ -17,8 +17,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Prevents UIWebView from displaying under nav bar
-    self.navigationController.navigationBar.translucent = NO;
     self.navigationItem.title = @"Menu";
     [self loadWebPage];
 }
