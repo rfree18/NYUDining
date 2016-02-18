@@ -18,6 +18,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // Prevents UIWebView from displaying under nav bar
+    self.navigationController.navigationBar.translucent = NO;
+    
     _timer = [NSTimer scheduledTimerWithTimeInterval:12.0 target:self selector:@selector(showAlert) userInfo:nil repeats:NO];
     
     _diningLocations = [[NSMutableArray alloc] initWithCapacity:0];
