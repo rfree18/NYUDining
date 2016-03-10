@@ -9,6 +9,7 @@
 #import <Parse/Parse.h>
 #import <ParseCrashReporting/ParseCrashReporting.h>
 #import "AppDelegate.h"
+#import "RFParseConfig.h"
 
 @import GoogleMaps;
 
@@ -24,8 +25,11 @@
     [ParseCrashReporting enable];
     
     // Initialize Parse.
-    [Parse setApplicationId:@"8VAOyRguvMpTYDZJk91HCf90dKs7UarU79p7s2l0"
-                  clientKey:@"AmaAAD3a4EemgfH8ftspXjLH7Qn1x0loUUir2bra"];
+    [Parse initializeWithConfiguration:[ParseClientConfiguration configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
+        configuration.applicationId = appId;
+        configuration.clientKey = clientKey;
+        configuration.server = serverUrl;
+    }]];
     
     UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound);
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes  categories:nil];
