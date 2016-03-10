@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3C5504FA32AFD8B8E3B8A398 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BACD7A0D44025B005581105 /* libPods.a */; };
 		FA004C2D1C594F8900E16D17 /* RFMenuBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA004C2C1C594F8900E16D17 /* RFMenuBrowserViewController.m */; };
+		FA1B5EEA1C91C64400076D82 /* RFParseConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1B5EE91C91C64400076D82 /* RFParseConfig.m */; };
 		FA22EFA91B9F1F3400763C9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22EFA81B9F1F3400763C9A /* main.m */; };
 		FA22EFAC1B9F1F3400763C9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22EFAB1B9F1F3400763C9A /* AppDelegate.m */; };
 		FA22EFB21B9F1F3400763C9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA22EFB01B9F1F3400763C9A /* Main.storyboard */; };
@@ -52,6 +53,8 @@
 		9BACD7A0D44025B005581105 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA004C2B1C594F8900E16D17 /* RFMenuBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMenuBrowserViewController.h; sourceTree = "<group>"; };
 		FA004C2C1C594F8900E16D17 /* RFMenuBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMenuBrowserViewController.m; sourceTree = "<group>"; };
+		FA1B5EE81C91C43700076D82 /* RFParseConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RFParseConfig.h; sourceTree = "<group>"; };
+		FA1B5EE91C91C64400076D82 /* RFParseConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFParseConfig.m; sourceTree = "<group>"; };
 		FA22EFA31B9F1F3400763C9A /* NYUDining.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NYUDining.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA22EFA71B9F1F3400763C9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA22EFA81B9F1F3400763C9A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -143,6 +146,8 @@
 				FA22EFAA1B9F1F3400763C9A /* AppDelegate.h */,
 				FA22EFAB1B9F1F3400763C9A /* AppDelegate.m */,
 				FA22EFCC1B9F227700763C9A /* RFDiningLocation.h */,
+				FA1B5EE81C91C43700076D82 /* RFParseConfig.h */,
+				FA1B5EE91C91C64400076D82 /* RFParseConfig.m */,
 				FA22EFCD1B9F227700763C9A /* RFDiningLocation.m */,
 				FA22EFCF1B9F238A00763C9A /* RFLocationsViewController.h */,
 				FA22EFD01B9F238A00763C9A /* RFLocationsViewController.m */,
@@ -343,6 +348,7 @@
 				FA392DF61BB4A41C00A08A9F /* RFLocationDetailViewController.m in Sources */,
 				FA22EFAC1B9F1F3400763C9A /* AppDelegate.m in Sources */,
 				FA22EFA91B9F1F3400763C9A /* main.m in Sources */,
+				FA1B5EEA1C91C64400076D82 /* RFParseConfig.m in Sources */,
 				FA22EFCE1B9F227700763C9A /* RFDiningLocation.m in Sources */,
 				FA22EFD11B9F238A00763C9A /* RFLocationsViewController.m in Sources */,
 				FA004C2D1C594F8900E16D17 /* RFMenuBrowserViewController.m in Sources */,
