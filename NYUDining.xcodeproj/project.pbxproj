@@ -21,7 +21,7 @@
 		FA3C7A0C1BDFC95000778DF0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA3C7A0B1BDFC95000778DF0 /* SystemConfiguration.framework */; };
 		FAAF239B1BEBA2BA00F2CE1B /* RFHoursTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAF239A1BEBA2BA00F2CE1B /* RFHoursTableViewController.m */; };
 		FADFFA2A1BB8C8FC00C58CF5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FADFFA291BB8C8FC00C58CF5 /* CoreLocation.framework */; };
-		FAE9AFD41C91CA0600D86E56 /* RFParseConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE9AFD31C91CA0600D86E56 /* RFParseConfig.m */; };
+		FAF4FA3B1C972A7400A0A9B8 /* RFParseConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF4FA3A1C972A7400A0A9B8 /* RFParseConfig.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,7 +76,7 @@
 		FAAF23991BEBA2BA00F2CE1B /* RFHoursTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFHoursTableViewController.h; sourceTree = "<group>"; };
 		FAAF239A1BEBA2BA00F2CE1B /* RFHoursTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFHoursTableViewController.m; sourceTree = "<group>"; };
 		FADFFA291BB8C8FC00C58CF5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		FAE9AFD31C91CA0600D86E56 /* RFParseConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFParseConfig.m; sourceTree = "<group>"; };
+		FAF4FA3A1C972A7400A0A9B8 /* RFParseConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFParseConfig.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,7 +147,7 @@
 				FA22EFAB1B9F1F3400763C9A /* AppDelegate.m */,
 				FA22EFCC1B9F227700763C9A /* RFDiningLocation.h */,
 				FA1B5EE81C91C43700076D82 /* RFParseConfig.h */,
-				FAE9AFD31C91CA0600D86E56 /* RFParseConfig.m */,
+				FAF4FA3A1C972A7400A0A9B8 /* RFParseConfig.m */,
 				FA22EFCD1B9F227700763C9A /* RFDiningLocation.m */,
 				FA22EFCF1B9F238A00763C9A /* RFLocationsViewController.h */,
 				FA22EFD01B9F238A00763C9A /* RFLocationsViewController.m */,
@@ -348,10 +348,10 @@
 				FA392DF61BB4A41C00A08A9F /* RFLocationDetailViewController.m in Sources */,
 				FA22EFAC1B9F1F3400763C9A /* AppDelegate.m in Sources */,
 				FA22EFA91B9F1F3400763C9A /* main.m in Sources */,
+				FAF4FA3B1C972A7400A0A9B8 /* RFParseConfig.m in Sources */,
 				FA22EFCE1B9F227700763C9A /* RFDiningLocation.m in Sources */,
 				FA22EFD11B9F238A00763C9A /* RFLocationsViewController.m in Sources */,
 				FA004C2D1C594F8900E16D17 /* RFMenuBrowserViewController.m in Sources */,
-				FAE9AFD41C91CA0600D86E56 /* RFParseConfig.m in Sources */,
 				FAAF239B1BEBA2BA00F2CE1B /* RFHoursTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
