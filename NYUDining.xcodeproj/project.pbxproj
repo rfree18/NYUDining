@@ -145,9 +145,9 @@
 			children = (
 				FA22EFAA1B9F1F3400763C9A /* AppDelegate.h */,
 				FA22EFAB1B9F1F3400763C9A /* AppDelegate.m */,
-				FA22EFCC1B9F227700763C9A /* RFDiningLocation.h */,
 				FA1B5EE81C91C43700076D82 /* RFParseConfig.h */,
 				FAF4FA3A1C972A7400A0A9B8 /* RFParseConfig.m */,
+				FA22EFCC1B9F227700763C9A /* RFDiningLocation.h */,
 				FA22EFCD1B9F227700763C9A /* RFDiningLocation.m */,
 				FA22EFCF1B9F238A00763C9A /* RFLocationsViewController.h */,
 				FA22EFD01B9F238A00763C9A /* RFLocationsViewController.m */,
