@@ -145,18 +145,9 @@
 			children = (
 				FA22EFAA1B9F1F3400763C9A /* AppDelegate.h */,
 				FA22EFAB1B9F1F3400763C9A /* AppDelegate.m */,
-				FA1B5EE81C91C43700076D82 /* RFParseConfig.h */,
-				FAF4FA3A1C972A7400A0A9B8 /* RFParseConfig.m */,
-				FA22EFCC1B9F227700763C9A /* RFDiningLocation.h */,
-				FA22EFCD1B9F227700763C9A /* RFDiningLocation.m */,
-				FA22EFCF1B9F238A00763C9A /* RFLocationsViewController.h */,
-				FA22EFD01B9F238A00763C9A /* RFLocationsViewController.m */,
-				FA392DF41BB4A41C00A08A9F /* RFLocationDetailViewController.h */,
-				FA392DF51BB4A41C00A08A9F /* RFLocationDetailViewController.m */,
-				FAAF23991BEBA2BA00F2CE1B /* RFHoursTableViewController.h */,
-				FAAF239A1BEBA2BA00F2CE1B /* RFHoursTableViewController.m */,
-				FA004C2B1C594F8900E16D17 /* RFMenuBrowserViewController.h */,
-				FA004C2C1C594F8900E16D17 /* RFMenuBrowserViewController.m */,
+				FA3A2ACD1CA1C5BD00589A43 /* Config */,
+				FA3A2ACB1CA1C5A600589A43 /* Models */,
+				FA3A2ACC1CA1C5AE00589A43 /* View Controllers */,
 				FA22EFB01B9F1F3400763C9A /* Main.storyboard */,
 				FA22EFB31B9F1F3400763C9A /* Images.xcassets */,
 				FA22EFB51B9F1F3400763C9A /* LaunchScreen.xib */,
@@ -189,6 +180,39 @@
 				FA22EFC11B9F1F3400763C9A /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FA3A2ACB1CA1C5A600589A43 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FA22EFCC1B9F227700763C9A /* RFDiningLocation.h */,
+				FA22EFCD1B9F227700763C9A /* RFDiningLocation.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		FA3A2ACC1CA1C5AE00589A43 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FA22EFCF1B9F238A00763C9A /* RFLocationsViewController.h */,
+				FA22EFD01B9F238A00763C9A /* RFLocationsViewController.m */,
+				FA392DF41BB4A41C00A08A9F /* RFLocationDetailViewController.h */,
+				FA392DF51BB4A41C00A08A9F /* RFLocationDetailViewController.m */,
+				FAAF23991BEBA2BA00F2CE1B /* RFHoursTableViewController.h */,
+				FAAF239A1BEBA2BA00F2CE1B /* RFHoursTableViewController.m */,
+				FA004C2B1C594F8900E16D17 /* RFMenuBrowserViewController.h */,
+				FA004C2C1C594F8900E16D17 /* RFMenuBrowserViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		FA3A2ACD1CA1C5BD00589A43 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				FA1B5EE81C91C43700076D82 /* RFParseConfig.h */,
+				FAF4FA3A1C972A7400A0A9B8 /* RFParseConfig.m */,
+			);
+			name = Config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
