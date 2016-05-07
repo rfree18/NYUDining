@@ -40,80 +40,57 @@
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    PFQuery *paramQuery = [PFQuery queryWithClassName:@"Parameters"];
     
-    [paramQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        if (!error) {
-            
-            PFObject *obj = objects[0];
-            
-            self.hoursOptions = [obj objectForKey:@"Hours_Options"];
-            self.tableName = [obj objectForKey:@"Location_Table"];
-            
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-            
-            [self grabLocationsFromServer];
-            
-        } else {
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-            
-            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                           message:error.localizedDescription
-                                                                    preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *retryAction = [UIAlertAction actionWithTitle:@"Retry" style:UIAlertActionStyleDefault
-                                                                handler:^(UIAlertAction * action) {
-                                                                    [self viewDidLoad];
-                                                                }];
-            [alert addAction:retryAction];
-            [self presentViewController:alert animated:YES completion:^{}];
+    self.rootRef = [[Firebase alloc] initWithUrl:@"https://nyudining.firebaseio.com"];
+    
+    [self.rootRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        [self.diningLocations removeAllObjects];
+        [self.timer invalidate];
+        
+        NSDictionary *data = [snapshot value];
+        
+        NSDictionary *params = [data objectForKey:@"params"];
+        
+        NSArray *locations = [data objectForKey:@"results"];
+        
+        for (NSDictionary *locationData in locations) {
+            RFDiningLocation *location = [[RFDiningLocation alloc] initWithData:locationData andParameters:params];
+            [self.diningLocations addObject:location];
         }
+        
+        _diningLocations = [[_diningLocations sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+            NSString *name1 = [(RFDiningLocation *)a name];
+            NSString *name2 = [(RFDiningLocation *)b name];
+            return [name1 compare:name2];
+            
+        }] mutableCopy];
+        
+        [self.locationTable reloadData];
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    } withCancelBlock:^(NSError *error) {
+        NSLog(@"%@", error.description);
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                       message:error.localizedDescription
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *retryAction = [UIAlertAction actionWithTitle:@"Retry" style:UIAlertActionStyleDefault
+                                                            handler:^(UIAlertAction * action) {
+                                                                [self viewDidLoad];
+                                                            }];
+        [alert addAction:retryAction];
+        [self presentViewController:alert animated:YES completion:^{}];
     }];
-    
    
 }
 
 - (void)grabLocationsFromServer {
-    _query = [PFQuery queryWithClassName:self.tableName];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [_query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            [_timer invalidate];
-            
-            for (PFObject *object in objects) {
-                RFDiningLocation *location = [[RFDiningLocation alloc] initWithData:object];
-                [_diningLocations addObject:location];
-            }
-            
-            _diningLocations = [[_diningLocations sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
-                NSString *name1 = [(RFDiningLocation *)a name];
-                NSString *name2 = [(RFDiningLocation *)b name];
-                return [name1 compare:name2];
-                
-            }] mutableCopy];
-            
-            [self.locationTable reloadData];
-        } else {
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-            
-            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                           message:error.localizedDescription
-                                                                    preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *retryAction = [UIAlertAction actionWithTitle:@"Retry" style:UIAlertActionStyleDefault
-                                                                handler:^(UIAlertAction * action) {
-                                                                    [self viewDidLoad];
-                                                                }];
-            [alert addAction:retryAction];
-            [self presentViewController:alert animated:YES completion:^{}];
-        }
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-    }];
-}
+    }
 
 // Change holiday calendar
 - (IBAction)selectCal:(id)sender {
@@ -139,7 +116,7 @@
 - (void)showAlert {
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     
-    [_query cancel];
+    [self.rootRef removeAllObservers];
     
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Connection Error"
                                                                    message:@"It looks like you're not connected to the internet :("

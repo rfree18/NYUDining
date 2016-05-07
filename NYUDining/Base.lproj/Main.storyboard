@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="HN5-hS-vDW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="HN5-hS-vDW">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Regular Hours-->
+        <!--NYUDining-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="RFLocationsViewController" sceneMemberID="viewController">
@@ -61,13 +61,7 @@
                             <constraint firstItem="pwH-or-2ib" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="fA6-fi-YWE"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Regular Hours" id="eMG-9c-3mT">
-                        <barButtonItem key="rightBarButtonItem" image="cal_toolbar" id="SPq-O8-NyB">
-                            <connections>
-                                <action selector="selectCal:" destination="vXZ-lx-hvc" id="Xwm-l9-G0G"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="NYUDining" id="eMG-9c-3mT"/>
                     <connections>
                         <outlet property="locationTable" destination="pwH-or-2ib" id="RZ5-qP-S0V"/>
                         <segue destination="FG6-dc-Nvr" kind="push" identifier="showDetails" id="BqN-Dg-9HK"/>
@@ -305,7 +299,4 @@
             <point key="canvasLocation" x="233" y="368"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="cal_toolbar" width="22" height="22"/>
-    </resources>
 </document>

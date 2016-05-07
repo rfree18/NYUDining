@@ -10,7 +10,7 @@
 
 @implementation RFDiningLocation
 
--(id)initWithData:(PFObject *)data {
+-(id)initWithData:(NSDictionary *)data andParameters:(NSDictionary *)params{
     self = [super init];
     
     if (self) {
@@ -19,7 +19,9 @@
         _coordinates = [[NSMutableArray alloc] initWithCapacity:0];
         self.data = data;
         
-        _hours = [data objectForKey:@"Regular_Hours"];
+        NSString *cal = [params objectForKey:@"calendar"];
+        
+        _hours = [data objectForKey:cal];
         _name = [data objectForKey:@"Name"];
         _logoURL = [data objectForKey:@"logo_URL"];
         _menuURL = [data objectForKey:@"menu_url"];

@@ -1,6 +1,4 @@
-pod 'Parse'
-pod 'ParseCrashReporting'
-pod 'ParseUI'
+pod 'Firebase', '>= 2.5.1'
 
 platform :ios, '7.0'
 pod "AFNetworking", "~> 2.0"

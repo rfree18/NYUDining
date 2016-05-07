@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
-#import <Parse/Parse.h>
 
 @interface RFDiningLocation : NSObject
 
@@ -20,9 +19,9 @@
 @property (strong, nonatomic) NSMutableArray *hours;
 @property (strong, nonatomic) NSString *address;
 @property (strong, nonatomic) NSMutableArray *coordinates;
-@property (strong, nonatomic) PFObject *data;
+@property (strong, nonatomic) NSDictionary *data;
 
--(id)initWithData:(PFObject *)data;
+-(id)initWithData:(NSDictionary *)data andParameters:(NSDictionary *)params;
 -(void)setNewHours:(NSString *)option;
 -(BOOL)isOpen;
 -(BOOL)isOpenTest;

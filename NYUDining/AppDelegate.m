@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 Ross Freeman. All rights reserved.
 //
 
-#import <Parse/Parse.h>
-#import <ParseCrashReporting/ParseCrashReporting.h>
 #import "AppDelegate.h"
 #import "RFParseConfig.h"
 
@@ -23,22 +21,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    [ParseCrashReporting enable];
-    
-    // Initialize Parse.
-    [Parse initializeWithConfiguration:[ParseClientConfiguration configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
-        configuration.applicationId = appId;
-        configuration.clientKey = clientKey;
-        configuration.server = serverUrl;
-    }]];
-    
     UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound);
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes  categories:nil];
     [application registerUserNotificationSettings:settings];
     [application registerForRemoteNotifications];
-    
-    // [Optional] Track statistics around application opens.
-    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     [GMSServices provideAPIKey:@"AIzaSyBN_4cWF6QUZ7RvjhuocQcErs6i3QqtKtk"];
     
@@ -67,28 +53,10 @@
         activeController = [(UINavigationController*)_window.rootViewController topViewController];
     }
     [activeController viewDidAppear:NO];
-    
-    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-    if (currentInstallation.badge != 0) {
-        currentInstallation.badge = 0;
-        [currentInstallation saveEventually];
-    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
-
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    [PFPush handlePush:userInfo];
-}
-
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    // Store the deviceToken in the current Installation and save it to Parse
-    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-    [currentInstallation setDeviceTokenFromData:deviceToken];
-    [currentInstallation saveInBackground];
-}
-
 
 @end
