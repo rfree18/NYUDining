@@ -12,8 +12,9 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 
-#import "RFDiningLocation.h"
 #import "RFMenuBrowserViewController.h"
+
+@class RFDiningLocation;
 
 @interface RFLocationDetailViewController : UIViewController
 

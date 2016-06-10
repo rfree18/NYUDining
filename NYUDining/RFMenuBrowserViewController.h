@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RFDiningLocation.h"
+
+@class RFDiningLocation;
 
 @interface RFMenuBrowserViewController : UIViewController <UIWebViewDelegate>
 

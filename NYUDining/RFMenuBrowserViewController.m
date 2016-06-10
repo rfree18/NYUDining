@@ -8,6 +8,8 @@
 
 #import "RFMenuBrowserViewController.h"
 
+#import "NYUDining-Swift.h"
+
 @interface RFMenuBrowserViewController ()
 
 @end

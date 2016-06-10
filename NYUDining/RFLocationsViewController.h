@@ -11,8 +11,6 @@
 #import <ActionSheetPicker-3.0/ActionSheetPicker.h>
 #import <Firebase/Firebase.h>
 
-#import "RFDiningLocation.h"
-
 @interface RFLocationsViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *locationTable;

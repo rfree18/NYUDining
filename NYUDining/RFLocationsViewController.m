@@ -8,6 +8,7 @@
 
 #import "RFLocationsViewController.h"
 #import "RFLocationDetailViewController.h"
+#import "NYUDining-Swift.h"
 
 @interface RFLocationsViewController ()
 

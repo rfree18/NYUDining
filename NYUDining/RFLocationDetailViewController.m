@@ -9,6 +9,8 @@
 #import "RFLocationDetailViewController.h"
 #import "RFHoursTableViewController.h"
 
+#import "NYUDining-Swift.h"
+
 @interface RFLocationDetailViewController ()
 
 @end

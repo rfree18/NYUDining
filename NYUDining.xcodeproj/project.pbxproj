@@ -19,6 +19,7 @@
 		FA22EFD11B9F238A00763C9A /* RFLocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22EFD01B9F238A00763C9A /* RFLocationsViewController.m */; };
 		FA392DF61BB4A41C00A08A9F /* RFLocationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA392DF51BB4A41C00A08A9F /* RFLocationDetailViewController.m */; };
 		FA3C7A0C1BDFC95000778DF0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA3C7A0B1BDFC95000778DF0 /* SystemConfiguration.framework */; };
+		FA4BE6D11D0B688E00D7F0D9 /* RFDiningLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4BE6D01D0B688E00D7F0D9 /* RFDiningLocation.swift */; };
 		FAAF239B1BEBA2BA00F2CE1B /* RFHoursTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAF239A1BEBA2BA00F2CE1B /* RFHoursTableViewController.m */; };
 		FADFFA2A1BB8C8FC00C58CF5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FADFFA291BB8C8FC00C58CF5 /* CoreLocation.framework */; };
 		FAF4FA3B1C972A7400A0A9B8 /* RFParseConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF4FA3A1C972A7400A0A9B8 /* RFParseConfig.m */; };
@@ -72,6 +73,7 @@
 		FA392DF41BB4A41C00A08A9F /* RFLocationDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFLocationDetailViewController.h; sourceTree = "<group>"; };
 		FA392DF51BB4A41C00A08A9F /* RFLocationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFLocationDetailViewController.m; sourceTree = "<group>"; };
 		FA3C7A0B1BDFC95000778DF0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		FA4BE6D01D0B688E00D7F0D9 /* RFDiningLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RFDiningLocation.swift; sourceTree = "<group>"; };
 		FAAADD0E1BB89665008FAA77 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		FAAF23991BEBA2BA00F2CE1B /* RFHoursTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFHoursTableViewController.h; sourceTree = "<group>"; };
 		FAAF239A1BEBA2BA00F2CE1B /* RFHoursTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFHoursTableViewController.m; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 		FA3A2ACB1CA1C5A600589A43 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FA4BE6D01D0B688E00D7F0D9 /* RFDiningLocation.swift */,
 				FA22EFCC1B9F227700763C9A /* RFDiningLocation.h */,
 				FA22EFCD1B9F227700763C9A /* RFDiningLocation.m */,
 			);
@@ -375,6 +378,7 @@
 				FAF4FA3B1C972A7400A0A9B8 /* RFParseConfig.m in Sources */,
 				FA22EFCE1B9F227700763C9A /* RFDiningLocation.m in Sources */,
 				FA22EFD11B9F238A00763C9A /* RFLocationsViewController.m in Sources */,
+				FA4BE6D11D0B688E00D7F0D9 /* RFDiningLocation.swift in Sources */,
 				FA004C2D1C594F8900E16D17 /* RFMenuBrowserViewController.m in Sources */,
 				FAAF239B1BEBA2BA00F2CE1B /* RFHoursTableViewController.m in Sources */,
 			);
@@ -510,6 +514,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = NYUDining/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
@@ -527,6 +533,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = NYUDining/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;

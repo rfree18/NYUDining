@@ -7,6 +7,7 @@
 //
 
 #import "RFHoursTableViewController.h"
+#import "NYUDining-Swift.h"
 
 @interface RFHoursTableViewController ()
 
