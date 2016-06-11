@@ -4,8 +4,8 @@ use_frameworks!
 
 target 'NYUDining' do
 
-    pod 'Alamofire', '~> 3.4'
     pod 'Firebase'
     pod 'Firebase/Database'
+    pod 'GoogleMaps'
 
 end

@@ -21,24 +21,24 @@ enum DayOfWeek: String {
 
 @objc class RFDiningLocation: NSObject {
     
-    let name: String!
-    let logoURL: String!
-    let menuURL: String!
-    let hours: [String]
-    let address: String!
-    let coordinates: [String]
+    let name: String?
+    let logoURL: String?
+    let menuURL: String?
+    let hours: [String?]?
+    let address: String?
+    let coordinates: [String]?
     let data: [String: AnyObject]
     
     init(data: [String: AnyObject], params: [String: AnyObject]) {
         self.data = data
         
         let cal: String = params["calendar"] as! String
-        hours = data[cal] as! [String]
-        name = data["Name"] as! String
-        logoURL = data["logo_url"] as! String
-        address = data["Address"] as! String
-        menuURL = data["menu_url"] as! String
-        coordinates = data["coordinates"] as! [String]
+        hours = data[cal] as? [String?]
+        name = data["Name"] as? String
+        logoURL = data["logo_url"] as? String
+        address = data["Address"] as? String
+        menuURL = data["menu_url"] as? String
+        coordinates = data["Coordinates"] as? [String]
         
     }
     
@@ -61,24 +61,38 @@ enum DayOfWeek: String {
         var timeB: Double
         
         dateFormatter.dateFormat = "a"
-        var hoursToday: String
+        var hoursToday = ""
         
-        if let dayOfWeek = dayOfWeek {
+        if let dayOfWeek = dayOfWeek, hours = hours {
             switch dayOfWeek {
             case .Sunday:
-                hoursToday = hours[0]
+                if let today = hours[0] {
+                    hoursToday = today
+                }
             case .Monday:
-                hoursToday = hours[1]
+                if let today = hours[01] {
+                    hoursToday = today
+                }
             case .Tuesday:
-                hoursToday = hours[2]
+                if let today = hours[2] {
+                    hoursToday = today
+                }
             case .Wednesday:
-                hoursToday = hours[3]
+                if let today = hours[3] {
+                    hoursToday = today
+                }
             case .Thursday:
-                hoursToday = hours[4]
+                if let today = hours[4] {
+                    hoursToday = today
+                }
             case .Friday:
-                hoursToday = hours[5]
+                if let today = hours[5] {
+                    hoursToday = today
+                }
             case .Saturday:
-                hoursToday = hours[6]
+                if let today = hours[6] {
+                    hoursToday = today
+                }
             default:
                 // TODO: Better error handling
                 return false

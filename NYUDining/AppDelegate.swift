@@ -9,10 +9,12 @@
 import Foundation
 import Firebase
 
+@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    var window: UIWindow?
     
     func applicationDidFinishLaunching(application: UIApplication) {
         FIRApp.configure()
     }
-    
 }

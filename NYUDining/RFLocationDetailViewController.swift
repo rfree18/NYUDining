@@ -23,7 +23,7 @@ class RFLocationDetailViewController: UIViewController {
         navigationItem.title = location.name
         
         dispatch_async(dispatch_get_main_queue()) {
-            let url = NSURL(string: self.location.logoURL)
+            let url = NSURL(string: self.location.logoURL!)
             let data = NSData(contentsOfURL: url!)
             
             // TODO: Implement error checking
@@ -56,31 +56,48 @@ class RFLocationDetailViewController: UIViewController {
     }
     
     func getHoursString() -> String {
-        var hoursString: String
-        var todaysHours: String
+        var hoursString = ""
+        var hoursToday = ""
         
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "EEEE"
         let dayOfWeek: DayOfWeek = DayOfWeek(rawValue: dateFormatter.stringFromDate(NSDate()))!
         
-        switch dayOfWeek {
-        case .Sunday:
-            todaysHours = location.hours[0]
-        case .Monday:
-            todaysHours = location.hours[1]
-        case .Tuesday:
-            todaysHours = location.hours[2]
-        case .Wednesday:
-            todaysHours = location.hours[3]
-        case .Thursday:
-            todaysHours = location.hours[4]
-        case .Friday:
-            todaysHours = location.hours[5]
-        default:
-            todaysHours = location.hours[6]
-        }
+        if let hours = location.hours {
+            switch dayOfWeek {
+            case .Sunday:
+                if let today = hours[0] {
+                    hoursToday = today
+                }
+            case .Monday:
+                if let today = hours[01] {
+                    hoursToday = today
+                }
+            case .Tuesday:
+                if let today = hours[2] {
+                    hoursToday = today
+                }
+            case .Wednesday:
+                if let today = hours[3] {
+                    hoursToday = today
+                }
+            case .Thursday:
+                if let today = hours[4] {
+                    hoursToday = today
+                }
+            case .Friday:
+                if let today = hours[5] {
+                    hoursToday = today
+                }
+            default:
+                if let today = hours[6] {
+                    hoursToday = today
+                }
             
-        hoursString = todaysHours.stringByReplacingOccurrencesOfString(",", withString: "\n")
+            }
+            hoursString = hoursToday.stringByReplacingOccurrencesOfString(",", withString: "\n")
+        }
+        
             
         return hoursString
         

@@ -48,8 +48,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="OWQ-mv-bcS"/>
-                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="f4v-PX-i33"/>
+                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="1yw-IT-95Q"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="RqG-wj-wmt"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -63,7 +63,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="NYUDining" id="eMG-9c-3mT"/>
                     <connections>
-                        <outlet property="locationTable" destination="pwH-or-2ib" id="RZ5-qP-S0V"/>
+                        <outlet property="locationTable" destination="pwH-or-2ib" id="0q8-Wo-Gdv"/>
                         <segue destination="FG6-dc-Nvr" kind="push" identifier="showDetails" id="BqN-Dg-9HK"/>
                     </connections>
                 </viewController>
@@ -74,7 +74,7 @@
         <!--Location Detail View Controller-->
         <scene sceneID="s6i-Sv-zGm">
             <objects>
-                <viewController id="FG6-dc-Nvr" customClass="RFLocationDetailViewController" sceneMemberID="viewController">
+                <viewController id="FG6-dc-Nvr" customClass="RFLocationDetailViewController" customModule="NYUDining" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9LU-mn-SWr"/>
                         <viewControllerLayoutGuide type="bottom" id="MTt-Fy-Smh"/>
@@ -172,7 +172,7 @@
         <!--Menu Browser View Controller-->
         <scene sceneID="lg4-qZ-l8D">
             <objects>
-                <viewController id="HQO-b1-HAq" customClass="RFMenuBrowserViewController" sceneMemberID="viewController">
+                <viewController id="HQO-b1-HAq" customClass="RFMenuBrowserViewController" customModule="NYUDining" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OSu-Rs-WC9"/>
                         <viewControllerLayoutGuide type="bottom" id="iDn-qi-QAn"/>
@@ -217,7 +217,7 @@
         <!--Hours-->
         <scene sceneID="IUw-5n-fMi">
             <objects>
-                <viewController id="XDD-ez-YR4" customClass="RFHoursTableViewController" sceneMemberID="viewController">
+                <viewController id="XDD-ez-YR4" customClass="RFHoursTableViewController" customModule="NYUDining" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="73r-MU-4fS"/>
                         <viewControllerLayoutGuide type="bottom" id="Ybc-DA-kdB"/>

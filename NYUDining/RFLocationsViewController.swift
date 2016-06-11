@@ -35,15 +35,15 @@ class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableV
         grabInformationFromServer()
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        locationTable.reloadData()
-        
-        for indexPath: NSIndexPath in locationTable.indexPathsForSelectedRows! {
-            locationTable.deselectRowAtIndexPath(indexPath, animated: false)
-        }
-    }
+//    override func viewDidAppear(animated: Bool) {
+//        super.viewDidAppear(animated)
+//        
+//        locationTable.reloadData()
+//        
+//        for indexPath: NSIndexPath in locationTable.indexPathsForSelectedRows! {
+//            locationTable.deselectRowAtIndexPath(indexPath, animated: false)
+//        }
+//    }
     
     func grabInformationFromServer() {
         ref.observeEventType(FIRDataEventType.Value, withBlock: { (snapshot) in
@@ -63,7 +63,7 @@ class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableV
             self.diningLocations = self.diningLocations.sort({ (a, b) -> Bool in
                 let name1 = a.name
                 let name2 = b.name
-                return name1 > name2
+                return name1 < name2
             })
             
             self.locationTable.reloadData()
@@ -156,7 +156,9 @@ class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableV
         let path = sender as! NSIndexPath
         
         let selectedLocation = diningLocations[path.row]
-        let dest = segue.destinationViewController as! RFLocationDetailViewController
-        dest.location = selectedLocation
+        let dest = segue.destinationViewController as? RFLocationDetailViewController
+        if let dest = dest {
+            dest.location = selectedLocation
+        }
     }
 }
