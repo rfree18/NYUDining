@@ -7,21 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3C5504FA32AFD8B8E3B8A398 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BACD7A0D44025B005581105 /* libPods.a */; };
-		FA004C2D1C594F8900E16D17 /* RFMenuBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA004C2C1C594F8900E16D17 /* RFMenuBrowserViewController.m */; };
-		FA22EFA91B9F1F3400763C9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22EFA81B9F1F3400763C9A /* main.m */; };
-		FA22EFAC1B9F1F3400763C9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22EFAB1B9F1F3400763C9A /* AppDelegate.m */; };
+		A0DBFE6AC3580650C1C751DB /* Pods_NYUDining.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 789F215EA24B3C8514087160 /* Pods_NYUDining.framework */; };
+		FA04BDCB1D0B7EFF0061F267 /* RFLocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA04BDCA1D0B7EFF0061F267 /* RFLocationsViewController.swift */; };
+		FA04BDCD1D0B85330061F267 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA04BDCC1D0B85330061F267 /* GoogleService-Info.plist */; };
+		FA04BDCF1D0B853B0061F267 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA04BDCE1D0B853B0061F267 /* AppDelegate.swift */; };
+		FA04BDD11D0B8F430061F267 /* RFLocationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA04BDD01D0B8F430061F267 /* RFLocationDetailViewController.swift */; };
+		FA04BDD31D0B98700061F267 /* RFHoursTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA04BDD21D0B98700061F267 /* RFHoursTableViewController.swift */; };
+		FA04BDD51D0B9A2D0061F267 /* RFMenuBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA04BDD41D0B9A2D0061F267 /* RFMenuBrowserViewController.swift */; };
 		FA22EFB21B9F1F3400763C9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA22EFB01B9F1F3400763C9A /* Main.storyboard */; };
 		FA22EFB41B9F1F3400763C9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA22EFB31B9F1F3400763C9A /* Images.xcassets */; };
 		FA22EFB71B9F1F3400763C9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA22EFB51B9F1F3400763C9A /* LaunchScreen.xib */; };
 		FA22EFC31B9F1F3400763C9A /* NYUDiningTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22EFC21B9F1F3400763C9A /* NYUDiningTests.m */; };
-		FA22EFCE1B9F227700763C9A /* RFDiningLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22EFCD1B9F227700763C9A /* RFDiningLocation.m */; };
-		FA22EFD11B9F238A00763C9A /* RFLocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22EFD01B9F238A00763C9A /* RFLocationsViewController.m */; };
-		FA392DF61BB4A41C00A08A9F /* RFLocationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA392DF51BB4A41C00A08A9F /* RFLocationDetailViewController.m */; };
 		FA3C7A0C1BDFC95000778DF0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA3C7A0B1BDFC95000778DF0 /* SystemConfiguration.framework */; };
-		FAAF239B1BEBA2BA00F2CE1B /* RFHoursTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAF239A1BEBA2BA00F2CE1B /* RFHoursTableViewController.m */; };
+		FA4BE6D11D0B688E00D7F0D9 /* RFDiningLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4BE6D01D0B688E00D7F0D9 /* RFDiningLocation.swift */; };
 		FADFFA2A1BB8C8FC00C58CF5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FADFFA291BB8C8FC00C58CF5 /* CoreLocation.framework */; };
-		FAF4FA3B1C972A7400A0A9B8 /* RFParseConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF4FA3A1C972A7400A0A9B8 /* RFParseConfig.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,35 +47,27 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		47B38739EA923A0FD7408330 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		8CC4EF66899FF587015DA0F3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		9BACD7A0D44025B005581105 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA004C2B1C594F8900E16D17 /* RFMenuBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMenuBrowserViewController.h; sourceTree = "<group>"; };
-		FA004C2C1C594F8900E16D17 /* RFMenuBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMenuBrowserViewController.m; sourceTree = "<group>"; };
-		FA1B5EE81C91C43700076D82 /* RFParseConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RFParseConfig.h; sourceTree = "<group>"; };
+		0E202179F3D84B33CEBC04C1 /* Pods-NYUDining.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYUDining.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NYUDining/Pods-NYUDining.debug.xcconfig"; sourceTree = "<group>"; };
+		1657DCBBBF39FC7D985DA6A8 /* Pods-NYUDining.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYUDining.release.xcconfig"; path = "Pods/Target Support Files/Pods-NYUDining/Pods-NYUDining.release.xcconfig"; sourceTree = "<group>"; };
+		789F215EA24B3C8514087160 /* Pods_NYUDining.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NYUDining.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA04BDCA1D0B7EFF0061F267 /* RFLocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RFLocationsViewController.swift; sourceTree = "<group>"; };
+		FA04BDCC1D0B85330061F267 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FA04BDCE1D0B853B0061F267 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FA04BDD01D0B8F430061F267 /* RFLocationDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RFLocationDetailViewController.swift; sourceTree = "<group>"; };
+		FA04BDD21D0B98700061F267 /* RFHoursTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RFHoursTableViewController.swift; sourceTree = "<group>"; };
+		FA04BDD41D0B9A2D0061F267 /* RFMenuBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RFMenuBrowserViewController.swift; sourceTree = "<group>"; };
 		FA22EFA31B9F1F3400763C9A /* NYUDining.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NYUDining.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA22EFA71B9F1F3400763C9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FA22EFA81B9F1F3400763C9A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		FA22EFAA1B9F1F3400763C9A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		FA22EFAB1B9F1F3400763C9A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		FA22EFB11B9F1F3400763C9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FA22EFB31B9F1F3400763C9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		FA22EFB61B9F1F3400763C9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		FA22EFBC1B9F1F3400763C9A /* NYUDiningTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NYUDiningTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA22EFC11B9F1F3400763C9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA22EFC21B9F1F3400763C9A /* NYUDiningTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYUDiningTests.m; sourceTree = "<group>"; };
-		FA22EFCC1B9F227700763C9A /* RFDiningLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFDiningLocation.h; sourceTree = "<group>"; };
-		FA22EFCD1B9F227700763C9A /* RFDiningLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFDiningLocation.m; sourceTree = "<group>"; };
-		FA22EFCF1B9F238A00763C9A /* RFLocationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFLocationsViewController.h; sourceTree = "<group>"; };
-		FA22EFD01B9F238A00763C9A /* RFLocationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFLocationsViewController.m; sourceTree = "<group>"; };
-		FA392DF41BB4A41C00A08A9F /* RFLocationDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFLocationDetailViewController.h; sourceTree = "<group>"; };
-		FA392DF51BB4A41C00A08A9F /* RFLocationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFLocationDetailViewController.m; sourceTree = "<group>"; };
 		FA3C7A0B1BDFC95000778DF0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		FA4BE6D01D0B688E00D7F0D9 /* RFDiningLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RFDiningLocation.swift; sourceTree = "<group>"; };
 		FAAADD0E1BB89665008FAA77 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		FAAF23991BEBA2BA00F2CE1B /* RFHoursTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFHoursTableViewController.h; sourceTree = "<group>"; };
-		FAAF239A1BEBA2BA00F2CE1B /* RFHoursTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFHoursTableViewController.m; sourceTree = "<group>"; };
 		FADFFA291BB8C8FC00C58CF5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		FAF4FA3A1C972A7400A0A9B8 /* RFParseConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFParseConfig.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +77,7 @@
 			files = (
 				FA3C7A0C1BDFC95000778DF0 /* SystemConfiguration.framework in Frameworks */,
 				FADFFA2A1BB8C8FC00C58CF5 /* CoreLocation.framework in Frameworks */,
-				3C5504FA32AFD8B8E3B8A398 /* libPods.a in Frameworks */,
+				A0DBFE6AC3580650C1C751DB /* Pods_NYUDining.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,16 +97,16 @@
 				FA3C7A0B1BDFC95000778DF0 /* SystemConfiguration.framework */,
 				FADFFA291BB8C8FC00C58CF5 /* CoreLocation.framework */,
 				FAAADD0E1BB89665008FAA77 /* MapKit.framework */,
-				9BACD7A0D44025B005581105 /* libPods.a */,
+				789F215EA24B3C8514087160 /* Pods_NYUDining.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		3CB6D843E2ED17EC2D945BAF /* Pods */ = {
+		A494E50D8869C946FA33702A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				47B38739EA923A0FD7408330 /* Pods.debug.xcconfig */,
-				8CC4EF66899FF587015DA0F3 /* Pods.release.xcconfig */,
+				0E202179F3D84B33CEBC04C1 /* Pods-NYUDining.debug.xcconfig */,
+				1657DCBBBF39FC7D985DA6A8 /* Pods-NYUDining.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -123,11 +114,12 @@
 		FA22EF9A1B9F1F3400763C9A = {
 			isa = PBXGroup;
 			children = (
+				FA04BDCC1D0B85330061F267 /* GoogleService-Info.plist */,
 				FA22EFA51B9F1F3400763C9A /* NYUDining */,
 				FA22EFBF1B9F1F3400763C9A /* NYUDiningTests */,
 				FA22EFA41B9F1F3400763C9A /* Products */,
-				3CB6D843E2ED17EC2D945BAF /* Pods */,
 				2229E7348960834A3370311B /* Frameworks */,
+				A494E50D8869C946FA33702A /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -143,9 +135,7 @@
 		FA22EFA51B9F1F3400763C9A /* NYUDining */ = {
 			isa = PBXGroup;
 			children = (
-				FA22EFAA1B9F1F3400763C9A /* AppDelegate.h */,
-				FA22EFAB1B9F1F3400763C9A /* AppDelegate.m */,
-				FA3A2ACD1CA1C5BD00589A43 /* Config */,
+				FA04BDCE1D0B853B0061F267 /* AppDelegate.swift */,
 				FA3A2ACB1CA1C5A600589A43 /* Models */,
 				FA3A2ACC1CA1C5AE00589A43 /* View Controllers */,
 				FA22EFB01B9F1F3400763C9A /* Main.storyboard */,
@@ -160,7 +150,6 @@
 			isa = PBXGroup;
 			children = (
 				FA22EFA71B9F1F3400763C9A /* Info.plist */,
-				FA22EFA81B9F1F3400763C9A /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -185,8 +174,7 @@
 		FA3A2ACB1CA1C5A600589A43 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				FA22EFCC1B9F227700763C9A /* RFDiningLocation.h */,
-				FA22EFCD1B9F227700763C9A /* RFDiningLocation.m */,
+				FA4BE6D01D0B688E00D7F0D9 /* RFDiningLocation.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -194,25 +182,12 @@
 		FA3A2ACC1CA1C5AE00589A43 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FA22EFCF1B9F238A00763C9A /* RFLocationsViewController.h */,
-				FA22EFD01B9F238A00763C9A /* RFLocationsViewController.m */,
-				FA392DF41BB4A41C00A08A9F /* RFLocationDetailViewController.h */,
-				FA392DF51BB4A41C00A08A9F /* RFLocationDetailViewController.m */,
-				FAAF23991BEBA2BA00F2CE1B /* RFHoursTableViewController.h */,
-				FAAF239A1BEBA2BA00F2CE1B /* RFHoursTableViewController.m */,
-				FA004C2B1C594F8900E16D17 /* RFMenuBrowserViewController.h */,
-				FA004C2C1C594F8900E16D17 /* RFMenuBrowserViewController.m */,
+				FA04BDCA1D0B7EFF0061F267 /* RFLocationsViewController.swift */,
+				FA04BDD01D0B8F430061F267 /* RFLocationDetailViewController.swift */,
+				FA04BDD21D0B98700061F267 /* RFHoursTableViewController.swift */,
+				FA04BDD41D0B9A2D0061F267 /* RFMenuBrowserViewController.swift */,
 			);
 			name = "View Controllers";
-			sourceTree = "<group>";
-		};
-		FA3A2ACD1CA1C5BD00589A43 /* Config */ = {
-			isa = PBXGroup;
-			children = (
-				FA1B5EE81C91C43700076D82 /* RFParseConfig.h */,
-				FAF4FA3A1C972A7400A0A9B8 /* RFParseConfig.m */,
-			);
-			name = Config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,13 +197,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA22EFC61B9F1F3400763C9A /* Build configuration list for PBXNativeTarget "NYUDining" */;
 			buildPhases = (
-				97BFF57FC59603E1D93E4EAD /* Check Pods Manifest.lock */,
+				9C3CF011003467555AC57F84 /* [CP] Check Pods Manifest.lock */,
 				FA22EF9F1B9F1F3400763C9A /* Sources */,
 				FA22EFA01B9F1F3400763C9A /* Frameworks */,
 				FA22EFA11B9F1F3400763C9A /* Resources */,
-				F770EA7BEB998C5E352F0F86 /* Copy Pods Resources */,
-				5D531D5E16345E1DA8260EED /* Embed Pods Frameworks */,
 				FAF927EA1C62D57800126B92 /* Embed Watch Content */,
+				33C1C8E5D9282F348B29DED1 /* [CP] Embed Pods Frameworks */,
+				5E777980F5C15A52E3D02F5B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -302,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA22EFB21B9F1F3400763C9A /* Main.storyboard in Resources */,
+				FA04BDCD1D0B85330061F267 /* GoogleService-Info.plist in Resources */,
 				FA22EFB71B9F1F3400763C9A /* LaunchScreen.xib in Resources */,
 				FA22EFB41B9F1F3400763C9A /* Images.xcassets in Resources */,
 			);
@@ -317,49 +293,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5D531D5E16345E1DA8260EED /* Embed Pods Frameworks */ = {
+		33C1C8E5D9282F348B29DED1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NYUDining/Pods-NYUDining-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		97BFF57FC59603E1D93E4EAD /* Check Pods Manifest.lock */ = {
+		5E777980F5C15A52E3D02F5B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NYUDining/Pods-NYUDining-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9C3CF011003467555AC57F84 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		F770EA7BEB998C5E352F0F86 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -369,14 +345,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA392DF61BB4A41C00A08A9F /* RFLocationDetailViewController.m in Sources */,
-				FA22EFAC1B9F1F3400763C9A /* AppDelegate.m in Sources */,
-				FA22EFA91B9F1F3400763C9A /* main.m in Sources */,
-				FAF4FA3B1C972A7400A0A9B8 /* RFParseConfig.m in Sources */,
-				FA22EFCE1B9F227700763C9A /* RFDiningLocation.m in Sources */,
-				FA22EFD11B9F238A00763C9A /* RFLocationsViewController.m in Sources */,
-				FA004C2D1C594F8900E16D17 /* RFMenuBrowserViewController.m in Sources */,
-				FAAF239B1BEBA2BA00F2CE1B /* RFHoursTableViewController.m in Sources */,
+				FA04BDCF1D0B853B0061F267 /* AppDelegate.swift in Sources */,
+				FA04BDD51D0B9A2D0061F267 /* RFMenuBrowserViewController.swift in Sources */,
+				FA4BE6D11D0B688E00D7F0D9 /* RFDiningLocation.swift in Sources */,
+				FA04BDCB1D0B7EFF0061F267 /* RFLocationsViewController.swift in Sources */,
+				FA04BDD31D0B98700061F267 /* RFHoursTableViewController.swift in Sources */,
+				FA04BDD11D0B8F430061F267 /* RFLocationDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,11 +479,13 @@
 		};
 		FA22EFC71B9F1F3400763C9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 47B38739EA923A0FD7408330 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 0E202179F3D84B33CEBC04C1 /* Pods-NYUDining.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = "$(inherited)";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = NYUDining/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
@@ -517,16 +493,19 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rossfreeman.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		FA22EFC81B9F1F3400763C9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8CC4EF66899FF587015DA0F3 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 1657DCBBBF39FC7D985DA6A8 /* Pods-NYUDining.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = "$(inherited)";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = NYUDining/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;

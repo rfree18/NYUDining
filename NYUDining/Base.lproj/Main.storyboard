@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="HN5-hS-vDW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="HN5-hS-vDW">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -9,7 +9,7 @@
         <!--NYUDining-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="RFLocationsViewController" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="RFLocationsViewController" customModule="NYUDining" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -48,8 +48,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="OWQ-mv-bcS"/>
-                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="f4v-PX-i33"/>
+                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="1yw-IT-95Q"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="RqG-wj-wmt"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -63,7 +63,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="NYUDining" id="eMG-9c-3mT"/>
                     <connections>
-                        <outlet property="locationTable" destination="pwH-or-2ib" id="RZ5-qP-S0V"/>
+                        <outlet property="locationTable" destination="pwH-or-2ib" id="0q8-Wo-Gdv"/>
                         <segue destination="FG6-dc-Nvr" kind="push" identifier="showDetails" id="BqN-Dg-9HK"/>
                     </connections>
                 </viewController>
@@ -74,7 +74,7 @@
         <!--Location Detail View Controller-->
         <scene sceneID="s6i-Sv-zGm">
             <objects>
-                <viewController id="FG6-dc-Nvr" customClass="RFLocationDetailViewController" sceneMemberID="viewController">
+                <viewController id="FG6-dc-Nvr" customClass="RFLocationDetailViewController" customModule="NYUDining" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9LU-mn-SWr"/>
                         <viewControllerLayoutGuide type="bottom" id="MTt-Fy-Smh"/>
@@ -90,14 +90,14 @@
                                     <constraint firstAttribute="height" constant="135" id="hyU-f7-ia7"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hours Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBq-bT-Pqj">
-                                <rect key="frame" x="203" y="176" width="112" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Hours Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBq-bT-Pqj">
+                                <rect key="frame" x="203" y="176" width="112" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ao-CC-zTQ">
-                                <rect key="frame" x="203" y="81" width="110" height="31.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ao-CC-zTQ">
+                                <rect key="frame" x="203" y="81" width="110" height="32"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -106,14 +106,14 @@
                                 <rect key="frame" x="0.0" y="229" width="320" height="339"/>
                                 <color key="backgroundColor" red="0.1764705882" green="0.1843137255" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today's Hours" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcC-PA-fy9">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Today's Hours" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcC-PA-fy9">
                                 <rect key="frame" x="203" y="120" width="110" height="48"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QDT-B0-S0m">
-                                <rect key="frame" x="203.5" y="196.5" width="112" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QDT-B0-S0m">
+                                <rect key="frame" x="204" y="197" width="112" height="30"/>
                                 <color key="backgroundColor" red="0.30588235294117649" green="0.066666666666666666" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Menu">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -122,7 +122,6 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="5"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="showMenu:" destination="FG6-dc-Nvr" eventType="touchUpInside" id="Rc7-lC-Xfc"/>
                                     <segue destination="HQO-b1-HAq" kind="push" identifier="showMenu" id="Eyl-7L-bnw"/>
                                 </connections>
                             </button>
@@ -172,7 +171,7 @@
         <!--Menu Browser View Controller-->
         <scene sceneID="lg4-qZ-l8D">
             <objects>
-                <viewController id="HQO-b1-HAq" customClass="RFMenuBrowserViewController" sceneMemberID="viewController">
+                <viewController id="HQO-b1-HAq" customClass="RFMenuBrowserViewController" customModule="NYUDining" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OSu-Rs-WC9"/>
                         <viewControllerLayoutGuide type="bottom" id="iDn-qi-QAn"/>
@@ -189,7 +188,7 @@
                                 </connections>
                             </webView>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="opa-Xp-zae">
-                                <rect key="frame" x="85" y="283" width="150" height="2.5"/>
+                                <rect key="frame" x="85" y="283" width="150" height="3"/>
                             </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -212,12 +211,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="APP-3r-MEw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1227" y="1001"/>
+            <point key="canvasLocation" x="1227" y="1097"/>
         </scene>
         <!--Hours-->
         <scene sceneID="IUw-5n-fMi">
             <objects>
-                <viewController id="XDD-ez-YR4" customClass="RFHoursTableViewController" sceneMemberID="viewController">
+                <viewController id="XDD-ez-YR4" customClass="RFHoursTableViewController" customModule="NYUDining" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="73r-MU-4fS"/>
                         <viewControllerLayoutGuide type="bottom" id="Ybc-DA-kdB"/>
