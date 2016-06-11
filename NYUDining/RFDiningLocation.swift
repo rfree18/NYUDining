@@ -55,7 +55,7 @@ enum DayOfWeek: String {
         let times = currentTime.componentsSeparatedByString(":")
         let currentHour: Double = Double(times[0])!
         let currentMinute: Double = Double(times[0])!
-        let time = currentHour + currentMinute
+        let time = currentHour + currentMinute / 60
         
         var timeA: Double
         var timeB: Double
