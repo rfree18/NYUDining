@@ -29,10 +29,10 @@ enum DayOfWeek: String {
     let coordinates: [String]
     let data: [String: AnyObject]
     
-    init(data: [String: AnyObject]) {
+    init(data: [String: AnyObject], params: [String: AnyObject]) {
         self.data = data
         
-        let cal: String = data["calendar"] as! String
+        let cal: String = params["calendar"] as! String
         hours = data[cal] as! [String]
         name = data["Name"] as! String
         logoURL = data["logo_url"] as! String
