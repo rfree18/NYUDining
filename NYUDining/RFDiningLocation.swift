@@ -21,24 +21,24 @@ enum DayOfWeek: String {
 
 @objc class RFDiningLocation: NSObject {
     
-    let name: String?
-    let logoURL: String?
+    let name: String!
+    let logoURL: String!
     let menuURL: String?
-    let hours: [String?]?
-    let address: String?
-    let coordinates: [String]?
+    let hours: [String]!
+    let address: String!
+    let coordinates: [Double]
     let data: [String: AnyObject]
     
     init(data: [String: AnyObject], params: [String: AnyObject]) {
         self.data = data
         
         let cal: String = params["calendar"] as! String
-        hours = data[cal] as? [String?]
-        name = data["Name"] as? String
-        logoURL = data["logo_url"] as? String
-        address = data["Address"] as? String
+        hours = data[cal] as! [String]
+        name = data["Name"] as! String
+        logoURL = data["logo_URL"] as! String
+        address = data["Address"] as! String
         menuURL = data["menu_url"] as? String
-        coordinates = data["Coordinates"] as? [String]
+        coordinates = data["Coordinates"] as! [Double]
         
     }
     
@@ -66,36 +66,19 @@ enum DayOfWeek: String {
         if let dayOfWeek = dayOfWeek, hours = hours {
             switch dayOfWeek {
             case .Sunday:
-                if let today = hours[0] {
-                    hoursToday = today
-                }
+                hoursToday = hours[0]
             case .Monday:
-                if let today = hours[01] {
-                    hoursToday = today
-                }
+                hoursToday = hours[1]
             case .Tuesday:
-                if let today = hours[2] {
-                    hoursToday = today
-                }
+                hoursToday = hours[2]
             case .Wednesday:
-                if let today = hours[3] {
-                    hoursToday = today
-                }
+                hoursToday = hours[3]
             case .Thursday:
-                if let today = hours[4] {
-                    hoursToday = today
-                }
+                hoursToday = hours[4]
             case .Friday:
-                if let today = hours[5] {
-                    hoursToday = today
-                }
-            case .Saturday:
-                if let today = hours[6] {
-                    hoursToday = today
-                }
+                hoursToday = hours[5]
             default:
-                // TODO: Better error handling
-                return false
+                hoursToday = hours[6]
             }
             
             if hoursToday.containsString(",") {
@@ -123,11 +106,11 @@ enum DayOfWeek: String {
                                 let timeArray = time0.componentsSeparatedByString(":")
                                 let minute = timeArray[1]
                                 let minuteInHour: Double = Double(minute)! / 60
-                                timeA = Double(times[0])! + minuteInHour
+                                timeA = Double(time0)! + minuteInHour
                             }
                             
                             else {
-                                timeA = Double(times[0])!
+                                timeA = Double(time0)!
                             }
                         }
                     }
@@ -139,11 +122,11 @@ enum DayOfWeek: String {
                             let timeArray = time0.componentsSeparatedByString(":")
                             let minute = timeArray[1]
                             let minuteInHour: Double = Double(minute)! / 60
-                            timeA = Double(times[0])! + minuteInHour
+                            timeA = Double(time0)! + minuteInHour
                         }
                         
                         else {
-                            timeA = Double(times[0])!
+                            timeA = Double(time0)!
                         }
                         
                         if timeA < 12 {
@@ -163,11 +146,11 @@ enum DayOfWeek: String {
                                 let timeArray = time0.componentsSeparatedByString(":")
                                 let minute = timeArray[1]
                                 let minuteInHour: Double = Double(minute)! / 60
-                                timeB = Double(times[0])! + minuteInHour
+                                timeB = Double(time0)! + minuteInHour
                             }
                                 
                             else {
-                                timeB = Double(times[0])!
+                                timeB = Double(time0)!
                             }
                         }
                         
@@ -180,11 +163,11 @@ enum DayOfWeek: String {
                             let timeArray = time0.componentsSeparatedByString(":")
                             let minute = timeArray[1]
                             let minuteInHour: Double = Double(minute)! / 60
-                            timeB = Double(times[1])! + minuteInHour
+                            timeB = Double(time1)! + minuteInHour
                         }
                             
                         else {
-                            timeB = Double(times[1])!
+                            timeB = Double(time1)!
                         }
                         
                         if timeB < 12 {
@@ -226,11 +209,11 @@ enum DayOfWeek: String {
                                 let timeArray = time0.componentsSeparatedByString(":")
                                 let minute = timeArray[1]
                                 let minuteInHour: Double = Double(minute)! / 60
-                                timeA = Double(times[0])! + minuteInHour
+                                timeA = Double(time0)! + minuteInHour
                             }
                                 
                             else {
-                                timeA = Double(times[0])!
+                                timeA = Double(time0)!
                             }
                         }
                     }
@@ -242,11 +225,11 @@ enum DayOfWeek: String {
                             let timeArray = time0.componentsSeparatedByString(":")
                             let minute = timeArray[1]
                             let minuteInHour: Double = Double(minute)! / 60
-                            timeA = Double(times[0])! + minuteInHour
+                            timeA = Double(time0)! + minuteInHour
                         }
                             
                         else {
-                            timeA = Double(times[0])!
+                            timeA = Double(time0)!
                         }
                         
                         if timeA < 12 {
@@ -266,11 +249,11 @@ enum DayOfWeek: String {
                                 let timeArray = time0.componentsSeparatedByString(":")
                                 let minute = timeArray[1]
                                 let minuteInHour: Double = Double(minute)! / 60
-                                timeB = Double(times[0])! + minuteInHour
+                                timeB = Double(time0)! + minuteInHour
                             }
                                 
                             else {
-                                timeB = Double(times[0])!
+                                timeB = Double(time0)!
                             }
                         }
                         
@@ -283,11 +266,11 @@ enum DayOfWeek: String {
                             let timeArray = time0.componentsSeparatedByString(":")
                             let minute = timeArray[1]
                             let minuteInHour: Double = Double(minute)! / 60
-                            timeB = Double(times[1])! + minuteInHour
+                            timeB = Double(time1)! + minuteInHour
                         }
                             
                         else {
-                            timeB = Double(times[1])!
+                            timeB = Double(time1)!
                         }
                         
                         if timeB < 12 {

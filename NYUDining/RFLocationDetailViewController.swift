@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMaps
 
 class RFLocationDetailViewController: UIViewController {
     
@@ -16,6 +17,7 @@ class RFLocationDetailViewController: UIViewController {
     @IBOutlet weak var locationStatusLabel: UILabel!
     @IBOutlet weak var hoursLabel: UILabel!
     @IBOutlet weak var menuButton: UIButton!
+    @IBOutlet weak var mapView: GMSMapView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +50,22 @@ class RFLocationDetailViewController: UIViewController {
         }
         
         // TODO: Implement GMaps
+        
+        let x = location.coordinates[0]
+        let y = location.coordinates[1]
+        
+        let camera = GMSCameraPosition.cameraWithLatitude(x, longitude: y, zoom: 16)
+        
+        mapView.frame = CGRectZero
+        mapView.camera = camera
+        
+        let marker = GMSMarker(position: CLLocationCoordinate2DMake(x, y))
+        marker.title = location.name!
+        marker.snippet = location.address!
+        marker.map = mapView
+        
+        mapView.selectedMarker = marker
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,39 +79,24 @@ class RFLocationDetailViewController: UIViewController {
         
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "EEEE"
-        let dayOfWeek: DayOfWeek = DayOfWeek(rawValue: dateFormatter.stringFromDate(NSDate()))!
+        let dayOfWeek = DayOfWeek(rawValue: dateFormatter.stringFromDate(NSDate()))
         
-        if let hours = location.hours {
+        if let dayOfWeek = dayOfWeek {
             switch dayOfWeek {
             case .Sunday:
-                if let today = hours[0] {
-                    hoursToday = today
-                }
+                hoursToday = location.hours[0]
             case .Monday:
-                if let today = hours[01] {
-                    hoursToday = today
-                }
+                hoursToday = location.hours[1]
             case .Tuesday:
-                if let today = hours[2] {
-                    hoursToday = today
-                }
+                hoursToday = location.hours[2]
             case .Wednesday:
-                if let today = hours[3] {
-                    hoursToday = today
-                }
+                hoursToday = location.hours[3]
             case .Thursday:
-                if let today = hours[4] {
-                    hoursToday = today
-                }
+                hoursToday = location.hours[4]
             case .Friday:
-                if let today = hours[5] {
-                    hoursToday = today
-                }
+                hoursToday = location.hours[5]
             default:
-                if let today = hours[6] {
-                    hoursToday = today
-                }
-            
+                hoursToday = location.hours[6]
             }
             hoursString = hoursToday.stringByReplacingOccurrencesOfString(",", withString: "\n")
         }
