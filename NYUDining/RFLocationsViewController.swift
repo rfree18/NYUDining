@@ -34,40 +34,19 @@ class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableV
         grabInformationFromServer()
     }
     
-//    override func viewDidAppear(animated: Bool) {
-//        super.viewDidAppear(animated)
-//        
-//        locationTable.reloadData()
-//        
-//        for indexPath: NSIndexPath in locationTable.indexPathsForSelectedRows! {
-//            locationTable.deselectRowAtIndexPath(indexPath, animated: false)
-//        }
-//    }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        locationTable.reloadData()
+        
+        if let indexPaths = locationTable.indexPathsForSelectedRows {
+            for indexPath: NSIndexPath in indexPaths {
+                locationTable.deselectRowAtIndexPath(indexPath, animated: false)
+            }
+        }
+    }
     
     func grabInformationFromServer() {
-        ref.observeEventType(FIRDataEventType.Value, withBlock: { (snapshot) in
-            self.diningLocations.removeAll()
-            self.timer.invalidate()
-            
-            let data = snapshot.value as! [String: AnyObject]
-            
-            let params = data["params"] as! [String: AnyObject]
-            let locations = data["results"] as! [[String: AnyObject]]
-            
-            for locationData in locations {
-                let location = RFDiningLocation(data: locationData, params: params)
-                self.diningLocations.append(location)
-            }
-            
-            self.diningLocations = self.diningLocations.sort({ (a, b) -> Bool in
-                let name1 = a.name
-                let name2 = b.name
-                return name1 < name2
-            })
-            
-            self.locationTable.reloadData()
-            
-        })
         
         ref.observeEventType(FIRDataEventType.Value, withBlock: { (snapshot) in
             self.diningLocations.removeAll()
@@ -86,7 +65,7 @@ class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableV
             self.diningLocations = self.diningLocations.sort({ (a, b) -> Bool in
                 let name1 = a.name
                 let name2 = b.name
-                return name1 > name2
+                return name1 < name2
             })
             
             self.locationTable.reloadData()

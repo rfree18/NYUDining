@@ -122,7 +122,6 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="5"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="showMenu:" destination="FG6-dc-Nvr" eventType="touchUpInside" id="Rc7-lC-Xfc"/>
                                     <segue destination="HQO-b1-HAq" kind="push" identifier="showMenu" id="Eyl-7L-bnw"/>
                                 </connections>
                             </button>

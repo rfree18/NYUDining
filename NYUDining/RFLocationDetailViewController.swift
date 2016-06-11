@@ -49,8 +49,6 @@ class RFLocationDetailViewController: UIViewController {
             locationStatusLabel.textColor = UIColor.redColor()
         }
         
-        // TODO: Implement GMaps
-        
         let x = location.coordinates[0]
         let y = location.coordinates[1]
         
