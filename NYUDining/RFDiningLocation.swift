@@ -106,7 +106,7 @@ enum DayOfWeek: String {
                                 let timeArray = time0.componentsSeparatedByString(":")
                                 let minute = timeArray[1]
                                 let minuteInHour: Double = Double(minute)! / 60
-                                timeA = Double(time0)! + minuteInHour
+                                timeA = Double(timeArray[0])! + minuteInHour
                             }
                             
                             else {
@@ -122,7 +122,7 @@ enum DayOfWeek: String {
                             let timeArray = time0.componentsSeparatedByString(":")
                             let minute = timeArray[1]
                             let minuteInHour: Double = Double(minute)! / 60
-                            timeA = Double(time0)! + minuteInHour
+                            timeA = Double(timeArray[0])! + minuteInHour
                         }
                         
                         else {
@@ -146,7 +146,7 @@ enum DayOfWeek: String {
                                 let timeArray = time0.componentsSeparatedByString(":")
                                 let minute = timeArray[1]
                                 let minuteInHour: Double = Double(minute)! / 60
-                                timeB = Double(time0)! + minuteInHour
+                                timeB = Double(timeArray[0])! + minuteInHour
                             }
                                 
                             else {
@@ -163,7 +163,7 @@ enum DayOfWeek: String {
                             let timeArray = time0.componentsSeparatedByString(":")
                             let minute = timeArray[1]
                             let minuteInHour: Double = Double(minute)! / 60
-                            timeB = Double(time1)! + minuteInHour
+                            timeB = Double(timeArray[0])! + minuteInHour
                         }
                             
                         else {
@@ -209,7 +209,7 @@ enum DayOfWeek: String {
                                 let timeArray = time0.componentsSeparatedByString(":")
                                 let minute = timeArray[1]
                                 let minuteInHour: Double = Double(minute)! / 60
-                                timeA = Double(time0)! + minuteInHour
+                                timeA = Double(timeArray[0])! + minuteInHour
                             }
                                 
                             else {
@@ -225,7 +225,7 @@ enum DayOfWeek: String {
                             let timeArray = time0.componentsSeparatedByString(":")
                             let minute = timeArray[1]
                             let minuteInHour: Double = Double(minute)! / 60
-                            timeA = Double(time0)! + minuteInHour
+                            timeA = Double(timeArray[0])! + minuteInHour
                         }
                             
                         else {
@@ -249,7 +249,7 @@ enum DayOfWeek: String {
                                 let timeArray = time0.componentsSeparatedByString(":")
                                 let minute = timeArray[1]
                                 let minuteInHour: Double = Double(minute)! / 60
-                                timeB = Double(time0)! + minuteInHour
+                                timeB = Double(timeArray[0])! + minuteInHour
                             }
                                 
                             else {
@@ -266,7 +266,7 @@ enum DayOfWeek: String {
                             let timeArray = time0.componentsSeparatedByString(":")
                             let minute = timeArray[1]
                             let minuteInHour: Double = Double(minute)! / 60
-                            timeB = Double(time1)! + minuteInHour
+                            timeB = Double(timeArray[0])! + minuteInHour
                         }
                             
                         else {
