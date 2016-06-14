@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleMaps
+import MBProgressHUD
 
 class RFLocationDetailViewController: UIViewController {
     
@@ -24,12 +25,17 @@ class RFLocationDetailViewController: UIViewController {
 
         navigationItem.title = location.name
         
+        MBProgressHUD.showHUDAddedTo(self.navigationController?.view, animated: true)
+        
         dispatch_async(dispatch_get_main_queue()) {
             let url = NSURL(string: self.location.logoURL!)
             let data = NSData(contentsOfURL: url!)
             
             // TODO: Implement error checking
             self.locationLogo.image = UIImage(data: data!)
+            
+            MBProgressHUD.hideHUDForView(self.navigationController?.view, animated: true)
+            
         }
         
         hoursLabel.preferredMaxLayoutWidth = 200

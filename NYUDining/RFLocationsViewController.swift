@@ -8,7 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
-
+import MBProgressHUD
 
 class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -47,6 +47,7 @@ class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func grabInformationFromServer() {
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         
         ref.observeEventType(FIRDataEventType.Value, withBlock: { (snapshot) in
             self.diningLocations.removeAll()
@@ -69,8 +70,11 @@ class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableV
             })
             
             self.locationTable.reloadData()
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
+            
             }) { (error) in
                 print(error.description)
+                MBProgressHUD.hideHUDForView(self.view, animated: true)
                 
                 let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.Alert)
                 let retry = UIAlertAction(title: "Retry", style: UIAlertActionStyle.Default, handler: { (action) in
@@ -82,6 +86,8 @@ class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func showAlert() {
+        MBProgressHUD.hideHUDForView(self.view, animated: true)
+        
         ref.removeAllObservers()
         
         let alert = UIAlertController(title: "Connection Error", message: "It looks like you're not connected to the internet 😢", preferredStyle: UIAlertControllerStyle.Alert)
