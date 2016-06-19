@@ -42,7 +42,7 @@ class RFDiningLocation: NSObject {
         
     }
     
-    func isOpen() -> Bool {
+    func isOpenOld() -> Bool {
         
         let date = NSDate()
         let dateFormatter = NSDateFormatter()
@@ -63,7 +63,7 @@ class RFDiningLocation: NSObject {
         dateFormatter.dateFormat = "a"
         var hoursToday = ""
         
-        if let dayOfWeek = dayOfWeek, hours = hours {
+        if let dayOfWeek = dayOfWeek {
             switch dayOfWeek {
             case .Sunday:
                 hoursToday = hours[0]
@@ -292,6 +292,81 @@ class RFDiningLocation: NSObject {
         
         return false
         
+    }
+    
+    func isOpen() -> Bool {
+        let now = NSDate()
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        let dayOfWeek = DayOfWeek(rawValue: dateFormatter.stringFromDate(now))
+        
+        var hoursToday = ""
+        
+        if let dayOfWeek = dayOfWeek {
+            switch dayOfWeek {
+            case .Sunday:
+                hoursToday = hours[0]
+            case .Monday:
+                hoursToday = hours[1]
+            case .Tuesday:
+                hoursToday = hours[2]
+            case .Wednesday:
+                hoursToday = hours[3]
+            case .Thursday:
+                hoursToday = hours[4]
+            case .Friday:
+                hoursToday = hours[5]
+            default:
+                hoursToday = hours[6]
+            }
+        }
+        
+        if hoursToday.containsString(",") {
+            let timeComponents = hoursToday.componentsSeparatedByString(",")
+            return isTimeInRange(timeComponents[0]) && isTimeInRange(timeComponents[0])
+        }
+        
+        else {
+            return isTimeInRange(hoursToday)
+        }
+    }
+    
+    private func normalizedTime() -> NSDate {
+        let now = NSDate()
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.timeStyle = .ShortStyle
+        
+        let timeStr = dateFormatter.stringFromDate(now)
+        return dateFormatter.dateFromString(timeStr)!
+        
+    }
+    
+    private func isTimeInRange(timeRange: String) -> Bool {
+        
+        guard timeRange != "Closed" else {
+            return false
+        }
+        
+        let calendar = NSCalendar.currentCalendar()
+        let now = normalizedTime()
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.timeStyle = .ShortStyle
+        
+        let timeComponents = timeRange.componentsSeparatedByString("-")
+        
+        let openTime = dateFormatter.dateFromString(timeComponents[0])
+        let closeTime = dateFormatter.dateFromString(timeComponents[1])
+        
+        if let openTime = openTime, closeTime = closeTime {
+            let openComparison = calendar.compareDate(now, toDate: openTime, toUnitGranularity: .Minute)
+            let closeCoomparison = calendar.compareDate(now, toDate: closeTime, toUnitGranularity: .Minute)
+            
+            return (openComparison == .OrderedDescending && closeCoomparison == .OrderedAscending)
+        }
+        
+        return false
     }
     
 }
