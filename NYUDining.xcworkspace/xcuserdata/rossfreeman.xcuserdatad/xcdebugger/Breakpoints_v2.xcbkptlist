@@ -73,8 +73,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "323"
             endingLineNumber = "323"
-            landmarkName = "isOpen()"
-            landmarkType = "5">
+            landmarkName = "RFDiningLocation"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -89,8 +89,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "352"
             endingLineNumber = "352"
-            landmarkName = "isTimeInRange(_:)"
-            landmarkType = "5">
+            landmarkName = "RFDiningLocation"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
