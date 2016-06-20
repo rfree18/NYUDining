@@ -41,29 +41,16 @@ class RFDiningLocation: NSObject {
         coordinates = data["Coordinates"] as! [Double]
         
     }
-    
+     
     func isOpen() -> Bool {
-        
-        let date = NSDate()
+        let now = NSDate()
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "EEEE"
-        let dayOfWeek = DayOfWeek(rawValue: dateFormatter.stringFromDate(date))
+        let dayOfWeek = DayOfWeek(rawValue: dateFormatter.stringFromDate(now))
         
-        
-        dateFormatter.dateFormat = "HH:mm"
-        let currentTime = dateFormatter.stringFromDate(date)
-        let times = currentTime.componentsSeparatedByString(":")
-        let currentHour: Double = Double(times[0])!
-        let currentMinute: Double = Double(times[0])!
-        let time = currentHour + currentMinute / 60
-        
-        var timeA: Double
-        var timeB: Double
-        
-        dateFormatter.dateFormat = "a"
         var hoursToday = ""
         
-        if let dayOfWeek = dayOfWeek, hours = hours {
+        if let dayOfWeek = dayOfWeek {
             switch dayOfWeek {
             case .Sunday:
                 hoursToday = hours[0]
@@ -80,218 +67,54 @@ class RFDiningLocation: NSObject {
             default:
                 hoursToday = hours[6]
             }
+        }
+        
+        if hoursToday.containsString(",") {
+            let timeComponents = hoursToday.componentsSeparatedByString(",")
+            return isTimeInRange(timeComponents[0]) && isTimeInRange(timeComponents[0])
+        }
+        
+        else {
+            return isTimeInRange(hoursToday)
+        }
+    }
+    
+    private func normalizedTime() -> NSDate {
+        let now = NSDate()
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.timeStyle = .ShortStyle
+        
+        let timeStr = dateFormatter.stringFromDate(now)
+        return dateFormatter.dateFromString(timeStr)!
+        
+    }
+    
+    private func isTimeInRange(timeRange: String) -> Bool {
+        
+        guard timeRange != "Closed" else {
+            return false
+        }
+        
+        let calendar = NSCalendar.currentCalendar()
+        let now = normalizedTime()
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.timeStyle = .ShortStyle
+        
+        let timeComponents = timeRange.componentsSeparatedByString("-")
+        
+        let openTime = dateFormatter.dateFromString(timeComponents[0])
+        let closeTime = dateFormatter.dateFromString(timeComponents[1])
+        
+        if let openTime = openTime, closeTime = closeTime {
+            let openComparison = calendar.compareDate(now, toDate: openTime, toUnitGranularity: .Minute)
+            let closeCoomparison = calendar.compareDate(now, toDate: closeTime, toUnitGranularity: .Minute)
             
-            if hoursToday.containsString(",") {
-                let timeSlots = hoursToday.componentsSeparatedByString(",")
-                
-                var counter = 0
-                
-                for timeSlot in timeSlots {
-                    counter += 1
-                    
-                    let times = timeSlot.componentsSeparatedByString("-")
-                    
-                    var time0 = times[0]
-                    var time1 = times[1]
-                    
-                    if times[0].containsString("am") {
-                        if times[0].containsString("12") {
-                            timeA = 0
-                        }
-                        
-                        else {
-                            time0 = time0.stringByReplacingOccurrencesOfString("am", withString: "")
-                            
-                            if time0.containsString(":") {
-                                let timeArray = time0.componentsSeparatedByString(":")
-                                let minute = timeArray[1]
-                                let minuteInHour: Double = Double(minute)! / 60
-                                timeA = Double(timeArray[0])! + minuteInHour
-                            }
-                            
-                            else {
-                                timeA = Double(time0)!
-                            }
-                        }
-                    }
-                    
-                    else {
-                        time0 = time0.stringByReplacingOccurrencesOfString("pm", withString: "")
-                        
-                        if time0.containsString(":"){
-                            let timeArray = time0.componentsSeparatedByString(":")
-                            let minute = timeArray[1]
-                            let minuteInHour: Double = Double(minute)! / 60
-                            timeA = Double(timeArray[0])! + minuteInHour
-                        }
-                        
-                        else {
-                            timeA = Double(time0)!
-                        }
-                        
-                        if timeA < 12 {
-                            timeA += 12
-                        }
-                    }
-                    
-                    if times[1].containsString("am") {
-                        if times[1].containsString("12") {
-                            timeB = 0
-                        }
-                            
-                        else {
-                            time1 = time1.stringByReplacingOccurrencesOfString("am", withString: "")
-                            
-                            if time1.containsString(":") {
-                                let timeArray = time0.componentsSeparatedByString(":")
-                                let minute = timeArray[1]
-                                let minuteInHour: Double = Double(minute)! / 60
-                                timeB = Double(timeArray[0])! + minuteInHour
-                            }
-                                
-                            else {
-                                timeB = Double(time0)!
-                            }
-                        }
-                        
-                    }
-                    
-                    else {
-                        time1 = time1.stringByReplacingOccurrencesOfString("pm", withString: "")
-                        
-                        if time1.containsString(":"){
-                            let timeArray = time0.componentsSeparatedByString(":")
-                            let minute = timeArray[1]
-                            let minuteInHour: Double = Double(minute)! / 60
-                            timeB = Double(timeArray[0])! + minuteInHour
-                        }
-                            
-                        else {
-                            timeB = Double(time1)!
-                        }
-                        
-                        if timeB < 12 {
-                            timeB += 12
-                        }
-                    }
-                    
-                    if time >= timeA && time < timeB {
-                        return true
-                    }
-                    
-                    else if counter == timeSlots.count {
-                        return false
-                    }
-                    
-                }
-            }
-            
-            else {
-                if hoursToday == "Closed" {
-                    return false
-                }
-                
-                else {
-                    let times = hoursToday.componentsSeparatedByString("-")
-                    
-                    var time0 = times[0]
-                    var time1 = times[1]
-                    
-                    if times[0].containsString("am") {
-                        if times[0].containsString("12") {
-                            timeA = 0
-                        }
-                            
-                        else {
-                            time0 = time0.stringByReplacingOccurrencesOfString("am", withString: "")
-                            
-                            if time0.containsString(":") {
-                                let timeArray = time0.componentsSeparatedByString(":")
-                                let minute = timeArray[1]
-                                let minuteInHour: Double = Double(minute)! / 60
-                                timeA = Double(timeArray[0])! + minuteInHour
-                            }
-                                
-                            else {
-                                timeA = Double(time0)!
-                            }
-                        }
-                    }
-                        
-                    else {
-                        time0 = time0.stringByReplacingOccurrencesOfString("pm", withString: "")
-                        
-                        if time0.containsString(":"){
-                            let timeArray = time0.componentsSeparatedByString(":")
-                            let minute = timeArray[1]
-                            let minuteInHour: Double = Double(minute)! / 60
-                            timeA = Double(timeArray[0])! + minuteInHour
-                        }
-                            
-                        else {
-                            timeA = Double(time0)!
-                        }
-                        
-                        if timeA < 12 {
-                            timeA += 12
-                        }
-                    }
-                    
-                    if times[1].containsString("am") {
-                        if times[1].containsString("12") {
-                            timeB = 0
-                        }
-                            
-                        else {
-                            time1 = time1.stringByReplacingOccurrencesOfString("am", withString: "")
-                            
-                            if time1.containsString(":") {
-                                let timeArray = time0.componentsSeparatedByString(":")
-                                let minute = timeArray[1]
-                                let minuteInHour: Double = Double(minute)! / 60
-                                timeB = Double(timeArray[0])! + minuteInHour
-                            }
-                                
-                            else {
-                                timeB = Double(time0)!
-                            }
-                        }
-                        
-                    }
-                        
-                    else {
-                        time1 = time1.stringByReplacingOccurrencesOfString("pm", withString: "")
-                        
-                        if time1.containsString(":"){
-                            let timeArray = time0.componentsSeparatedByString(":")
-                            let minute = timeArray[1]
-                            let minuteInHour: Double = Double(minute)! / 60
-                            timeB = Double(timeArray[0])! + minuteInHour
-                        }
-                            
-                        else {
-                            timeB = Double(time1)!
-                        }
-                        
-                        if timeB < 12 {
-                            timeB += 12
-                        }
-                    }
-                    
-                    if time >= timeA && time < timeB || time >= timeA && timeB == 0 {
-                        return true
-                    }
-                        
-                    else {
-                        return false
-                    }
-                }
-            }
-            
+            return (openComparison == .OrderedDescending && closeCoomparison == .OrderedAscending)
         }
         
         return false
-        
     }
     
 }
