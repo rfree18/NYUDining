@@ -8,5 +8,5 @@ target 'NYUDining' do
     pod 'Firebase/Database'
     pod 'GoogleMaps'
     pod 'MBProgressHUD', '~> 0.9.2'
-
+    pod 'Alamofire', '~> 3.4'
 end
