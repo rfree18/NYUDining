@@ -9,6 +9,7 @@
 import Foundation
 import Firebase
 import GoogleMaps
+import HockeySDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,5 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
         
         GMSServices.provideAPIKey("AIzaSyBN_4cWF6QUZ7RvjhuocQcErs6i3QqtKtk")
+        
+        BITHockeyManager.sharedHockeyManager().configureWithIdentifier("dc46523580954c5197d54ff2f016cf53")
+        BITHockeyManager.sharedHockeyManager().startManager()
+        BITHockeyManager.sharedHockeyManager().authenticator.authenticateInstallation()
     }
 }
