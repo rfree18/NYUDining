@@ -92,7 +92,7 @@ class RFDiningLocation: NSObject {
     
     private func isTimeInRange(timeRange: String) -> Bool {
         
-        guard timeRange != "Closed" else {
+        if timeRange == "Closed" {
             return false
         }
         
@@ -107,11 +107,18 @@ class RFDiningLocation: NSObject {
         let openTime = dateFormatter.dateFromString(timeComponents[0])
         let closeTime = dateFormatter.dateFromString(timeComponents[1])
         
-        if let openTime = openTime, closeTime = closeTime {
-            let openComparison = calendar.compareDate(now, toDate: openTime, toUnitGranularity: .Minute)
-            let closeCoomparison = calendar.compareDate(now, toDate: closeTime, toUnitGranularity: .Minute)
+        if let openTime = openTime, var closeTime = closeTime {
             
-            return (openComparison == .OrderedDescending && closeCoomparison == .OrderedAscending)
+            // Check if close time is 12am
+            let diffComparison = calendar.compareDate(openTime, toDate: closeTime, toUnitGranularity: .Hour)
+            if diffComparison == .OrderedDescending {
+                closeTime = calendar.dateByAddingUnit(.Day, value: 1, toDate: closeTime, options: [])!
+            }
+            
+            let openComparison = calendar.compareDate(now, toDate: openTime, toUnitGranularity: .Minute)
+            let closeComparison = calendar.compareDate(now, toDate: closeTime, toUnitGranularity: .Minute)
+            
+            return (openComparison == .OrderedDescending && closeComparison == .OrderedAscending)
         }
         
         return false
