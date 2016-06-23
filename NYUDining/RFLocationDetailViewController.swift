@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMaps
 import MBProgressHUD
+import Alamofire
 
 class RFLocationDetailViewController: UIViewController {
     
@@ -20,10 +21,18 @@ class RFLocationDetailViewController: UIViewController {
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var mapView: GMSMapView!
 
+    @IBOutlet weak var checkInsTable: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationItem.title = location.name
+  //      Alamofire.request(.GET, "http://172.17.54.82:8080/EatWithSmartService/webapi/checkIn?diningHallName=\(location.name)", encoding: .JSON)
+  //          .validate()
+            
+   //         .responseJSON { response in
+   //             debugPrint(response)
+   //     }
+        
         
         MBProgressHUD.showHUDAddedTo(self.navigationController?.view, animated: true)
         

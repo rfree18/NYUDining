@@ -10,6 +10,8 @@
 		A0DBFE6AC3580650C1C751DB /* Pods_NYUDining.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 789F215EA24B3C8514087160 /* Pods_NYUDining.framework */; };
 		F6E6BDC61D184FC500878E49 /* RequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E6BDC51D184FC500878E49 /* RequestsViewController.swift */; };
 		F6E6BDC81D18535300878E49 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6E6BDC71D18535300878E49 /* Alamofire.framework */; };
+		F6E6BDCA1D1867E400878E49 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E6BDC91D1867E400878E49 /* ProfileViewController.swift */; };
+		F6E6BDCC1D18885000878E49 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E6BDCB1D18885000878E49 /* EditProfileViewController.swift */; };
 		FA04BDCB1D0B7EFF0061F267 /* RFLocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA04BDCA1D0B7EFF0061F267 /* RFLocationsViewController.swift */; };
 		FA04BDCD1D0B85330061F267 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA04BDCC1D0B85330061F267 /* GoogleService-Info.plist */; };
 		FA04BDCF1D0B853B0061F267 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA04BDCE1D0B853B0061F267 /* AppDelegate.swift */; };
@@ -53,6 +55,8 @@
 		789F215EA24B3C8514087160 /* Pods_NYUDining.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NYUDining.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6E6BDC51D184FC500878E49 /* RequestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestsViewController.swift; sourceTree = "<group>"; };
 		F6E6BDC71D18535300878E49 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../Library/Developer/Xcode/DerivedData/NYUDining-bzgwcentzkjttadqfgpdfmcslrpm/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
+		F6E6BDC91D1867E400878E49 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		F6E6BDCB1D18885000878E49 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		FA04BDCA1D0B7EFF0061F267 /* RFLocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RFLocationsViewController.swift; sourceTree = "<group>"; };
 		FA04BDCC1D0B85330061F267 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA04BDCE1D0B853B0061F267 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -190,6 +194,8 @@
 				FA04BDD21D0B98700061F267 /* RFHoursTableViewController.swift */,
 				FA04BDD41D0B9A2D0061F267 /* RFMenuBrowserViewController.swift */,
 				F6E6BDC51D184FC500878E49 /* RequestsViewController.swift */,
+				F6E6BDC91D1867E400878E49 /* ProfileViewController.swift */,
+				F6E6BDCB1D18885000878E49 /* EditProfileViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -355,7 +361,9 @@
 				FA4BE6D11D0B688E00D7F0D9 /* RFDiningLocation.swift in Sources */,
 				FA04BDCB1D0B7EFF0061F267 /* RFLocationsViewController.swift in Sources */,
 				FA04BDD31D0B98700061F267 /* RFHoursTableViewController.swift in Sources */,
+				F6E6BDCA1D1867E400878E49 /* ProfileViewController.swift in Sources */,
 				FA04BDD11D0B8F430061F267 /* RFLocationDetailViewController.swift in Sources */,
+				F6E6BDCC1D18885000878E49 /* EditProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

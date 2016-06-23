@@ -8,10 +8,7 @@ target 'NYUDining' do
     pod 'Firebase/Database'
     pod 'GoogleMaps'
     pod 'MBProgressHUD', '~> 0.9.2'
-<<<<<<< HEAD
     pod 'Alamofire', '~> 3.4'
-=======
-
 end
 
 post_install do |installer|
@@ -20,5 +17,4 @@ post_install do |installer|
             config.build_settings['ENABLE_BITCODE'] = 'NO'
         end
     end 
->>>>>>> develop
 end
