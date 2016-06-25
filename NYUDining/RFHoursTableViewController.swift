@@ -15,6 +15,9 @@ class RFHoursTableViewController: UIViewController, UITableViewDelegate, UITable
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        hoursTable.estimatedRowHeight = 44.0
+        hoursTable.rowHeight = UITableViewAutomaticDimension
 
         hoursTable.reloadData()
     }
@@ -48,23 +51,26 @@ class RFHoursTableViewController: UIViewController, UITableViewDelegate, UITable
             
             switch indexPath.row {
             case 0:
-                dayOfWeek = DayOfWeek.Sunday
+                dayOfWeek = .Sunday
             case 1:
-                dayOfWeek = DayOfWeek.Monday
+                dayOfWeek = .Monday
             case 2:
-                dayOfWeek = DayOfWeek.Tuesday
+                dayOfWeek = .Tuesday
             case 3:
-                dayOfWeek = DayOfWeek.Wednesday
+                dayOfWeek = .Wednesday
             case 4:
-                dayOfWeek = DayOfWeek.Thursday
+                dayOfWeek = .Thursday
             case 5:
-                dayOfWeek = DayOfWeek.Friday
+                dayOfWeek = .Friday
             default:
-                dayOfWeek = DayOfWeek.Saturday
+                dayOfWeek = .Saturday
             }
             
+            var hoursText = hours
+            hoursText = hoursText.stringByReplacingOccurrencesOfString(",", withString: "\n")
+            
             cell.textLabel?.text = dayOfWeek.rawValue
-            cell.detailTextLabel?.text = hours
+            cell.detailTextLabel?.text = hoursText
         }
         
         return cell!
