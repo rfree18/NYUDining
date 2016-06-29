@@ -9,6 +9,8 @@ target 'NYUDining' do
     pod 'GoogleMaps'
     pod 'MBProgressHUD', '~> 0.9.2'
     pod 'Alamofire', '~> 3.4'
+    pod 'HockeySDK', '~> 4.0.1'
+
 end
 
 post_install do |installer|
