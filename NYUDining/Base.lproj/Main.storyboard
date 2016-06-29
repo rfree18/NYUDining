@@ -409,10 +409,10 @@
             </objects>
             <point key="canvasLocation" x="1658" y="1077"/>
         </scene>
-        <!--View Controller-->
+        <!--Fb Login View Controller-->
         <scene sceneID="ltc-vL-5KV">
             <objects>
-                <viewController id="CGW-Mk-Glh" sceneMemberID="viewController">
+                <viewController id="CGW-Mk-Glh" customClass="FbLoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MpN-sE-cRr"/>
                         <viewControllerLayoutGuide type="bottom" id="7Fj-ht-Xcn"/>
@@ -421,17 +421,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="skS-f0-uhf">
-                                <rect key="frame" x="106" y="28" width="108" height="30"/>
-                                <state key="normal" title="Facebook Login"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JSj-DB-Ny2" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="137" y="219" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="9qe-s1-4TH"/>
+                    <connections>
+                        <outlet property="btnFacebook" destination="JSj-DB-Ny2" id="b8Q-QH-x70"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aEb-ZX-YtI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2102" y="1061"/>
+            <point key="canvasLocation" x="2074" y="1077"/>
         </scene>
         <!--Profile-->
         <scene sceneID="ShS-v2-EmE">
@@ -490,6 +494,13 @@
                                 <state key="normal" title="Settings"/>
                                 <connections>
                                     <segue destination="t6P-Ye-lyk" kind="push" id="HQ8-xy-Rbv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yh9-cO-oko">
+                                <rect key="frame" x="106" y="440" width="108" height="30"/>
+                                <state key="normal" title="Facebook Login"/>
+                                <connections>
+                                    <segue destination="CGW-Mk-Glh" kind="push" id="vis-TV-p9Q"/>
                                 </connections>
                             </button>
                         </subviews>

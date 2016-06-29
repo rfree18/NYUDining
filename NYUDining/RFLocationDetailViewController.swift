@@ -19,8 +19,6 @@ class RFLocationDetailViewController: UIViewController {
     @IBOutlet weak var locationStatusLabel: UILabel!
     @IBOutlet weak var hoursLabel: UILabel!
     @IBOutlet weak var menuButton: UIButton!
-    @IBOutlet weak var mapView: GMSMapView!
-
     @IBOutlet weak var checkInsTable: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,15 +67,15 @@ class RFLocationDetailViewController: UIViewController {
         
         let camera = GMSCameraPosition.cameraWithLatitude(x, longitude: y, zoom: 16)
         
-        mapView.frame = CGRectZero
-        mapView.camera = camera
+        //mapView.frame = CGRectZero
+        //mapView.camera = camera
         
         let marker = GMSMarker(position: CLLocationCoordinate2DMake(x, y))
         marker.title = location.name!
         marker.snippet = location.address!
-        marker.map = mapView
+        //marker.map = mapView
         
-        mapView.selectedMarker = marker
+        //mapView.selectedMarker = marker
         
     }
 
