@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         GMSServices.provideAPIKey("AIzaSyBN_4cWF6QUZ7RvjhuocQcErs6i3QqtKtk")
         
+<<<<<<< HEAD
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
@@ -33,6 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             openURL: url,
             sourceApplication: sourceApplication,
             annotation: annotation)
+=======
+>>>>>>> develop
         BITHockeyManager.sharedHockeyManager().configureWithIdentifier("dc46523580954c5197d54ff2f016cf53")
         BITHockeyManager.sharedHockeyManager().startManager()
         BITHockeyManager.sharedHockeyManager().authenticator.authenticateInstallation()

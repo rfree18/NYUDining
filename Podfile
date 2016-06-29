@@ -8,7 +8,10 @@ target 'NYUDining' do
     pod 'Firebase/Database'
     pod 'GoogleMaps'
     pod 'MBProgressHUD', '~> 0.9.2'
+<<<<<<< HEAD
     pod 'Alamofire', '~> 3.4'
+=======
+>>>>>>> develop
     pod 'HockeySDK', '~> 4.0.1'
 
 end
