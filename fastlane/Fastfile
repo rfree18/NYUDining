@@ -31,7 +31,7 @@ platform :ios do
   lane :beta do
     # Make sure we don't have any uncommited changes on master and are up to date with the remote
     ensure_git_status_clean
-    ensure_git_branch(branch: 'master')
+    ensure_git_branch(branch: 'develop')
     git_pull
     push_to_git_remote
 
