@@ -1,0 +1,90 @@
+# Customise this file, documentation can be found here:
+# https://github.com/fastlane/fastlane/tree/master/fastlane/docs
+# All available actions: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Actions.md
+# can also be listed using the `fastlane actions` command
+
+# Change the syntax highlighting to Ruby
+# All lines starting with a # are ignored when running `fastlane`
+
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+fastlane_version "1.97.0"
+
+default_platform :ios
+
+platform :ios do
+  before_all do
+    # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
+    cocoapods
+    
+  end
+
+  desc "Runs all the tests"
+  lane :test do
+    scan
+  end
+
+  desc "Build and distribute build to Crashlytics"
+  lane :beta do
+    # Make sure we don't have any uncommited changes on master and are up to date with the remote
+    ensure_git_status_clean
+    ensure_git_branch(branch: 'master')
+    git_pull
+    push_to_git_remote
+
+    # Ask the user of fastlane to enter a changelog
+    changelog = prompt(text: "Enter the change log: ",
+                       multi_line_end_keyword: "END")
+
+    # Increment the version number of your Xcode project
+    version = increment_version_number(bump_type: "patch")
+
+    # Build and sign your app
+    gym(scheme: "Release")
+
+    # Distribute via Crashlytics
+    crashlytics(crashlytics_path: "./Crashlytics.framework/submit",
+                notes: changelog)
+  end
+
+  lane :deploy do
+    gym
+    deliver
+  end
+
+  desc "Deploy a new version to the App Store"
+  lane :appstore do
+    # match(type: "appstore")
+    # snapshot
+    gym # Build your app - more options available
+    deliver(force: true)
+    # frameit
+  end
+
+  # You can define as many lanes as you want
+
+  after_all do |lane|
+    # This block is called, only if the executed lane was successful
+
+    # slack(
+    #   message: "Successfully deployed new App Update."
+    # )
+  end
+
+  error do |lane, exception|
+    # slack(
+    #   message: exception.message,
+    #   success: false
+    # )
+  end
+end
+
+
+# More information about multiple platforms in fastlane: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Platforms.md
+# All available actions: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Actions.md
+
+# fastlane reports which actions are used
+# No personal data is recorded. Learn more at https://github.com/fastlane/enhancer
