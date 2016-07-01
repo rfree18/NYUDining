@@ -44,7 +44,7 @@ platform :ios do
     gym(scheme: "Release")
 
     # Distribute via Crashlytics
-    crashlytics(crashlytics_path: "./Pods/Crashlytics/gCrashlytics.framework/submit",
+    crashlytics(crashlytics_path: "./Pods/Crashlytics/Crashlytics.framework/submit",
                 notes: changelog)
   end
 
