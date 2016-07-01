@@ -112,15 +112,17 @@ class RFLocationDetailViewController: UIViewController {
     
     // MARK: Navigation
     
+    @IBAction func goToHoursTable(sender: AnyObject) {
+        let tableVc = RFHoursTableViewController()
+        tableVc.diningLocation = location
+        
+        navigationController?.pushViewController(tableVc, animated: true)
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showMenu" {
             let dest = segue.destinationViewController as! RFMenuBrowserViewController
             dest.location = location
-        }
-        
-        else {
-            let dest = segue.destinationViewController as! RFHoursTableViewController
-            dest.diningLocation = location
         }
     }
     

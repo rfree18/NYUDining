@@ -1,5 +1,5 @@
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '9.0'
+platform :ios, '8.2'
 use_frameworks!
 
 target 'NYUDining' do
@@ -9,6 +9,7 @@ target 'NYUDining' do
     pod 'GoogleMaps'
     pod 'MBProgressHUD', '~> 0.9.2'
     pod 'HockeySDK', '~> 4.0.1'
+    pod 'PureLayout'
 
 end
 

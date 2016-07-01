@@ -7,15 +7,25 @@
 //
 
 import UIKit
+import PureLayout
 
-class RFHoursTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class RFHoursTableViewController: UIViewController {
     
     var diningLocation: RFDiningLocation!
-    @IBOutlet weak var hoursTable: UITableView!
+    private let hoursTable = UITableView()
+    
+    private let cellId = "hours"
+    private var didSetConstraints = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        hoursTable.registerClass(HoursTableViewCell.self, forCellReuseIdentifier: cellId)
+        hoursTable.dataSource = self
+        
+        view.addSubview(hoursTable)
 
+        view.setNeedsUpdateConstraints()
         hoursTable.reloadData()
     }
 
@@ -24,8 +34,17 @@ class RFHoursTableViewController: UIViewController, UITableViewDelegate, UITable
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: Table View
-    
+    override func updateViewConstraints() {
+        if !didSetConstraints {
+            hoursTable.autoPinEdgesToSuperviewEdges()
+        }
+        
+        super.updateViewConstraints()
+    }
+
+}
+
+extension RFHoursTableViewController: UITableViewDataSource {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -39,36 +58,36 @@ class RFHoursTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("hours")
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellId, forIndexPath: indexPath) as! HoursTableViewCell
         
-        if let cell = cell, hours = diningLocation.hours {
-            let hours = hours[indexPath.row]
-            
-            var dayOfWeek: DayOfWeek
-            
-            switch indexPath.row {
-            case 0:
-                dayOfWeek = DayOfWeek.Sunday
-            case 1:
-                dayOfWeek = DayOfWeek.Monday
-            case 2:
-                dayOfWeek = DayOfWeek.Tuesday
-            case 3:
-                dayOfWeek = DayOfWeek.Wednesday
-            case 4:
-                dayOfWeek = DayOfWeek.Thursday
-            case 5:
-                dayOfWeek = DayOfWeek.Friday
-            default:
-                dayOfWeek = DayOfWeek.Saturday
-            }
-            
-            cell.textLabel?.text = dayOfWeek.rawValue
-            cell.detailTextLabel?.text = hours
+        var hours = diningLocation.hours[indexPath.row]
+        
+        var dayOfWeek: DayOfWeek
+        
+        switch indexPath.row {
+        case 0:
+            dayOfWeek = .Sunday
+        case 1:
+            dayOfWeek = .Monday
+        case 2:
+            dayOfWeek = .Tuesday
+        case 3:
+            dayOfWeek = .Wednesday
+        case 4:
+            dayOfWeek = .Thursday
+        case 5:
+            dayOfWeek = .Friday
+        default:
+            dayOfWeek = .Saturday
         }
         
-        return cell!
+        cell.weekdayLabel.text = dayOfWeek.rawValue
+        
+        hours = hours.stringByReplacingOccurrencesOfString(",", withString: "\n")
+        cell.hoursLabel.text = hours
+        
+        
+        return cell
         
     }
-
 }
