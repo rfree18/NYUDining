@@ -71,7 +71,7 @@ class RFDiningLocation: NSObject {
         
         if hoursToday.containsString(",") {
             let timeComponents = hoursToday.componentsSeparatedByString(",")
-            return isTimeInRange(timeComponents[0]) && isTimeInRange(timeComponents[0])
+            return isTimeInRange(timeComponents[0]) || isTimeInRange(timeComponents[1])
         }
         
         else {
