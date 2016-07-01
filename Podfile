@@ -8,8 +8,9 @@ target 'NYUDining' do
     pod 'Firebase/Database'
     pod 'GoogleMaps'
     pod 'MBProgressHUD', '~> 0.9.2'
-    pod 'HockeySDK', '~> 4.0.1'
     pod 'PureLayout'
+    pod 'Fabric'
+    pod 'Crashlytics'
 
 end
 
