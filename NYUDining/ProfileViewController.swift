@@ -29,17 +29,17 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let defaults = NSUserDefaults()
         
-        name.text = "Name Filler"
+        name.text = defaults.stringForKey("FbUserName")
         
-        school.text = "School Filler"
+        school.text = defaults.stringForKey("School")
         
-        year.text = "Sophomore"
+        year.text = defaults.stringForKey("School_Year")
         
-        major.text = "Major Filler"
+        major.text = defaults.stringForKey("School_Major")
         
-        likes.text = "This might take up more space than one line, what happens if it does?"
-        
+        likes.text = defaults.stringForKey("Interests")
         
     }
 }

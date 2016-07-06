@@ -11,6 +11,21 @@ import Firebase
 import GoogleMaps
 import HockeySDK
 
+/*
+ NSUserDefaults values -
+ FCMToken
+ School_Year
+ School_Major
+ Interests
+ possibleSchool
+ School
+ FbUserId
+ FCMToken
+ FbUserName
+ FbUserPicture
+ 
+ */
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     

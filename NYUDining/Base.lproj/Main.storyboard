@@ -122,7 +122,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7bZ-o6-c00">
-                                <rect key="frame" x="0.0" y="227" width="320" height="297"/>
+                                <rect key="frame" x="0.0" y="265" width="320" height="259"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="H6g-IO-Pkx">
@@ -139,6 +139,13 @@
                                     <outlet property="delegate" destination="FG6-dc-Nvr" id="Hrv-P6-hhh"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l6o-hF-ZBR">
+                                <rect key="frame" x="131" y="227" width="60" height="30"/>
+                                <state key="normal" title="Check In"/>
+                                <connections>
+                                    <action selector="checkin:" destination="FG6-dc-Nvr" eventType="touchUpInside" id="kdh-rM-VR6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -167,6 +174,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="checkInsTable" destination="7bZ-o6-c00" id="NZg-rg-uvx"/>
+                        <outlet property="checkinButton" destination="l6o-hF-ZBR" id="QdD-Vc-2mM"/>
                         <outlet property="hoursLabel" destination="MBq-bT-Pqj" id="YxN-KL-fOQ"/>
                         <outlet property="locationLogo" destination="5Sf-K3-vl9" id="51G-rj-vrH"/>
                         <outlet property="locationStatusLabel" destination="9ao-CC-zTQ" id="0cP-a0-din"/>
@@ -555,10 +563,9 @@
                                     <outlet property="delegate" destination="o92-bS-hRA" id="d3J-1l-07n"/>
                                 </connections>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lmz-j2-Mrk">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Write about things you like" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lmz-j2-Mrk">
                                 <rect key="frame" x="73" y="408" width="247" height="103"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <connections>
