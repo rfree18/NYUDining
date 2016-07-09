@@ -71,9 +71,9 @@ class RFDiningLocation: NSObject {
         
         if hoursToday.containsString(",") {
             let timeComponents = hoursToday.componentsSeparatedByString(",")
-            return isTimeInRange(timeComponents[0]) && isTimeInRange(timeComponents[0])
+            return isTimeInRange(timeComponents[0]) || isTimeInRange(timeComponents[1])
         }
-        
+            
         else {
             return isTimeInRange(hoursToday)
         }
@@ -91,7 +91,6 @@ class RFDiningLocation: NSObject {
     }
     
     private func isTimeInRange(timeRange: String) -> Bool {
-        
         if timeRange == "Closed" {
             return false
         }
@@ -123,5 +122,4 @@ class RFDiningLocation: NSObject {
         
         return false
     }
-    
 }

@@ -67,6 +67,8 @@ class RFLocationDetailViewController: UIViewController {
         
         hoursLabel.preferredMaxLayoutWidth = 200
         hoursLabel.text = getHoursString()
+        hoursLabel.lineBreakMode = .ByClipping
+        hoursLabel.numberOfLines = 0
         
         if location.menuURL == nil {
             menuButton.hidden = true
