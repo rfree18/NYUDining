@@ -39,33 +39,18 @@ class ProfileViewController: UIViewController {
         
         view.backgroundColor = UIColor.whiteColor()
         
+        navigationItem.title = "Profile"
+        
         loginButton.readPermissions = ["public_profile", "email", "user_friends"]
         loginButton.delegate = self
         
-        let defaults = NSUserDefaults()
-        
-        nameLabel.text = defaults.stringForKey("FbUserName")
-        schoolLabel.text = defaults.stringForKey("School")
-        yearLabel.text = defaults.stringForKey("School_Year")
-        majorLabel.text = defaults.stringForKey("School_Major")
-        likesLabel.text = defaults.stringForKey("Interests")
-        
-        if isUserLoggedIn() {
-            view.addSubview(imageView)
-            loginButton.removeFromSuperview()
-            for label in labels {
-                view.addSubview(label)
-            }
-        } else {
-            view.addSubview(loginButton)
-        }
-        
-        view.setNeedsUpdateConstraints()
+        reloadView()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+        reloadView()
     }
     
     override func updateViewConstraints() {
@@ -92,6 +77,45 @@ class ProfileViewController: UIViewController {
         }
         
         super.updateViewConstraints()
+    }
+    
+    func reloadView() {
+        didUpdateConstraints = false
+        
+        let defaults = NSUserDefaults()
+        
+        navigationItem.rightBarButtonItem = nil
+        
+        for view in self.view.subviews {
+            view.removeFromSuperview()
+        }
+        
+        if isUserLoggedIn() {
+            let logout = UIBarButtonItem(title: "Log Out", style: .Plain, target: self, action: #selector(ProfileViewController.logout))
+            navigationItem.rightBarButtonItem = logout
+            
+            nameLabel.text = defaults.stringForKey("FbUserName")
+            schoolLabel.text = defaults.stringForKey("School")
+            yearLabel.text = defaults.stringForKey("School_Year")
+            majorLabel.text = defaults.stringForKey("School_Major")
+            likesLabel.text = defaults.stringForKey("Interests")
+            
+            view.addSubview(imageView)
+            for label in labels {
+                view.addSubview(label)
+            }
+        } else {
+            view.addSubview(loginButton)
+        }
+        
+        view.setNeedsUpdateConstraints()
+    }
+    
+    func logout() {
+        let loginManager: FBSDKLoginManager = FBSDKLoginManager()
+        loginManager.logOut()
+        
+        reloadView()
     }
     
     // MARK: Helper Methods
