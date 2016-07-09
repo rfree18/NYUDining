@@ -58,8 +58,6 @@
 		F6E6BDC51D184FC500878E49 /* RequestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestsViewController.swift; sourceTree = "<group>"; };
 		F6E6BDC91D1867E400878E49 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F6E6BDCB1D18885000878E49 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
-		F6E6BDDB1D242DBD00878E49 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = SOURCE_ROOT; };
-		F6E6BDDD1D242DC400878E49 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = SOURCE_ROOT; };
 		FA04BDCA1D0B7EFF0061F267 /* RFLocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RFLocationsViewController.swift; sourceTree = "<group>"; };
 		FA04BDCC1D0B85330061F267 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA04BDCE1D0B853B0061F267 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -164,8 +162,6 @@
 		FA22EFA61B9F1F3400763C9A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F6E6BDDD1D242DC400878E49 /* FBSDKLoginKit.framework */,
-				F6E6BDDB1D242DBD00878E49 /* FBSDKCoreKit.framework */,
 				FA22EFA71B9F1F3400763C9A /* Info.plist */,
 			);
 			name = "Supporting Files";

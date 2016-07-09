@@ -20,13 +20,18 @@ class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableV
     let tableName: String = ""
     var ref: FIRDatabaseReference!
     
+    private let cellId = "location"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         ref = FIRDatabase.database().reference()
         
+        navigationItem.title = "NYUDining"
+        
         timer = NSTimer.scheduledTimerWithTimeInterval(12.0, target: self, selector: #selector(showAlert), userInfo: nil, repeats: false)
         
+        locationTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellId)
         locationTable.delegate = self
         locationTable.dataSource = self
         
@@ -111,8 +116,12 @@ class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("location")
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellId)
         let location = diningLocations[indexPath.row]
+        
+        cell = UITableViewCell(style: .Value1, reuseIdentifier: cellId)
+        
+        cell?.accessoryType = .DisclosureIndicator
         
         cell?.textLabel?.text = location.name
         

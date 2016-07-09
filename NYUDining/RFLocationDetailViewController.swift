@@ -29,6 +29,8 @@ class RFLocationDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = UIColor.whiteColor()
 
         navigationItem.title = location.name
         let theLoc = location.name
@@ -84,6 +86,11 @@ class RFLocationDetailViewController: UIViewController {
         checkInButton.title = "CheckIn"
         checkInButton.target = self
         checkInButton.action = #selector(RFLocationDetailViewController.checkin)
+        navigationItem.rightBarButtonItem = checkInButton
+        
+        menuButton.backgroundColor = UIColor.navColor()
+        menuButton.setTitle("Menu", forState: .Normal)
+        menuButton.addTarget(self, action: #selector(RFLocationDetailViewController.goToMenu), forControlEvents: .TouchUpInside)
         
         view.addSubview(locationStatusLabel)
         view.addSubview(logoImageView)
@@ -100,26 +107,31 @@ class RFLocationDetailViewController: UIViewController {
         if needsToSetConstraints {
             logoImageView.autoPinEdgeToSuperviewEdge(.Leading, withInset: 4)
             logoImageView.autoPinEdgeToSuperviewEdge(.Top, withInset: 8)
-            logoImageView.autoPinEdge(.Right, toEdge: .Left, ofView: locationStatusLabel, withOffset: 5)
+            logoImageView.autoPinEdge(.Right, toEdge: .Left, ofView: locationStatusLabel, withOffset: -5)
             logoImageView.autoSetDimension(.Height, toSize: 135)
             logoImageView.autoSetDimension(.Width, toSize: 186)
             
             locationStatusLabel.autoPinEdgeToSuperviewEdge(.Trailing, withInset: 9)
             locationStatusLabel.autoPinEdgeToSuperviewEdge(.Top, withInset: 17)
+            locationStatusLabel.textAlignment = .Center
             
-            headerLabel.autoAlignAxis(.Horizontal, toSameAxisOfView: locationStatusLabel)
             headerLabel.autoPinEdge(.Top, toEdge: .Bottom, ofView: locationStatusLabel, withOffset: 8)
             headerLabel.autoPinEdge(.Left, toEdge: .Right, ofView: logoImageView, withOffset: 5)
             headerLabel.autoPinEdgeToSuperviewMargin(.Right)
+            headerLabel.textAlignment = .Center
             
-            hoursLabel.autoAlignAxis(.Horizontal, toSameAxisOfView: locationStatusLabel)
             hoursLabel.autoPinEdge(.Top, toEdge: .Bottom, ofView: headerLabel, withOffset: 8)
+            hoursLabel.autoPinEdge(.Left, toEdge: .Right, ofView: logoImageView, withOffset: 5)
+            hoursLabel.autoPinEdgeToSuperviewMargin(.Right)
+            hoursLabel.textAlignment = .Center
             
             menuButton.autoPinEdgeToSuperviewMargin(.Right)
             menuButton.autoPinEdge(.Left, toEdge: .Right, ofView: logoImageView, withOffset: 5)
             menuButton.autoPinEdge(.Top, toEdge: .Bottom, ofView: hoursLabel, withOffset: 8)
             
-            checkInsTable.autoPinEdgesToSuperviewMarginsExcludingEdge(.Top)
+            checkInsTable.autoPinEdgeToSuperviewEdge(.Left)
+            checkInsTable.autoPinEdgeToSuperviewEdge(.Right)
+            checkInsTable.autoPinEdgeToSuperviewEdge(.Bottom)
             checkInsTable.autoPinEdge(.Top, toEdge: .Bottom, ofView: menuButton, withOffset: 8)
             
             needsToSetConstraints = false
@@ -161,7 +173,7 @@ class RFLocationDetailViewController: UIViewController {
         
     }
     
-    private func checkin() {
+    func checkin() {
         let now = NSDate()
         
         let dateFormatter = NSDateFormatter()
@@ -195,6 +207,13 @@ class RFLocationDetailViewController: UIViewController {
     
    
     // MARK: Navigation
+    
+    func goToMenu() {
+        let menuController = RFMenuBrowserViewController()
+        menuController.location = location
+        
+        navigationController?.pushViewController(menuController, animated: true)
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showMenu" {
