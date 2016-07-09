@@ -12,7 +12,7 @@ import MBProgressHUD
 
 class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var locationTable: UITableView!
+    let locationTable = UITableView()
     
     var diningLocations: [RFDiningLocation] = []
     var timer: NSTimer! = nil
@@ -23,13 +23,15 @@ class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let navigationController = navigationController {
-            navigationController.navigationBar.translucent = false
-        }
-        
         ref = FIRDatabase.database().reference()
         
         timer = NSTimer.scheduledTimerWithTimeInterval(12.0, target: self, selector: #selector(showAlert), userInfo: nil, repeats: false)
+        
+        locationTable.delegate = self
+        locationTable.dataSource = self
+        
+        view.addSubview(locationTable)
+        locationTable.autoPinEdgesToSuperviewEdges()
         
         grabInformationFromServer()
     }
@@ -133,7 +135,10 @@ class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("showDetails", sender: indexPath)
+        let detailsController = RFLocationDetailViewController()
+        detailsController.location = diningLocations[indexPath.row]
+        
+        navigationController?.pushViewController(detailsController, animated: true)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

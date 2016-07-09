@@ -7,10 +7,18 @@ target 'NYUDining' do
     pod 'Firebase'
     pod 'Firebase/Database'
     pod 'Firebase/Messaging'
-    pod 'GoogleMaps'
+    
     pod 'MBProgressHUD', '~> 0.9.2'
     pod 'Alamofire', '~> 3.4'
-    pod 'HockeySDK', '~> 4.0.1'
+    
+    pod 'Fabric'
+    pod 'Crashlytics'
+    
+    pod 'PureLayout'
+    
+    pod 'FBSDKCoreKit'
+    pod 'FBSDKLoginKit'
+    pod 'FBSDKShareKit'
 
 end
 

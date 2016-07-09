@@ -7,21 +7,25 @@
 //
 
 import UIKit
-import GoogleMaps
 import MBProgressHUD
 import Alamofire
+import PureLayout
 
 class RFLocationDetailViewController: UIViewController {
     
     var location: RFDiningLocation!
     
-    @IBOutlet weak var locationLogo: UIImageView!
-    @IBOutlet weak var locationStatusLabel: UILabel!
-    @IBOutlet weak var hoursLabel: UILabel!
-    @IBOutlet weak var menuButton: UIButton!
-    @IBOutlet weak var checkInsTable: UITableView!
+    private let logoImageView = UIImageView()
+    private let locationStatusLabel = UILabel()
+    private let headerLabel = UILabel()
+    private let hoursLabel = UILabel()
+    private let menuButton = UIButton()
+    private let checkInsTable = UITableView()
+    private let checkInButton = UIBarButtonItem()
     
     var peopleCheckedIn:[[String:AnyObject]]!
+    
+    private var needsToSetConstraints = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +46,6 @@ class RFLocationDetailViewController: UIViewController {
                 }
         }
         
-        
-        
         MBProgressHUD.showHUDAddedTo(self.navigationController?.view, animated: true)
         
         dispatch_async(dispatch_get_main_queue()) {
@@ -51,11 +53,15 @@ class RFLocationDetailViewController: UIViewController {
             let data = NSData(contentsOfURL: url!)
             
             // TODO: Implement error checking
-            self.locationLogo.image = UIImage(data: data!)
+            self.logoImageView.image = UIImage(data: data!)
             
             MBProgressHUD.hideHUDForView(self.navigationController?.view, animated: true)
             
         }
+        
+        headerLabel.lineBreakMode = .ByClipping
+        headerLabel.numberOfLines = 0
+        headerLabel.text = "Today's Hours"
         
         hoursLabel.preferredMaxLayoutWidth = 200
         hoursLabel.text = getHoursString()
@@ -74,26 +80,52 @@ class RFLocationDetailViewController: UIViewController {
             locationStatusLabel.textColor = UIColor.redColor()
         }
         
-        //let x = location.coordinates[0]
-        //let y = location.coordinates[1]
+        checkInButton.style = .Plain
+        checkInButton.title = "CheckIn"
+        checkInButton.target = self
+        checkInButton.action = #selector(RFLocationDetailViewController.checkin)
         
-        //let camera = GMSCameraPosition.cameraWithLatitude(x, longitude: y, zoom: 16)
+        view.addSubview(locationStatusLabel)
+        view.addSubview(logoImageView)
+        view.addSubview(headerLabel)
+        view.addSubview(hoursLabel)
+        view.addSubview(menuButton)
+        view.addSubview(checkInsTable)
         
-        //mapView.frame = CGRectZero
-        //mapView.camera = camera
-        
-       // let marker = GMSMarker(position: CLLocationCoordinate2DMake(x, y))
-       // marker.title = location.name!
-       // marker.snippet = location.address!
-        //marker.map = mapView
-        
-        //mapView.selectedMarker = marker
+        view.setNeedsUpdateConstraints()
         
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func updateViewConstraints() {
+        if needsToSetConstraints {
+            logoImageView.autoPinEdgeToSuperviewEdge(.Leading, withInset: 4)
+            logoImageView.autoPinEdgeToSuperviewEdge(.Top, withInset: 8)
+            logoImageView.autoPinEdge(.Right, toEdge: .Left, ofView: locationStatusLabel, withOffset: 5)
+            logoImageView.autoSetDimension(.Height, toSize: 135)
+            logoImageView.autoSetDimension(.Width, toSize: 186)
+            
+            locationStatusLabel.autoPinEdgeToSuperviewEdge(.Trailing, withInset: 9)
+            locationStatusLabel.autoPinEdgeToSuperviewEdge(.Top, withInset: 17)
+            
+            headerLabel.autoAlignAxis(.Horizontal, toSameAxisOfView: locationStatusLabel)
+            headerLabel.autoPinEdge(.Top, toEdge: .Bottom, ofView: locationStatusLabel, withOffset: 8)
+            headerLabel.autoPinEdge(.Left, toEdge: .Right, ofView: logoImageView, withOffset: 5)
+            headerLabel.autoPinEdgeToSuperviewMargin(.Right)
+            
+            hoursLabel.autoAlignAxis(.Horizontal, toSameAxisOfView: locationStatusLabel)
+            hoursLabel.autoPinEdge(.Top, toEdge: .Bottom, ofView: headerLabel, withOffset: 8)
+            
+            menuButton.autoPinEdgeToSuperviewMargin(.Right)
+            menuButton.autoPinEdge(.Left, toEdge: .Right, ofView: logoImageView, withOffset: 5)
+            menuButton.autoPinEdge(.Top, toEdge: .Bottom, ofView: hoursLabel, withOffset: 8)
+            
+            checkInsTable.autoPinEdgesToSuperviewMarginsExcludingEdge(.Top)
+            checkInsTable.autoPinEdge(.Top, toEdge: .Bottom, ofView: menuButton, withOffset: 8)
+            
+            needsToSetConstraints = false
+        }
+        
+        super.updateViewConstraints()
     }
     
     func getHoursString() -> String {
@@ -128,42 +160,57 @@ class RFLocationDetailViewController: UIViewController {
         return hoursString
         
     }
-    @IBOutlet var checkinButton: UIButton!
     
+    private func checkin() {
+        let now = NSDate()
+        
+        let dateFormatter = NSDateFormatter()
+        
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        let convertedDate = dateFormatter.stringFromDate(now)
+        print(convertedDate)
+        let date = now.dateByAddingTimeInterval(30.0 * 60.0)
+        let convertDate = dateFormatter.stringFromDate(date)
+        print(convertDate)
+        
+        let defaults = NSUserDefaults()
+        let FbId = defaults.stringForKey("FbUserId")
+        
+        let theLoc = location.name
+        let newString = theLoc.stringByReplacingOccurrencesOfString(" ", withString: "")
+        let parameters2: [String : AnyObject] = [
+            "fbUserId": FbId!,
+            "diningHallName": newString,
+            "checkInDateTime":"\(convertedDate)",
+            "checkOutDateTime":"\(convertDate)"]
+        Alamofire.request(.POST, "http://172.17.50.254:8080/EatWithSmartService/webapi/checkIn", parameters: parameters2, encoding: .JSON)
+            .validate()
+            .responseString{ response in
+                print("Success: \(response.result.isSuccess)")
+                print("Response String: \(response.result.value)")
+        }
+        
+    }
     
-    @IBAction func checkin(sender: AnyObject) {
-        if checkinButton.currentTitle == "Check In" {
-            let now = NSDate()
-            
-            let dateFormatter = NSDateFormatter()
-            
-            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-            
-            let convertedDate = dateFormatter.stringFromDate(now)
-            print(convertedDate)
-            let date = now.dateByAddingTimeInterval(30.0 * 60.0)
-            let convertDate = dateFormatter.stringFromDate(date)
-            print(convertDate)
-            
-            let defaults = NSUserDefaults()
-            let FbId = defaults.stringForKey("FbUserId")
-            
-            let theLoc = location.name
-            let newString = theLoc.stringByReplacingOccurrencesOfString(" ", withString: "")
-            let parameters2: [String : AnyObject] = [
-                "fbUserId": FbId!,
-                "diningHallName": newString,
-                "checkInDateTime":"\(convertedDate)",
-                "checkOutDateTime":"\(convertDate)"]
-            Alamofire.request(.POST, "http://172.17.50.254:8080/EatWithSmartService/webapi/checkIn", parameters: parameters2, encoding: .JSON)
-                .validate()
-                .responseString{ response in
-                    print("Success: \(response.result.isSuccess)")
-                    print("Response String: \(response.result.value)")
-            }
+   
+    // MARK: Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showMenu" {
+            let dest = segue.destinationViewController as! RFMenuBrowserViewController
+            dest.location = location
+        }
+        
+        else {
+            let dest = segue.destinationViewController as! RFHoursTableViewController
+            dest.diningLocation = location
         }
     }
     
+}
+
+extension RFLocationDetailViewController: UITableViewDataSource {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -181,18 +228,4 @@ class RFLocationDetailViewController: UIViewController {
         
         return cell
     }
-    // MARK: Navigation
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showMenu" {
-            let dest = segue.destinationViewController as! RFMenuBrowserViewController
-            dest.location = location
-        }
-        
-        else {
-            let dest = segue.destinationViewController as! RFHoursTableViewController
-            dest.diningLocation = location
-        }
-    }
-    
 }
