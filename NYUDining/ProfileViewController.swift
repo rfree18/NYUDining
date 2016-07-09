@@ -37,12 +37,10 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = UIColor.whiteColor()
+        
         loginButton.readPermissions = ["public_profile", "email", "user_friends"]
         loginButton.delegate = self
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
         
         let defaults = NSUserDefaults()
         
@@ -53,6 +51,7 @@ class ProfileViewController: UIViewController {
         likesLabel.text = defaults.stringForKey("Interests")
         
         if isUserLoggedIn() {
+            view.addSubview(imageView)
             loginButton.removeFromSuperview()
             for label in labels {
                 view.addSubview(label)
@@ -60,6 +59,12 @@ class ProfileViewController: UIViewController {
         } else {
             view.addSubview(loginButton)
         }
+        
+        view.setNeedsUpdateConstraints()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         
     }
     
@@ -72,8 +77,10 @@ class ProfileViewController: UIViewController {
                 var previousView: UIView = imageView
                 
                 for labelView in labels {
-                    labelView.autoAlignAxisToSuperviewAxis(.Horizontal)
+                    labelView.autoPinEdgeToSuperviewEdge(.Left)
+                    labelView.autoPinEdgeToSuperviewEdge(.Right)
                     labelView.autoPinEdge(.Top, toEdge: .Bottom, ofView: previousView, withOffset: viewOffset)
+                    labelView.textAlignment = .Center
                     
                     previousView = labelView
                 }
