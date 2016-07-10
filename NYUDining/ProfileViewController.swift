@@ -13,6 +13,7 @@ import Alamofire
 import PureLayout
 import FBSDKCoreKit
 import FBSDKLoginKit
+import SwiftyJSON
 
 class ProfileViewController: UIViewController {
     
@@ -23,6 +24,8 @@ class ProfileViewController: UIViewController {
     private let majorLabel = UILabel()
     private let likesLabel = UILabel()
     private let loginButton = FBSDKLoginButton()
+    
+    private var picUrl: String?
     
     private var labels: [UILabel] {
         get {
@@ -49,8 +52,6 @@ class ProfileViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        reloadView()
     }
     
     override func updateViewConstraints() {
@@ -100,6 +101,16 @@ class ProfileViewController: UIViewController {
             majorLabel.text = defaults.stringForKey("School_Major")
             likesLabel.text = defaults.stringForKey("Interests")
             
+            if let picUrl = picUrl {
+                let url = NSURL(string: picUrl)
+                let data = NSData(contentsOfURL: url!)
+                
+                // TODO: Implement error checking
+                let image = UIImage(data: data!)
+                imageView.image = image
+                imageView.sizeToFit()
+            }
+            
             view.addSubview(imageView)
             for label in labels {
                 view.addSubview(label)
@@ -107,7 +118,6 @@ class ProfileViewController: UIViewController {
         } else {
             view.addSubview(loginButton)
         }
-        
         view.setNeedsUpdateConstraints()
     }
     
@@ -130,20 +140,21 @@ extension ProfileViewController: FBSDKLoginButtonDelegate {
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!)
     {
         FBSDKGraphRequest.init(graphPath: "me", parameters: ["fields":"first_name, last_name, picture.type(large)"]).startWithCompletionHandler { (connection, result, error) -> Void in
-            if (result != nil)
-            {
-                let fbUserId: String = (result.objectForKey("id") as? String)!
+            if let result = result {
+                let json = JSON(result)
+                
+                let fbUserId = json["id"].stringValue
                 print("\(fbUserId)")
-                let strFirstName: String = (result.objectForKey("first_name") as? String)!
-                let strLastName: String = (result.objectForKey("last_name") as? String)!
-                let strPictureURL: String = (result.objectForKey("picture")?.objectForKey("data")?.objectForKey("url") as? String)!
+                let strFirstName = json["first_name"].stringValue
+                let strLastName = json["last_name"].stringValue
+                
+                self.picUrl = json["picture"]["data"]["url"].stringValue
                 let accessToken = FBSDKAccessToken.currentAccessToken().tokenString
                 
                 let defaults = NSUserDefaults.standardUserDefaults()
                 defaults.setObject("\(accessToken)", forKey: "accessToken")
                 defaults.setObject(fbUserId, forKey: "FbUserId")
                 defaults.setObject((strFirstName + " " + strLastName), forKey: "FbUserName")
-                defaults.setObject(strPictureURL, forKey: "FbUserPicture")
                 let parameters : [String : AnyObject] = [
                     "fbUserId": fbUserId,
                     "fbUserName" : (strFirstName + " " + strLastName),
@@ -158,6 +169,8 @@ extension ProfileViewController: FBSDKLoginButtonDelegate {
                 }
                 
             }
+            
+            self.reloadView()
             
             /*self.lblName.text = "Welcome, \(strFirstName) \(strLastName)"
              self.ivUserProfileImage.image = UIImage(data: NSData(contentsOfURL: NSURL(string: strPictureURL)!)!)*/
