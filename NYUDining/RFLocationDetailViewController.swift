@@ -19,7 +19,7 @@ class RFLocationDetailViewController: UIViewController {
     private let locationStatusLabel = UILabel()
     private let headerLabel = UILabel()
     private let hoursLabel = UILabel()
-    private let menuButton = UIButton()
+    private let menuButton = UIButton(type: .System)
     private let checkInsTable = UITableView()
     private let checkInButton = UIBarButtonItem()
     
@@ -90,9 +90,12 @@ class RFLocationDetailViewController: UIViewController {
         checkInButton.action = #selector(RFLocationDetailViewController.checkin)
         navigationItem.rightBarButtonItem = checkInButton
         
+        // TODO: Subclass UIButton to automate this setup
         menuButton.backgroundColor = UIColor.navColor()
         menuButton.setTitle("Menu", forState: .Normal)
+        menuButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         menuButton.addTarget(self, action: #selector(RFLocationDetailViewController.goToMenu), forControlEvents: .TouchUpInside)
+        menuButton.layer.cornerRadius = 5
         
         view.addSubview(locationStatusLabel)
         view.addSubview(logoImageView)
@@ -176,38 +179,49 @@ class RFLocationDetailViewController: UIViewController {
     }
     
     func checkin() {
-        let now = NSDate()
-        
-        let dateFormatter = NSDateFormatter()
-        
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        
-        let convertedDate = dateFormatter.stringFromDate(now)
-        print(convertedDate)
-        let date = now.dateByAddingTimeInterval(30.0 * 60.0)
-        let convertDate = dateFormatter.stringFromDate(date)
-        print(convertDate)
-        
-        let defaults = NSUserDefaults()
-        let FbId = defaults.stringForKey("FbUserId")
-        
-        let theLoc = location.name
-        let newString = theLoc.stringByReplacingOccurrencesOfString(" ", withString: "")
-        let parameters2: [String : AnyObject] = [
-            "fbUserId": FbId!,
-            "diningHallName": newString,
-            "checkInDateTime":"\(convertedDate)",
-            "checkOutDateTime":"\(convertDate)"]
-        Alamofire.request(.POST, "http://172.17.50.254:8080/EatWithSmartService/webapi/checkIn", parameters: parameters2, encoding: .JSON)
-            .validate()
-            .responseString{ response in
-                print("Success: \(response.result.isSuccess)")
-                print("Response String: \(response.result.value)")
+        if User.isSignedIn() {
+            let now = NSDate()
+            
+            let dateFormatter = NSDateFormatter()
+            
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            
+            let convertedDate = dateFormatter.stringFromDate(now)
+            print(convertedDate)
+            let date = now.dateByAddingTimeInterval(30.0 * 60.0)
+            let convertDate = dateFormatter.stringFromDate(date)
+            print(convertDate)
+            
+            let defaults = NSUserDefaults()
+            let FbId = defaults.stringForKey("FbUserId")
+            
+            let theLoc = location.name
+            let newString = theLoc.stringByReplacingOccurrencesOfString(" ", withString: "")
+            let parameters2: [String : AnyObject] = [
+                "fbUserId": FbId!,
+                "diningHallName": newString,
+                "checkInDateTime":"\(convertedDate)",
+                "checkOutDateTime":"\(convertDate)"]
+            Alamofire.request(.POST, "http://172.17.50.254:8080/EatWithSmartService/webapi/checkIn", parameters: parameters2, encoding: .JSON)
+                .validate()
+                .responseString{ response in
+                    print("Success: \(response.result.isSuccess)")
+                    print("Response String: \(response.result.value)")
+            }
+        } else {
+            let alert = UIAlertController(title: "Not Signed In", message: "You must be signed in to use this feature", preferredStyle: .Alert)
+            let signIn = UIAlertAction(title: "Sign In", style: .Default, handler: { action in
+                self.tabBarController?.selectedIndex = Tab.Profile.rawValue
+            })
+            let cancel = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+            alert.addAction(signIn)
+            alert.addAction(cancel)
+            
+            presentViewController(alert, animated: true, completion: nil)
         }
         
     }
     
-   
     // MARK: Navigation
     
     func goToMenu() {
@@ -215,18 +229,6 @@ class RFLocationDetailViewController: UIViewController {
         menuController.location = location
         
         navigationController?.pushViewController(menuController, animated: true)
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showMenu" {
-            let dest = segue.destinationViewController as! RFMenuBrowserViewController
-            dest.location = location
-        }
-        
-        else {
-            let dest = segue.destinationViewController as! RFHoursTableViewController
-            dest.diningLocation = location
-        }
     }
     
 }

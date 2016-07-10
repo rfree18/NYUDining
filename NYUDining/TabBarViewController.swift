@@ -8,6 +8,10 @@
 
 import UIKit
 
+enum Tab: Int {
+    case Locations, Profile, Requests
+}
+
 class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
     override func viewDidLoad() {
@@ -37,6 +41,10 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         
         let controllers = [locationsNav, profileNav, requestsNav]
         viewControllers = controllers
+    }
+    
+    func setTab(tab: Tab) {
+        selectedIndex = tab.rawValue
     }
 
 }

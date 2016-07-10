@@ -15,6 +15,7 @@ target 'NYUDining' do
     pod 'Crashlytics'
     
     pod 'PureLayout'
+    pod 'SwiftyJSON'
     
     pod 'FBSDKCoreKit'
     pod 'FBSDKLoginKit'
