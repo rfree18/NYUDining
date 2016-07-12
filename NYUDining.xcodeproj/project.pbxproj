@@ -24,6 +24,7 @@
 		FA32C3721D319F22001943D2 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA32C3711D319F22001943D2 /* NavigationViewController.swift */; };
 		FA32C3741D319F3E001943D2 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA32C3731D319F3E001943D2 /* UIColorExtension.swift */; };
 		FA32C37A1D3293BA001943D2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA32C3791D3293BA001943D2 /* User.swift */; };
+		FA32C37C1D332BF9001943D2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA32C37B1D332BF9001943D2 /* Default-568h@2x.png */; };
 		FA3C7A0C1BDFC95000778DF0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA3C7A0B1BDFC95000778DF0 /* SystemConfiguration.framework */; };
 		FA4BE6D11D0B688E00D7F0D9 /* RFDiningLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4BE6D01D0B688E00D7F0D9 /* RFDiningLocation.swift */; };
 		FADFFA2A1BB8C8FC00C58CF5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FADFFA291BB8C8FC00C58CF5 /* CoreLocation.framework */; };
@@ -76,6 +77,7 @@
 		FA32C3711D319F22001943D2 /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		FA32C3731D319F3E001943D2 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		FA32C3791D3293BA001943D2 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FA32C37B1D332BF9001943D2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		FA3C7A0B1BDFC95000778DF0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		FA4BE6D01D0B688E00D7F0D9 /* RFDiningLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RFDiningLocation.swift; sourceTree = "<group>"; };
 		FAAADD0E1BB89665008FAA77 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -126,6 +128,7 @@
 		FA22EF9A1B9F1F3400763C9A = {
 			isa = PBXGroup;
 			children = (
+				FA32C37B1D332BF9001943D2 /* Default-568h@2x.png */,
 				FA04BDCC1D0B85330061F267 /* GoogleService-Info.plist */,
 				FA22EFA51B9F1F3400763C9A /* NYUDining */,
 				FA22EFBF1B9F1F3400763C9A /* NYUDiningTests */,
@@ -304,6 +307,7 @@
 				FA22EFB21B9F1F3400763C9A /* Main.storyboard in Resources */,
 				FA04BDCD1D0B85330061F267 /* GoogleService-Info.plist in Resources */,
 				FA22EFB71B9F1F3400763C9A /* LaunchScreen.xib in Resources */,
+				FA32C37C1D332BF9001943D2 /* Default-568h@2x.png in Resources */,
 				FA22EFB41B9F1F3400763C9A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

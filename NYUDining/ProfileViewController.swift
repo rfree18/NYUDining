@@ -25,8 +25,6 @@ class ProfileViewController: UIViewController {
     private let likesLabel = UILabel()
     private let loginButton = FBSDKLoginButton()
     
-    private var picUrl: String?
-    
     private var labels: [UILabel] {
         get {
             return [nameLabel, schoolLabel, yearLabel, majorLabel, likesLabel]
@@ -57,7 +55,7 @@ class ProfileViewController: UIViewController {
     override func updateViewConstraints() {
         if !didUpdateConstraints {
             if isUserLoggedIn() {
-                imageView.autoPinEdgesToSuperviewMarginsExcludingEdge(.Bottom)
+                imageView.autoPinEdgeToSuperviewEdge(.Top)
                 imageView.autoSetDimension(.Height, toSize: view.bounds.size.height / 3)
                 
                 var previousView: UIView = imageView
@@ -83,8 +81,6 @@ class ProfileViewController: UIViewController {
     func reloadView() {
         didUpdateConstraints = false
         
-        let defaults = NSUserDefaults()
-        
         navigationItem.rightBarButtonItem = nil
         
         for view in self.view.subviews {
@@ -95,13 +91,15 @@ class ProfileViewController: UIViewController {
             let logout = UIBarButtonItem(title: "Log Out", style: .Plain, target: self, action: #selector(ProfileViewController.logout))
             navigationItem.rightBarButtonItem = logout
             
-            nameLabel.text = defaults.stringForKey("FbUserName")
-            schoolLabel.text = defaults.stringForKey("School")
-            yearLabel.text = defaults.stringForKey("School_Year")
-            majorLabel.text = defaults.stringForKey("School_Major")
-            likesLabel.text = defaults.stringForKey("Interests")
+            let user = User.currentUser()
             
-            if let picUrl = picUrl {
+            nameLabel.text = user.getFirstName() + " " + user.getLastName()
+            schoolLabel.text = user.school?.description
+            yearLabel.text = String(user.year)
+            majorLabel.text = user.getMajor()
+            likesLabel.text = user.getDescription()
+            
+            if let picUrl = user.photoUrl {
                 let url = NSURL(string: picUrl)
                 let data = NSData(contentsOfURL: url!)
                 
@@ -122,8 +120,7 @@ class ProfileViewController: UIViewController {
     }
     
     func logout() {
-        let loginManager: FBSDKLoginManager = FBSDKLoginManager()
-        loginManager.logOut()
+        User.logOut()
         
         reloadView()
     }
@@ -142,22 +139,18 @@ extension ProfileViewController: FBSDKLoginButtonDelegate {
         FBSDKGraphRequest.init(graphPath: "me", parameters: ["fields":"first_name, last_name, picture.type(large)"]).startWithCompletionHandler { (connection, result, error) -> Void in
             if let result = result {
                 let json = JSON(result)
+                let user = User.currentUser()
                 
-                let fbUserId = json["id"].stringValue
-                print("\(fbUserId)")
-                let strFirstName = json["first_name"].stringValue
-                let strLastName = json["last_name"].stringValue
+                user.fbUserId = json["id"].stringValue
+                user.firstName = json["first_name"].stringValue
+                user.lastName = json["last_name"].stringValue
                 
-                self.picUrl = json["picture"]["data"]["url"].stringValue
+                user.photoUrl = json["picture"]["data"]["url"].stringValue
                 let accessToken = FBSDKAccessToken.currentAccessToken().tokenString
                 
-                let defaults = NSUserDefaults.standardUserDefaults()
-                defaults.setObject("\(accessToken)", forKey: "accessToken")
-                defaults.setObject(fbUserId, forKey: "FbUserId")
-                defaults.setObject((strFirstName + " " + strLastName), forKey: "FbUserName")
                 let parameters : [String : AnyObject] = [
-                    "fbUserId": fbUserId,
-                    "fbUserName" : (strFirstName + " " + strLastName),
+                    "fbUserId": user.fbUserId ?? "",
+                    "fbUserName" : (user.getFirstName() + " " + user.getLastName()),
                     "accessToken" : "\(accessToken)"]
                 
                 Alamofire.request(.POST, "http://172.17.50.254:8080/EatWithSmartService/webapi/users", parameters: parameters, encoding: .JSON)
