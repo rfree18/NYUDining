@@ -50,6 +50,7 @@ PODS:
     - GoogleSymbolUtilities (~> 1.0)
   - MBProgressHUD (0.9.2)
   - PureLayout (3.0.2)
+  - QuickBlox (2.7.4)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
@@ -64,6 +65,7 @@ DEPENDENCIES:
   - Firebase/Messaging
   - MBProgressHUD (~> 0.9.2)
   - PureLayout
+  - QuickBlox
   - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -85,8 +87,9 @@ SPEC CHECKSUMS:
   GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
+  QuickBlox: 226ea4575090970e9b0e015f940b9b6e9b60ca09
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: 24bd4385ed98116a75e1a39262cb4ecd643817e8
+PODFILE CHECKSUM: 832ad0857b752b0341abb1306d1eee63c7cec7f1
 
 COCOAPODS: 1.0.1

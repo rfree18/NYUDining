@@ -9,7 +9,7 @@
 import UIKit
 
 enum Tab: Int {
-    case Locations, Profile, Requests
+    case Locations, Profile, Requests, Messages
 }
 
 class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
@@ -35,11 +35,15 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         let requestsController = RequestsViewController()
         let requestsNav = NavigationViewController(rootViewController: requestsController)
         
-        locationsNav.tabBarItem = UITabBarItem(title: "Locations", image: nil, selectedImage: nil)
-        profileNav.tabBarItem = UITabBarItem(title: "Profile", image: nil, selectedImage: nil)
-        requestsNav.tabBarItem = UITabBarItem(title: "Requests", image: nil, selectedImage: nil)
+        let messageController = MessageViewController()
+        let messageNav = NavigationViewController(rootViewController: messageController)
         
-        let controllers = [locationsNav, profileNav, requestsNav]
+        locationsNav.tabBarItem = UITabBarItem(title: "Locations", image: UIImage(named: "homeButton22"), selectedImage: UIImage(named: "homeButton_selected"))
+        profileNav.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "profileButton_22"), selectedImage: UIImage(named: "profileButton_selected"))
+        requestsNav.tabBarItem = UITabBarItem(title: "Requests", image: UIImage(named: "requestButton_22"), selectedImage: UIImage(named: "requestButton_selected"))
+        messageNav.tabBarItem = UITabBarItem(title: "Messages", image: UIImage(named: "messageButton2_22"), selectedImage: UIImage(named: "messageButton_selected"))
+        
+        let controllers = [locationsNav, profileNav, requestsNav, messageNav]
         viewControllers = controllers
     }
     

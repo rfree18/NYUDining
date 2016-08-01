@@ -18,8 +18,10 @@ target 'NYUDining' do
     pod 'SwiftyJSON'
     
     pod 'FBSDKCoreKit'
-    pod 'FBSDKLoginKit'
+    pod  'FBSDKLoginKit'
     pod 'FBSDKShareKit'
+    
+    pod 'QuickBlox'
 
 end
 
