@@ -7,9 +7,11 @@
 //
 
 import Foundation
+
 import Firebase
-import GoogleMaps
-import HockeySDK
+import FBSDKCoreKit
+import Fabric
+import Crashlytics
 
 /*
  NSUserDefaults values -
@@ -34,12 +36,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         FIRApp.configure()
         
-        GMSServices.provideAPIKey("AIzaSyBN_4cWF6QUZ7RvjhuocQcErs6i3QqtKtk")
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
+        
+        let tabBarController = TabBarViewController()
+        
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible()
         
         let settings: UIUserNotificationSettings =
             UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
         application.registerUserNotificationSettings(settings)
         application.registerForRemoteNotifications()
+        
+        Fabric.with([Crashlytics.self])
 
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
@@ -86,9 +97,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             openURL: url,
             sourceApplication: sourceApplication,
             annotation: annotation)
-        BITHockeyManager.sharedHockeyManager().configureWithIdentifier("dc46523580954c5197d54ff2f016cf53")
-        BITHockeyManager.sharedHockeyManager().startManager()
-        BITHockeyManager.sharedHockeyManager().authenticator.authenticateInstallation()
     }
 }
 

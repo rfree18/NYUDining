@@ -12,7 +12,7 @@ import MBProgressHUD
 
 class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var locationTable: UITableView!
+    let locationTable = UITableView()
     
     var diningLocations: [RFDiningLocation] = []
     var timer: NSTimer! = nil
@@ -20,16 +20,23 @@ class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableV
     let tableName: String = ""
     var ref: FIRDatabaseReference!
     
+    private let cellId = "location"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let navigationController = navigationController {
-            navigationController.navigationBar.translucent = false
-        }
-        
         ref = FIRDatabase.database().reference()
         
+        navigationItem.title = "NYUDining"
+        
         timer = NSTimer.scheduledTimerWithTimeInterval(12.0, target: self, selector: #selector(showAlert), userInfo: nil, repeats: false)
+        
+        locationTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellId)
+        locationTable.delegate = self
+        locationTable.dataSource = self
+        
+        view.addSubview(locationTable)
+        locationTable.autoPinEdgesToSuperviewEdges()
         
         grabInformationFromServer()
     }
@@ -109,8 +116,12 @@ class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("location")
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellId)
         let location = diningLocations[indexPath.row]
+        
+        cell = UITableViewCell(style: .Value1, reuseIdentifier: cellId)
+        
+        cell?.accessoryType = .DisclosureIndicator
         
         cell?.textLabel?.text = location.name
         
@@ -133,7 +144,10 @@ class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("showDetails", sender: indexPath)
+        let detailsController = RFLocationDetailViewController()
+        detailsController.location = diningLocations[indexPath.row]
+        
+        navigationController?.pushViewController(detailsController, animated: true)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

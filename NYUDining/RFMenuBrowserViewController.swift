@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PureLayout
 
 class RFMenuBrowserViewController: UIViewController, UIWebViewDelegate {
     
@@ -14,13 +15,15 @@ class RFMenuBrowserViewController: UIViewController, UIWebViewDelegate {
     var pageTimeout: NSTimer!
     var progressTime: NSTimer!
     var didLoad = false
-    @IBOutlet weak var progressView: UIProgressView!
-    @IBOutlet weak var webView: UIWebView!
+    let webView = UIWebView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationItem.title = "Menu"
+        
+        view.addSubview(webView)
+        webView.autoPinEdgesToSuperviewEdges()
         
         loadWebPage()
     }
@@ -40,34 +43,12 @@ class RFMenuBrowserViewController: UIViewController, UIWebViewDelegate {
     func webViewDidStartLoad(webView: UIWebView) {
         pageTimeout = NSTimer(timeInterval: 12.0, target: self, selector: #selector(showAlert), userInfo: nil, repeats: false)
         
-        progressView.progress = 0
         didLoad = false
-        progressTime = NSTimer(timeInterval: 0.01667, target: self, selector: #selector(timerCallback), userInfo: nil, repeats: true)
     }
     
     func webViewDidFinishLoad(webView: UIWebView) {
         didLoad = true
         pageTimeout.invalidate()
-    }
-    
-    func timerCallback() {
-        if didLoad {
-            if progressView.progress >= 1 {
-                progressView.hidden = true
-                progressTime.invalidate()
-            }
-            
-            else {
-                progressView.progress += 0.1
-            }
-        }
-        
-        else {
-            progressView.progress += 0.05
-            if progressView.progress >= 0.95 {
-                progressView.progress = 0.95
-            }
-        }
     }
     
     func showAlert() {
