@@ -64,7 +64,7 @@ class OtherProfileViewController: UIViewController {
             }
             else {
                 
-                 var reqTime = NSDate()
+                 let reqTime = NSDate()
                  let dateFormatter = NSDateFormatter()
                  
                  dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -107,6 +107,33 @@ class OtherProfileViewController: UIViewController {
             }
         }
         else{
+            let reqTime = NSDate()
+            let dateFormatter = NSDateFormatter()
+            
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            
+            let convertedDate = dateFormatter.stringFromDate(reqTime)
+            print(convertedDate)
+            
+            let defaults = NSUserDefaults()
+            let FbId = defaults.stringForKey("fbUserId")
+            
+            
+            let newString = location.stringByReplacingOccurrencesOfString(" ", withString: "")
+            print (newString)
+            let parameters2: [String : AnyObject] = [
+                "fbUserIdSender": FbId!,
+                "fbUserIdReceiver": personInfo["fbUserId"]!,
+                "requestDateTime":"\(convertedDate)",
+                "requestStatus":"accept",
+                "diningHallName": newString]
+            Alamofire.request(.POST, "http://eatwith.umxb9zewhm.us-east-1.elasticbeanstalk.com/webapi/friendRequest", parameters: parameters2, encoding: .JSON)
+                .validate()
+                .responseString{ response in
+                    print("Success: \(response.result.isSuccess)")
+                    print("Response String: \(response.result.value)")
+            }
+
            /* //Send Alomofire Accept
             friend request update(accept/decline)
             PUT (http://172.17.50.254:8080/EatWithSmartService/webapi/friendRequest)
