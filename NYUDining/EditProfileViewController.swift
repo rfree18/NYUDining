@@ -9,34 +9,37 @@
 import Foundation
 import UIKit
 import Alamofire
+import PureLayout
 
 enum NYUSchools: Int, CustomStringConvertible {
-    case CAS = 0
-    case GSAS = 1
-    case CD = 2
-    case CGPH = 3
-    case CI = 4
-    case GS = 5
-    case IFA = 6
-    case ISAW = 7
-    case SSB = 8
-    case GSPS = 9
-    case CN = 10
-    case SPS = 11
-    case SL = 12
-    case SM = 13
-    case SSSW = 14
-    case SSCEH = 15
-    case TSE = 16
-    case TSA = 17
-    case AD = 18
-    case SH = 19
+    case NA = 0
+    case CAS = 1
+    case GSAS = 2
+    case CD = 3
+    case CGPH = 4
+    case CI = 5
+    case GS = 6
+    case IFA = 7
+    case ISAW = 8
+    case SSB = 9
+    case GSPS = 10
+    case CN = 11
+    case SPS = 12
+    case SL = 13
+    case SM = 14
+    case SSSW = 15
+    case SSCEH = 16
+    case TSE = 17
+    case TSA = 18
+    case AD = 19
+    case SH = 20
     
     static var count: Int { return NYUSchools.SH.rawValue + 1 }
     
     var description: String {
         switch self {
             
+        case .NA : return "Decline"
         case .CAS : return "College of Arts & Science"
         case .GSAS : return "Graduate School of Arts and Science"
         case .CD : return "College of Dentistry"
@@ -57,24 +60,138 @@ enum NYUSchools: Int, CustomStringConvertible {
         case .TSA : return "Tisch School of the Arts"
         case .AD : return "NYU Abu Dhabi"
         case .SH : return "NYU Shanghai"
-        default : return " "
         }
     }
 }
 
-class EditProfileViewController: UIViewController {
+class EditProfileViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+    private var schoolPicker = UIPickerView()
+    var year = UITextField()
+    var major = UITextField()
+    var likes = UITextView()
     
-    @IBOutlet weak var schoolPicker: UIPickerView!
+    private let save = UIButton(type: .System)
     
-    @IBOutlet weak var year: UITextField!
-    
-    @IBOutlet weak var likes: UITextView!
-    
-    @IBOutlet weak var major: UITextField!
 
+    private var didUpdateConstraints = false
+    
+    private let viewOffset: CGFloat = 20
+    private var possibleSchool: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = UIColor.whiteColor()
+        
+        navigationItem.title = "Edit Profile"
+        
+        self.schoolPicker.dataSource = self
+        self.schoolPicker.delegate = self
+        save.setTitle("Save", forState: .Normal)
+        save.setTitleColor(UIColor.blueColor(), forState: .Normal)
+        save.addTarget(self, action: #selector(EditProfileViewController.saveInfo), forControlEvents: .TouchUpInside)
+        
+        
+        reloadView()
+        
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+
+    override func updateViewConstraints() {
+        if !didUpdateConstraints {
+            
+            schoolPicker.autoPinEdgeToSuperviewEdge(.Top)
+            schoolPicker.autoPinEdgeToSuperviewEdge(.Left)
+            schoolPicker.autoPinEdgeToSuperviewEdge(.Right)
+            schoolPicker.autoSetDimension(.Height, toSize: view.bounds.height/3)
+            year.autoPinEdgeToSuperviewMargin(.Left)
+            major.autoPinEdgeToSuperviewMargin(.Left)
+            likes.autoPinEdgeToSuperviewMargin(.Left)
+            year.autoPinEdgeToSuperviewMargin(.Right)
+            major.autoPinEdgeToSuperviewMargin(.Right)
+            likes.autoPinEdgeToSuperviewMargin(.Right)
+            year.autoPinEdge(.Top, toEdge: .Bottom, ofView: schoolPicker, withOffset: viewOffset)
+            major.autoPinEdge(.Top, toEdge: .Bottom, ofView: year, withOffset: viewOffset)
+            likes.autoPinEdge(.Top, toEdge: .Bottom, ofView: major, withOffset: viewOffset)
+            likes.autoSetDimension(.Height, toSize: view.bounds.height/5)
+            save.autoPinEdgeToSuperviewMargin(.Bottom)
+            save.autoPinEdgeToSuperviewMargin(.Right)
+            didUpdateConstraints = true
+        }
+        
+        super.updateViewConstraints()
+    }
+    
+    func reloadView() {
+        didUpdateConstraints = false
+        for view in self.view.subviews{
+            view.removeFromSuperview()
+        }
+        
+        self.schoolPicker.backgroundColor = UIColor.clearColor()
+        
+        //self.schoolPicker.layer.borderColor = UIColor.whiteColor().CGColor
+        //self.schoolPicker.layer.borderWidth = 1
+        //self.schoolPicker.showsSelectionIndicator = true
+        //self.schoolPicker.
+        let defaults = NSUserDefaults.standardUserDefaults()
+        print(defaults.objectForKey("disc"))
+        print(defaults.objectForKey("year"))
+        print(defaults.objectForKey("major"))
+        
+        year.text = (String(defaults.integerForKey("year")))
+        print(year.text)
+        major.text = (defaults.objectForKey("major") as! String)
+        print(major.text)
+        likes.insertText(defaults.objectForKey("disc") as! String)
+        print(likes.text)
+        
+        if !likes.hasText(){
+        likes.insertText("Interests")
+        }
+        if !year.hasText() {
+            year.placeholder = "Graduating Year"
+        }
+        year.font = UIFont.systemFontOfSize(15)
+        year.borderStyle = UITextBorderStyle.RoundedRect
+        year.autocorrectionType = UITextAutocorrectionType.No
+        year.keyboardType = UIKeyboardType.Default
+        year.returnKeyType = UIReturnKeyType.Done
+        year.clearButtonMode = UITextFieldViewMode.WhileEditing;
+        if !major.hasText() {
+            major.placeholder = "Major"
+        }
+        major.font = UIFont.systemFontOfSize(15)
+        major.borderStyle = UITextBorderStyle.RoundedRect
+        major.autocorrectionType = UITextAutocorrectionType.No
+        major.keyboardType = UIKeyboardType.Default
+        major.returnKeyType = UIReturnKeyType.Done
+        major.clearButtonMode = UITextFieldViewMode.WhileEditing;
+        
+        
+        year.textColor = UIColor.blackColor()
+        major.textColor = UIColor.blackColor()
+        year.layer.borderColor = UIColor.blackColor().CGColor
+        major.layer.borderColor = UIColor.blackColor().CGColor
+        likes.layer.borderColor = UIColor.blackColor().CGColor
+        year.layer.borderWidth = 1
+        major.layer.borderWidth = 1
+        likes.layer.borderWidth = 1
+        
+        view.addSubview(schoolPicker)
+        view.addSubview(year)
+        view.addSubview(major)
+        view.addSubview(likes)
+        view.addSubview(save)
+        view.setNeedsUpdateConstraints()
+    }
+    
+    
+    
+    
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
@@ -96,47 +213,57 @@ class EditProfileViewController: UIViewController {
         }
         return "nothing"
     }
+    
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let Nschools = NYUSchools(rawValue: row)
-        
-        print("Nschools.description: \(Nschools!.description)")
-        
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setObject(Nschools?.description, forKey: "possibleSchool")
+        possibleSchool = (Nschools?.description)!
 
     }
     
-    @IBAction func saveInfo(sender: AnyObject) {
+    func saveInfo(sender: AnyObject) {
         print ("save button is pressed")
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setObject(year.text, forKey: "School_Year")
-        defaults.setObject(major.text, forKey: "School_Major")
-        defaults.setObject(likes.text, forKey: "Interests")
-        let school = defaults.stringForKey("possibleSchool")
-        defaults.setObject(school, forKey: "School")
-        let fbId = defaults.stringForKey("FbUserId")
-        var token = defaults.stringForKey("FCMToken")
-        if (token == nil)
-        {
-            token = "randomvalue"
+        let user = User.currentUser()
+        user.description = likes.text
+        user.major = major.text
+        //see if this is a real issue
+        user.year = Int(year.text!)
+        user.school = possibleSchool
+        //figure out school from picker
+        var sYear:Int = 0
+        if let aYear = Int(year.text!){
+            sYear = aYear
         }
-        let sYear = defaults.stringForKey("School_Year")
-        let sMajor = defaults.stringForKey("School_Major")
         
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(possibleSchool, forKey: "school")
+        defaults.setInteger(sYear, forKey: "year")
+        defaults.setObject(major.text, forKey: "major")
+        defaults.setObject(likes.text, forKey: "disc")
+        var fcmToken:String = "0"
+        if let afcmToken:String = defaults.objectForKey("FCMToken") as? String
+        {
+            fcmToken = afcmToken
+        }
+        
+        
+        let fbUserId = defaults.objectForKey("fbUserId") as! String
         let parameters1 : [String: AnyObject] = [
-            "fbUserId": fbId!,
-            "collegeName" : school!,
-            "year" : sYear!,
-            "major": sMajor!,
-            "interest" : "\(likes.text)",
-            "gcmId": token! ]
+            
+            "fbUserId": fbUserId,
+            "collegeName" : possibleSchool,
+            "year" : sYear,
+            "major": major.text!,
+            "interest" : likes.text,
+            "gcmId": fcmToken ]
         
-        Alamofire.request(.PUT, "http://172.17.50.254:8080/EatWithSmartService/webapi/users", parameters: parameters1, encoding: .JSON)
+        Alamofire.request(.PUT, "http://eatwith.umxb9zewhm.us-east-1.elasticbeanstalk.com/webapi/users", parameters: parameters1, encoding: .JSON)
             .validate()
             .responseString{ response in
                 print("Success: \(response.result.isSuccess)")
                 print("Response String: \(response.result.value)")
                 print(parameters1)
         }
+        let lastController = ProfileViewController()
+        navigationController?.pushViewController(lastController, animated: true)
     }
 }

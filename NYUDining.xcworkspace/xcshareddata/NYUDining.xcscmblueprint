@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "A8116FB6140E41056F669971CCA1F12E2FE010C4",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "43E48969AB834C98133F4F66DEBB455ACE272805" : 0,
+    "A8116FB6140E41056F669971CCA1F12E2FE010C4" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "FBDA0E69-5366-4251-91D2-A20902085375",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "43E48969AB834C98133F4F66DEBB455ACE272805" : "quickblox-ios-sdk\/",
+    "A8116FB6140E41056F669971CCA1F12E2FE010C4" : "NYUDining"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "NYUDining",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "NYUDining.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/QuickBlox\/quickblox-ios-sdk.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "43E48969AB834C98133F4F66DEBB455ACE272805"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/rfree18\/NYUDining.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A8116FB6140E41056F669971CCA1F12E2FE010C4"
+    }
+  ]
+}

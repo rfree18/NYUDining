@@ -16,10 +16,11 @@ class User {
     var lastName: String?
     var photoUrl: String?
     
-    var school: NYUSchools?
+    var school: String?
     var year: Int?
     var major: String?
     var description: String?
+    var token:String?
     
     private static var privateCurrentUser: User?
     
@@ -39,15 +40,17 @@ class User {
     }
     
     static func isSignedIn() -> Bool {
+        
         return FBSDKAccessToken.currentAccessToken() != nil
     }
     
+    
     func getFirstName() -> String {
-        return firstName ?? "nil"
+        return firstName ?? "first"
     }
     
     func getLastName() -> String {
-        return lastName ?? "nil"
+        return lastName ?? "last"
     }
     
     func getYear() -> Int {
@@ -55,11 +58,11 @@ class User {
     }
     
     func getMajor() -> String {
-        return major ?? "nil"
+        return major ?? "no major"
     }
     
     func getDescription() -> String {
-        return description ?? "nil"
+        return description ?? "descript"
     }
     
 }
