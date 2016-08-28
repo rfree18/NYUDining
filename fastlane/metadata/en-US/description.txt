@@ -1,0 +1,3 @@
+Are you hungry after class and just want to quickly find out what's open? NYUDining is a simple and fast app to allow NYU students to quickly and easily find all of the dining halls on campus. With just the tap of a button, find out which dining halls are open, where they're located, what they're serving, and more!
+
+Note: Special hours (i.e. holidays) will be automatically updated as information becomes available.

@@ -112,7 +112,10 @@ class RFDiningLocation: NSObject {
             // Check if close time is 12am
             let diffComparison = calendar.compareDate(openTime, toDate: closeTime, toUnitGranularity: .Hour)
             if diffComparison == .OrderedDescending {
-                closeTime = calendar.dateByAddingUnit(.Day, value: 1, toDate: closeTime, options: [])!
+                guard let newTime = calendar.dateByAddingUnit(.Day, value: 1, toDate: closeTime, options: []) else {
+                    return false
+                }
+                closeTime = newTime
             }
             
             let openComparison = calendar.compareDate(now, toDate: openTime, toUnitGranularity: .Minute)

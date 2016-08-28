@@ -22,6 +22,7 @@ class RFHoursTableViewController: UIViewController {
         
         hoursTable.registerClass(HoursTableViewCell.self, forCellReuseIdentifier: cellId)
         hoursTable.dataSource = self
+        hoursTable.userInteractionEnabled = false
         
         view.addSubview(hoursTable)
 

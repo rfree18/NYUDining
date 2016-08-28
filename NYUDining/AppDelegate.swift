@@ -20,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidFinishLaunching(application: UIApplication) {
         FIRApp.configure()
         
+        FIRDatabase.database().persistenceEnabled = true
+        
         GMSServices.provideAPIKey("AIzaSyBN_4cWF6QUZ7RvjhuocQcErs6i3QqtKtk")
         
         Fabric.with([Crashlytics.self])

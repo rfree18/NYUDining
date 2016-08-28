@@ -32,7 +32,9 @@ class RFLocationDetailViewController: UIViewController {
             let data = NSData(contentsOfURL: url!)
             
             // TODO: Implement error checking
-            self.locationLogo.image = UIImage(data: data!)
+            if let data = data {
+                self.locationLogo.image = UIImage(data: data)
+            }
             
             MBProgressHUD.hideHUDForView(self.navigationController?.view, animated: true)
             

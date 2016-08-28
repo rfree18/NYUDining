@@ -1,0 +1,2 @@
+NYUDining has been completely rewritten from the ground up! Everything is now faster and more efficient than before.
+This version also includes some swanky new tools to help me fix any crashes you may experience.

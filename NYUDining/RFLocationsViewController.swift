@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseDatabase
 import MBProgressHUD
+import Crashlytics
 
 class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -143,6 +144,7 @@ class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableV
         let dest = segue.destinationViewController as? RFLocationDetailViewController
         if let dest = dest {
             dest.location = selectedLocation
+            Answers.logContentViewWithName("Dining Hall", contentType: "Location", contentId: selectedLocation.name, customAttributes: nil)
         }
     }
 }

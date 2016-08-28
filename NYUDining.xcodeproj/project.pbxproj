@@ -20,11 +20,20 @@
 		FA22EFB71B9F1F3400763C9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA22EFB51B9F1F3400763C9A /* LaunchScreen.xib */; };
 		FA3C7A0C1BDFC95000778DF0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA3C7A0B1BDFC95000778DF0 /* SystemConfiguration.framework */; };
 		FA4BE6D11D0B688E00D7F0D9 /* RFDiningLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4BE6D01D0B688E00D7F0D9 /* RFDiningLocation.swift */; };
+		FADB0A611D6A63400092F35B /* NYUDiningUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADB0A601D6A63400092F35B /* NYUDiningUITests.swift */; };
+		FADB0A691D6A63640092F35B /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADB0A681D6A63640092F35B /* SnapshotHelper.swift */; };
 		FADFFA2A1BB8C8FC00C58CF5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FADFFA291BB8C8FC00C58CF5 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		FA22EFBD1B9F1F3400763C9A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA22EF9B1B9F1F3400763C9A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA22EFA21B9F1F3400763C9A;
+			remoteInfo = NYUDining;
+		};
+		FADB0A631D6A63400092F35B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FA22EF9B1B9F1F3400763C9A /* Project object */;
 			proxyType = 1;
@@ -67,6 +76,10 @@
 		FA3C7A0B1BDFC95000778DF0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		FA4BE6D01D0B688E00D7F0D9 /* RFDiningLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RFDiningLocation.swift; sourceTree = "<group>"; };
 		FAAADD0E1BB89665008FAA77 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		FADB0A5E1D6A63400092F35B /* NYUDiningUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NYUDiningUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FADB0A601D6A63400092F35B /* NYUDiningUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYUDiningUITests.swift; sourceTree = "<group>"; };
+		FADB0A621D6A63400092F35B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FADB0A681D6A63640092F35B /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		FADFFA291BB8C8FC00C58CF5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -82,6 +95,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		FA22EFB91B9F1F3400763C9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FADB0A5B1D6A63400092F35B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -117,6 +137,7 @@
 				FA04BDCC1D0B85330061F267 /* GoogleService-Info.plist */,
 				FA22EFA51B9F1F3400763C9A /* NYUDining */,
 				FA22EFBF1B9F1F3400763C9A /* NYUDiningTests */,
+				FADB0A5F1D6A63400092F35B /* NYUDiningUITests */,
 				FA22EFA41B9F1F3400763C9A /* Products */,
 				2229E7348960834A3370311B /* Frameworks */,
 				A494E50D8869C946FA33702A /* Pods */,
@@ -128,6 +149,7 @@
 			children = (
 				FA22EFA31B9F1F3400763C9A /* NYUDining.app */,
 				FA22EFBC1B9F1F3400763C9A /* NYUDiningTests.xctest */,
+				FADB0A5E1D6A63400092F35B /* NYUDiningUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -190,6 +212,16 @@
 			name = "View Controllers";
 			sourceTree = "<group>";
 		};
+		FADB0A5F1D6A63400092F35B /* NYUDiningUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FADB0A681D6A63640092F35B /* SnapshotHelper.swift */,
+				FADB0A601D6A63400092F35B /* NYUDiningUITests.swift */,
+				FADB0A621D6A63400092F35B /* Info.plist */,
+			);
+			path = NYUDiningUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -234,12 +266,31 @@
 			productReference = FA22EFBC1B9F1F3400763C9A /* NYUDiningTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		FADB0A5D1D6A63400092F35B /* NYUDiningUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FADB0A651D6A63410092F35B /* Build configuration list for PBXNativeTarget "NYUDiningUITests" */;
+			buildPhases = (
+				FADB0A5A1D6A63400092F35B /* Sources */,
+				FADB0A5B1D6A63400092F35B /* Frameworks */,
+				FADB0A5C1D6A63400092F35B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FADB0A641D6A63400092F35B /* PBXTargetDependency */,
+			);
+			name = NYUDiningUITests;
+			productName = NYUDiningUITests;
+			productReference = FADB0A5E1D6A63400092F35B /* NYUDiningUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		FA22EF9B1B9F1F3400763C9A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Ross Freeman";
 				TargetAttributes = {
@@ -255,6 +306,10 @@
 					FA22EFBB1B9F1F3400763C9A = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = 247UT9T8WT;
+						TestTargetID = FA22EFA21B9F1F3400763C9A;
+					};
+					FADB0A5D1D6A63400092F35B = {
+						CreatedOnToolsVersion = 7.3.1;
 						TestTargetID = FA22EFA21B9F1F3400763C9A;
 					};
 				};
@@ -274,6 +329,7 @@
 			targets = (
 				FA22EFA21B9F1F3400763C9A /* NYUDining */,
 				FA22EFBB1B9F1F3400763C9A /* NYUDiningTests */,
+				FADB0A5D1D6A63400092F35B /* NYUDiningUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -291,6 +347,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		FA22EFBA1B9F1F3400763C9A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FADB0A5C1D6A63400092F35B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -369,7 +432,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" c2a035c5260ebab83bbe0a5f8a9378b8dd5cc046 13e00563af9697970193d5cc4661523f586495bb94a8b4b0ff86584f9ed74504";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" c2a035c5260ebab83bbe0a5f8a9378b8dd5cc046 43108ed8bc65cfcbf37cdc93cfb622458037e8c0e09b38f75f224870928dc153";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -395,6 +458,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FADB0A5A1D6A63400092F35B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FADB0A611D6A63400092F35B /* NYUDiningUITests.swift in Sources */,
+				FADB0A691D6A63640092F35B /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -402,6 +474,11 @@
 			isa = PBXTargetDependency;
 			target = FA22EFA21B9F1F3400763C9A /* NYUDining */;
 			targetProxy = FA22EFBD1B9F1F3400763C9A /* PBXContainerItemProxy */;
+		};
+		FADB0A641D6A63400092F35B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA22EFA21B9F1F3400763C9A /* NYUDining */;
+			targetProxy = FADB0A631D6A63400092F35B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -523,7 +600,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rossfreeman.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "$(sigh_tools.fastlane.app_development)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -543,7 +620,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rossfreeman.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "$(sigh_tools.fastlane.app_development)";
 			};
 			name = Release;
 		};
@@ -589,6 +666,36 @@
 			};
 			name = Release;
 		};
+		FADB0A661D6A63410092F35B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = NYUDiningUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rossfreeman.NYUDiningUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TEST_TARGET_NAME = NYUDining;
+			};
+			name = Debug;
+		};
+		FADB0A671D6A63410092F35B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = NYUDiningUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rossfreeman.NYUDiningUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = NYUDining;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -615,6 +722,15 @@
 			buildConfigurations = (
 				FA22EFCA1B9F1F3400763C9A /* Debug */,
 				FA22EFCB1B9F1F3400763C9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FADB0A651D6A63410092F35B /* Build configuration list for PBXNativeTarget "NYUDiningUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FADB0A661D6A63410092F35B /* Debug */,
+				FADB0A671D6A63410092F35B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
