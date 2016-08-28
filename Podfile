@@ -1,12 +1,23 @@
-pod 'Firebase', '>= 2.5.1'
-
-platform :ios, '7.0'
-pod "AFNetworking", "~> 2.0"
-
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '8.1'
-pod 'GoogleMaps'
+platform :ios, '8.2'
+use_frameworks!
 
-pod 'MBProgressHUD', '~> 0.9.1'
+target 'NYUDining' do
 
-pod 'ActionSheetPicker-3.0', '~> 2.0.3'
+    pod 'Firebase'
+    pod 'Firebase/Database'
+    pod 'GoogleMaps'
+    pod 'MBProgressHUD', '~> 0.9.2'
+    pod 'PureLayout'
+    pod 'Fabric'
+    pod 'Crashlytics'
+
+end
+
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+            config.build_settings['ENABLE_BITCODE'] = 'NO'
+        end
+    end 
+end

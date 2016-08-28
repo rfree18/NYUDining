@@ -4,7 +4,17 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>NYUDining.xcscheme</key>
+		<key>DiningWatch (Notification).xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>DiningWatch.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>NYUDining.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -25,6 +35,16 @@
 			<true/>
 		</dict>
 		<key>FA22EFBB1B9F1F3400763C9A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FADB0A4F1D6A62BD0092F35B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FADB0A5D1D6A63400092F35B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
