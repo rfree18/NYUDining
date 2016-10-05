@@ -11,8 +11,8 @@ import UIKit
 class RFMenuBrowserViewController: UIViewController, UIWebViewDelegate {
     
     var location: RFDiningLocation!
-    var pageTimeout: NSTimer!
-    var progressTime: NSTimer!
+    var pageTimeout: Timer!
+    var progressTime: Timer!
     var didLoad = false
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var webView: UIWebView!
@@ -31,21 +31,21 @@ class RFMenuBrowserViewController: UIViewController, UIWebViewDelegate {
     }
     
     func loadWebPage() {
-        let url = NSURL(string: location.menuURL!)
-        let urlRequest = NSURLRequest(URL: url!)
+        let url = URL(string: location.menuURL!)
+        let urlRequest = URLRequest(url: url!)
         
         webView.loadRequest(urlRequest)
     }
     
-    func webViewDidStartLoad(webView: UIWebView) {
-        pageTimeout = NSTimer(timeInterval: 12.0, target: self, selector: #selector(showAlert), userInfo: nil, repeats: false)
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        pageTimeout = Timer(timeInterval: 12.0, target: self, selector: #selector(showAlert), userInfo: nil, repeats: false)
         
         progressView.progress = 0
         didLoad = false
-        progressTime = NSTimer(timeInterval: 0.01667, target: self, selector: #selector(timerCallback), userInfo: nil, repeats: true)
+        progressTime = Timer(timeInterval: 0.01667, target: self, selector: #selector(timerCallback), userInfo: nil, repeats: true)
     }
     
-    func webViewDidFinishLoad(webView: UIWebView) {
+    func webViewDidFinishLoad(_ webView: UIWebView) {
         didLoad = true
         pageTimeout.invalidate()
     }
@@ -53,7 +53,7 @@ class RFMenuBrowserViewController: UIViewController, UIWebViewDelegate {
     func timerCallback() {
         if didLoad {
             if progressView.progress >= 1 {
-                progressView.hidden = true
+                progressView.isHidden = true
                 progressTime.invalidate()
             }
             
@@ -73,20 +73,20 @@ class RFMenuBrowserViewController: UIViewController, UIWebViewDelegate {
     func showAlert() {
         webView.stopLoading()
         
-        let alert = UIAlertController(title: "Connection Error", message: "It looks like you're not connected to the internet 😢", preferredStyle: UIAlertControllerStyle.Alert)
-        let retry = UIAlertAction(title: "Retry", style: UIAlertActionStyle.Default) { (action) in
+        let alert = UIAlertController(title: "Connection Error", message: "It looks like you're not connected to the internet 😢", preferredStyle: UIAlertControllerStyle.alert)
+        let retry = UIAlertAction(title: "Retry", style: UIAlertActionStyle.default) { (action) in
             self.loadWebPage()
         }
-        let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (action) in
+        let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (action) in
             if let navigationController = self.navigationController {
-                navigationController.popViewControllerAnimated(true)
+                navigationController.popViewController(animated: true)
             }
         }
         
         alert.addAction(retry)
         alert.addAction(cancel)
         
-        presentViewController(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
 
 }

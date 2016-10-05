@@ -27,7 +27,7 @@ class NYUDiningUITests: XCTestCase {
         snapshot("Menu Page")
         
         let app = XCUIApplication()
-        app.navigationBars["Menu"].childrenMatchingType(.Button).matchingIdentifier("Back").elementBoundByIndex(0).tap()
+        app.navigationBars["Menu"].children(matching: .button).matching(identifier: "Back").element(boundBy: 0).tap()
         app.navigationBars["Palladium by LifeWorks"].buttons["Hours"].tap()
         
         snapshot("Hours Page")

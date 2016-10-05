@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0800"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -56,7 +56,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FADB0A4F1D6A62BD0092F35B"
+               BlueprintIdentifier = "FADB0A5D1D6A63400092F35B"
                BuildableName = "NYUDiningUITests.xctest"
                BlueprintName = "NYUDiningUITests"
                ReferencedContainer = "container:NYUDining.xcodeproj">

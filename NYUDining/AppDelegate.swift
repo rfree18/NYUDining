@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    func applicationDidFinishLaunching(application: UIApplication) {
+    func applicationDidFinishLaunching(_ application: UIApplication) {
         FIRApp.configure()
         
         FIRDatabase.database().persistenceEnabled = true

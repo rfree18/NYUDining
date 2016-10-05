@@ -14,7 +14,7 @@ class HoursTableViewCell: UITableViewCell {
     let weekdayLabel = UILabel()
     let hoursLabel = UILabel()
     
-    private var didSetupConstraints = false
+    fileprivate var didSetupConstraints = false
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -31,14 +31,14 @@ class HoursTableViewCell: UITableViewCell {
     
     override func updateConstraints() {
         if !didSetupConstraints {
-            weekdayLabel.autoAlignAxisToSuperviewMarginAxis(.Horizontal)
-            weekdayLabel.autoPinEdgeToSuperviewMargin(.Leading)
+            weekdayLabel.autoAlignAxis(toSuperviewMarginAxis: .horizontal)
+            weekdayLabel.autoPinEdge(toSuperviewMargin: .leading)
             
-            hoursLabel.lineBreakMode = .ByClipping
+            hoursLabel.lineBreakMode = .byClipping
             hoursLabel.numberOfLines = 0
-            hoursLabel.autoPinEdgeToSuperviewMargin(.Trailing)
-            hoursLabel.autoAlignAxisToSuperviewMarginAxis(.Horizontal)
-            hoursLabel.textColor = UIColor.grayColor()
+            hoursLabel.autoPinEdge(toSuperviewMargin: .trailing)
+            hoursLabel.autoAlignAxis(toSuperviewMarginAxis: .horizontal)
+            hoursLabel.textColor = UIColor.gray
             
             didSetupConstraints = true
         }

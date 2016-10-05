@@ -43,10 +43,10 @@ class RFDiningLocation: NSObject {
     }
      
     func isOpen() -> Bool {
-        let now = NSDate()
-        let dateFormatter = NSDateFormatter()
+        let now = Date()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE"
-        let dayOfWeek = DayOfWeek(rawValue: dateFormatter.stringFromDate(now))
+        let dayOfWeek = DayOfWeek(rawValue: dateFormatter.string(from: now))
         
         var hoursToday = ""
         
@@ -69,8 +69,8 @@ class RFDiningLocation: NSObject {
             }
         }
         
-        if hoursToday.containsString(",") {
-            let timeComponents = hoursToday.componentsSeparatedByString(",")
+        if hoursToday.contains(",") {
+            let timeComponents = hoursToday.components(separatedBy: ",")
             return isTimeInRange(timeComponents[0]) || isTimeInRange(timeComponents[1])
         }
         
@@ -79,49 +79,49 @@ class RFDiningLocation: NSObject {
         }
     }
     
-    private func normalizedTime() -> NSDate {
-        let now = NSDate()
+    fileprivate func normalizedTime() -> Date {
+        let now = Date()
         
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.timeStyle = .ShortStyle
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = .short
         
-        let timeStr = dateFormatter.stringFromDate(now)
-        return dateFormatter.dateFromString(timeStr)!
+        let timeStr = dateFormatter.string(from: now)
+        return dateFormatter.date(from: timeStr)!
         
     }
     
-    private func isTimeInRange(timeRange: String) -> Bool {
+    fileprivate func isTimeInRange(_ timeRange: String) -> Bool {
         
         if timeRange == "Closed" {
             return false
         }
         
-        let calendar = NSCalendar.currentCalendar()
+        let calendar = Calendar.current
         let now = normalizedTime()
         
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.timeStyle = .ShortStyle
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = .short
         
-        let timeComponents = timeRange.componentsSeparatedByString("-")
+        let timeComponents = timeRange.components(separatedBy: "-")
         
-        let openTime = dateFormatter.dateFromString(timeComponents[0])
-        let closeTime = dateFormatter.dateFromString(timeComponents[1])
+        let openTime = dateFormatter.date(from: timeComponents[0])
+        let closeTime = dateFormatter.date(from: timeComponents[1])
         
         if let openTime = openTime, var closeTime = closeTime {
             
             // Check if close time is 12am
-            let diffComparison = calendar.compareDate(openTime, toDate: closeTime, toUnitGranularity: .Hour)
-            if diffComparison == .OrderedDescending {
-                guard let newTime = calendar.dateByAddingUnit(.Day, value: 1, toDate: closeTime, options: []) else {
+            let diffComparison = (calendar as NSCalendar).compare(openTime, to: closeTime, toUnitGranularity: .hour)
+            if diffComparison == .orderedDescending {
+                guard let newTime = (calendar as NSCalendar).date(byAdding: .day, value: 1, to: closeTime, options: []) else {
                     return false
                 }
                 closeTime = newTime
             }
             
-            let openComparison = calendar.compareDate(now, toDate: openTime, toUnitGranularity: .Minute)
-            let closeComparison = calendar.compareDate(now, toDate: closeTime, toUnitGranularity: .Minute)
+            let openComparison = (calendar as NSCalendar).compare(now, to: openTime, toUnitGranularity: .minute)
+            let closeComparison = (calendar as NSCalendar).compare(now, to: closeTime, toUnitGranularity: .minute)
             
-            return (openComparison == .OrderedDescending && closeComparison == .OrderedAscending)
+            return (openComparison == .orderedDescending && closeComparison == .orderedAscending)
         }
         
         return false

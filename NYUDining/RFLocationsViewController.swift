@@ -16,7 +16,7 @@ class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var locationTable: UITableView!
     
     var diningLocations: [RFDiningLocation] = []
-    var timer: NSTimer! = nil
+    var timer: Timer! = nil
     let hoursOptions: [String] = []
     let tableName: String = ""
     var ref: FIRDatabaseReference!
@@ -25,32 +25,32 @@ class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         
         if let navigationController = navigationController {
-            navigationController.navigationBar.translucent = false
+            navigationController.navigationBar.isTranslucent = false
         }
         
         ref = FIRDatabase.database().reference()
         
-        timer = NSTimer.scheduledTimerWithTimeInterval(12.0, target: self, selector: #selector(showAlert), userInfo: nil, repeats: false)
+        timer = Timer.scheduledTimer(timeInterval: 12.0, target: self, selector: #selector(showAlert), userInfo: nil, repeats: false)
         
         grabInformationFromServer()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         locationTable.reloadData()
         
         if let indexPaths = locationTable.indexPathsForSelectedRows {
-            for indexPath: NSIndexPath in indexPaths {
-                locationTable.deselectRowAtIndexPath(indexPath, animated: false)
+            for indexPath: IndexPath in indexPaths {
+                locationTable.deselectRow(at: indexPath, animated: false)
             }
         }
     }
     
     func grabInformationFromServer() {
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         
-        ref.observeEventType(FIRDataEventType.Value, withBlock: { (snapshot) in
+        ref.observe(FIRDataEventType.value, with: { (snapshot) in
             self.diningLocations.removeAll()
             self.timer.invalidate()
             
@@ -64,54 +64,54 @@ class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableV
                 self.diningLocations.append(location)
             }
             
-            self.diningLocations = self.diningLocations.sort({ (a, b) -> Bool in
+            self.diningLocations = self.diningLocations.sorted(by: { (a, b) -> Bool in
                 let name1 = a.name
                 let name2 = b.name
-                return name1 < name2
+                return name1! < name2!
             })
             
             self.locationTable.reloadData()
-            MBProgressHUD.hideHUDForView(self.view, animated: true)
+            MBProgressHUD.hide(for: self.view, animated: true)
             
             }) { (error) in
-                print(error.description)
-                MBProgressHUD.hideHUDForView(self.view, animated: true)
+                print(error.localizedDescription)
+                MBProgressHUD.hide(for: self.view, animated: true)
                 
-                let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.Alert)
-                let retry = UIAlertAction(title: "Retry", style: UIAlertActionStyle.Default, handler: { (action) in
+                let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
+                let retry = UIAlertAction(title: "Retry", style: UIAlertActionStyle.default, handler: { (action) in
                     self.viewDidLoad()
                 })
                 alert.addAction(retry)
-                self.presentViewController(alert, animated: true, completion: nil)
+                self.present(alert, animated: true, completion: nil)
         }
     }
     
     func showAlert() {
-        MBProgressHUD.hideHUDForView(self.view, animated: true)
+        MBProgressHUD.hide(for: self.view, animated: true)
         
         ref.removeAllObservers()
         
-        let alert = UIAlertController(title: "Connection Error", message: "It looks like you're not connected to the internet 😢", preferredStyle: UIAlertControllerStyle.Alert)
-        let retry = UIAlertAction(title: "Retry", style: UIAlertActionStyle.Default) { (action) in
+        let alert = UIAlertController(title: "Connection Error", message: "It looks like you're not connected to the internet 😢", preferredStyle: UIAlertControllerStyle.alert)
+        let retry = UIAlertAction(title: "Retry", style: UIAlertActionStyle.default) { (action) in
             self.grabInformationFromServer()
         }
         alert.addAction(retry)
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
     
     // MARK - Table View
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return diningLocations.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("location")
-        let location = diningLocations[indexPath.row]
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "location")
+        let location = diningLocations[(indexPath as NSIndexPath).row]
         
         cell?.textLabel?.text = location.name
         
@@ -125,7 +125,7 @@ class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableV
         
         else {
             cell?.detailTextLabel?.text = "Closed"
-            cell?.detailTextLabel?.textColor = UIColor .redColor()
+            cell?.detailTextLabel?.textColor = UIColor.red
             
             cell?.textLabel?.textColor = cell?.detailTextLabel?.textColor
         }
@@ -133,18 +133,18 @@ class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableV
         return cell!
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("showDetails", sender: indexPath)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showDetails", sender: indexPath)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let path = sender as! NSIndexPath
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let path = sender as! IndexPath
         
-        let selectedLocation = diningLocations[path.row]
-        let dest = segue.destinationViewController as? RFLocationDetailViewController
+        let selectedLocation = diningLocations[(path as NSIndexPath).row]
+        let dest = segue.destination as? RFLocationDetailViewController
         if let dest = dest {
             dest.location = selectedLocation
-            Answers.logContentViewWithName("Dining Hall", contentType: "Location", contentId: selectedLocation.name, customAttributes: nil)
+            Answers.logContentView(withName: "Dining Hall", contentType: "Location", contentId: selectedLocation.name, customAttributes: nil)
         }
     }
 }

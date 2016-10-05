@@ -25,18 +25,18 @@ class RFLocationDetailViewController: UIViewController {
 
         navigationItem.title = location.name
         
-        MBProgressHUD.showHUDAddedTo(self.navigationController?.view, animated: true)
+        MBProgressHUD.showAdded(to: self.navigationController?.view, animated: true)
         
-        dispatch_async(dispatch_get_main_queue()) {
-            let url = NSURL(string: self.location.logoURL!)
-            let data = NSData(contentsOfURL: url!)
+        DispatchQueue.main.async {
+            let url = URL(string: self.location.logoURL!)
+            let data = try? Data(contentsOf: url!)
             
             // TODO: Implement error checking
             if let data = data {
                 self.locationLogo.image = UIImage(data: data)
             }
             
-            MBProgressHUD.hideHUDForView(self.navigationController?.view, animated: true)
+            MBProgressHUD.hide(for: self.navigationController?.view, animated: true)
             
         }
         
@@ -44,7 +44,7 @@ class RFLocationDetailViewController: UIViewController {
         hoursLabel.text = getHoursString()
         
         if location.menuURL == nil {
-            menuButton.hidden = true
+            menuButton.isHidden = true
         }
         
         if location.isOpen() {
@@ -54,15 +54,15 @@ class RFLocationDetailViewController: UIViewController {
         
         else {
             locationStatusLabel.text = "Closed"
-            locationStatusLabel.textColor = UIColor.redColor()
+            locationStatusLabel.textColor = UIColor.red
         }
         
         let x = location.coordinates[0]
         let y = location.coordinates[1]
         
-        let camera = GMSCameraPosition.cameraWithLatitude(x, longitude: y, zoom: 16)
+        let camera = GMSCameraPosition.camera(withLatitude: x, longitude: y, zoom: 16)
         
-        mapView.frame = CGRectZero
+        mapView.frame = CGRect.zero
         mapView.camera = camera
         
         let marker = GMSMarker(position: CLLocationCoordinate2DMake(x, y))
@@ -83,9 +83,9 @@ class RFLocationDetailViewController: UIViewController {
         var hoursString = ""
         var hoursToday = ""
         
-        let dateFormatter = NSDateFormatter()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE"
-        let dayOfWeek = DayOfWeek(rawValue: dateFormatter.stringFromDate(NSDate()))
+        let dayOfWeek = DayOfWeek(rawValue: dateFormatter.string(from: Date()))
         
         if let dayOfWeek = dayOfWeek {
             switch dayOfWeek {
@@ -104,7 +104,7 @@ class RFLocationDetailViewController: UIViewController {
             default:
                 hoursToday = location.hours[6]
             }
-            hoursString = hoursToday.stringByReplacingOccurrencesOfString(",", withString: "\n")
+            hoursString = hoursToday.replacingOccurrences(of: ",", with: "\n")
         }
         
             
@@ -114,16 +114,16 @@ class RFLocationDetailViewController: UIViewController {
     
     // MARK: Navigation
     
-    @IBAction func goToHoursTable(sender: AnyObject) {
+    @IBAction func goToHoursTable(_ sender: AnyObject) {
         let tableVc = RFHoursTableViewController()
         tableVc.diningLocation = location
         
         navigationController?.pushViewController(tableVc, animated: true)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showMenu" {
-            let dest = segue.destinationViewController as! RFMenuBrowserViewController
+            let dest = segue.destination as! RFMenuBrowserViewController
             dest.location = location
         }
     }
