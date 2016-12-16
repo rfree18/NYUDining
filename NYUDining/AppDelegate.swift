@@ -22,19 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FIRDatabase.database().persistenceEnabled = true
         
-        GMSServices.provideAPIKey("AIzaSyBN_4cWF6QUZ7RvjhuocQcErs6i3QqtKtk")
+        GMSServices.provideAPIKey(Keys.firebase)
         
         Fabric.with([Crashlytics.self])
-        // TODO: Move this to where you establish a user session
-        self.logUser()
-    }
-    
-    func logUser() {
-        // TODO: Use the current user's information
-        // You can call any combination of these three methods
-        Crashlytics.sharedInstance().setUserEmail("user@fabric.io")
-        Crashlytics.sharedInstance().setUserIdentifier("12345")
-        Crashlytics.sharedInstance().setUserName("Test User")
     }
 
 }

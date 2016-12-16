@@ -20,6 +20,7 @@
 		FA22EFB71B9F1F3400763C9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA22EFB51B9F1F3400763C9A /* LaunchScreen.xib */; };
 		FA3C7A0C1BDFC95000778DF0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA3C7A0B1BDFC95000778DF0 /* SystemConfiguration.framework */; };
 		FA4BE6D11D0B688E00D7F0D9 /* RFDiningLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4BE6D01D0B688E00D7F0D9 /* RFDiningLocation.swift */; };
+		FA71A6B21E04A8100091CF50 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71A6B11E04A8100091CF50 /* Keys.swift */; };
 		FADB0A611D6A63400092F35B /* NYUDiningUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADB0A601D6A63400092F35B /* NYUDiningUITests.swift */; };
 		FADB0A691D6A63640092F35B /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADB0A681D6A63640092F35B /* SnapshotHelper.swift */; };
 		FADFFA2A1BB8C8FC00C58CF5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FADFFA291BB8C8FC00C58CF5 /* CoreLocation.framework */; };
@@ -75,6 +76,7 @@
 		FA22EFC11B9F1F3400763C9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA3C7A0B1BDFC95000778DF0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		FA4BE6D01D0B688E00D7F0D9 /* RFDiningLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RFDiningLocation.swift; sourceTree = "<group>"; };
+		FA71A6B11E04A8100091CF50 /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		FAAADD0E1BB89665008FAA77 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		FADB0A5E1D6A63400092F35B /* NYUDiningUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NYUDiningUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FADB0A601D6A63400092F35B /* NYUDiningUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYUDiningUITests.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				FA04BDCE1D0B853B0061F267 /* AppDelegate.swift */,
+				FA71A6B11E04A8100091CF50 /* Keys.swift */,
 				FA3A2ACB1CA1C5A600589A43 /* Models */,
 				FA3A2ACC1CA1C5AE00589A43 /* View Controllers */,
 				FA22EFB01B9F1F3400763C9A /* Main.storyboard */,
@@ -297,7 +300,7 @@
 					FA22EFA21B9F1F3400763C9A = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = 247UT9T8WT;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0820;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 0;
@@ -311,7 +314,7 @@
 					};
 					FADB0A5D1D6A63400092F35B = {
 						CreatedOnToolsVersion = 7.3.1;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0820;
 						TestTargetID = FA22EFA21B9F1F3400763C9A;
 					};
 				};
@@ -407,7 +410,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		FA17573C1D18E0440023AA32 /* ShellScript */ = {
@@ -444,6 +447,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA04BDCF1D0B853B0061F267 /* AppDelegate.swift in Sources */,
+				FA71A6B21E04A8100091CF50 /* Keys.swift in Sources */,
 				FA084ABB1D25F54400732C06 /* HoursTableViewCell.swift in Sources */,
 				FA04BDD51D0B9A2D0061F267 /* RFMenuBrowserViewController.swift in Sources */,
 				FA4BE6D11D0B688E00D7F0D9 /* RFDiningLocation.swift in Sources */,

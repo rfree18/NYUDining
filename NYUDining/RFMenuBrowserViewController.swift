@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class RFMenuBrowserViewController: UIViewController, UIWebViewDelegate {
     
     var location: RFDiningLocation!
     var pageTimeout: Timer!
     var progressTime: Timer!
-    var didLoad = false
+
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var webView: UIWebView!
 
@@ -23,6 +24,10 @@ class RFMenuBrowserViewController: UIViewController, UIWebViewDelegate {
         navigationItem.title = "Menu"
         
         loadWebPage()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        MBProgressHUD.hideAllHUDs(for: self.view, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,38 +45,18 @@ class RFMenuBrowserViewController: UIViewController, UIWebViewDelegate {
     func webViewDidStartLoad(_ webView: UIWebView) {
         pageTimeout = Timer(timeInterval: 12.0, target: self, selector: #selector(showAlert), userInfo: nil, repeats: false)
         
-        progressView.progress = 0
-        didLoad = false
-        progressTime = Timer(timeInterval: 0.01667, target: self, selector: #selector(timerCallback), userInfo: nil, repeats: true)
+        MBProgressHUD.showAdded(to: self.view, animated: true)
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
-        didLoad = true
         pageTimeout.invalidate()
-    }
-    
-    func timerCallback() {
-        if didLoad {
-            if progressView.progress >= 1 {
-                progressView.isHidden = true
-                progressTime.invalidate()
-            }
-            
-            else {
-                progressView.progress += 0.1
-            }
-        }
-        
-        else {
-            progressView.progress += 0.05
-            if progressView.progress >= 0.95 {
-                progressView.progress = 0.95
-            }
-        }
+        MBProgressHUD.hideAllHUDs(for: self.view, animated: true)
     }
     
     func showAlert() {
         webView.stopLoading()
+        
+        MBProgressHUD.hideAllHUDs(for: self.view, animated: true)
         
         let alert = UIAlertController(title: "Connection Error", message: "It looks like you're not connected to the internet 😢", preferredStyle: UIAlertControllerStyle.alert)
         let retry = UIAlertAction(title: "Retry", style: UIAlertActionStyle.default) { (action) in
