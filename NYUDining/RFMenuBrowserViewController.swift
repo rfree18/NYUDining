@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import MBProgressHUD
+import PKHUD
 
 class RFMenuBrowserViewController: UIViewController, UIWebViewDelegate {
     
@@ -27,7 +27,7 @@ class RFMenuBrowserViewController: UIViewController, UIWebViewDelegate {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        MBProgressHUD.hideAllHUDs(for: self.view, animated: true)
+        PKHUD.sharedHUD.hide()
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,18 +45,18 @@ class RFMenuBrowserViewController: UIViewController, UIWebViewDelegate {
     func webViewDidStartLoad(_ webView: UIWebView) {
         pageTimeout = Timer(timeInterval: 12.0, target: self, selector: #selector(showAlert), userInfo: nil, repeats: false)
         
-        MBProgressHUD.showAdded(to: self.view, animated: true)
+        PKHUD.sharedHUD.show()
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         pageTimeout.invalidate()
-        MBProgressHUD.hideAllHUDs(for: self.view, animated: true)
+        PKHUD.sharedHUD.hide()
     }
     
     @objc func showAlert() {
         webView.stopLoading()
         
-        MBProgressHUD.hideAllHUDs(for: self.view, animated: true)
+        PKHUD.sharedHUD.hide()
         
         let alert = UIAlertController(title: "Connection Error", message: "It looks like you're not connected to the internet 😢", preferredStyle: UIAlertControllerStyle.alert)
         let retry = UIAlertAction(title: "Retry", style: UIAlertActionStyle.default) { (action) in

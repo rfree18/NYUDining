@@ -33,7 +33,7 @@ class HoursTableViewCell: UITableViewCell {
         if !didSetupConstraints {
             weekdayLabel.autoAlignAxis(toSuperviewMarginAxis: .horizontal)
             weekdayLabel.autoPinEdge(toSuperviewMargin: .leading)
-            
+
             hoursLabel.lineBreakMode = .byClipping
             hoursLabel.numberOfLines = 0
             hoursLabel.autoPinEdge(toSuperviewMargin: .trailing)
