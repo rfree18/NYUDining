@@ -23,6 +23,8 @@ class RFHoursTableViewController: UIViewController {
         hoursTable.register(HoursTableViewCell.self, forCellReuseIdentifier: cellId)
         hoursTable.dataSource = self
         hoursTable.isUserInteractionEnabled = false
+        hoursTable.separatorInset = .zero
+        hoursTable.tableFooterView = UIView()
         
         view.addSubview(hoursTable)
 

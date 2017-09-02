@@ -19,18 +19,22 @@ class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableV
     var timer: Timer! = nil
     let hoursOptions: [String] = []
     let tableName: String = ""
-    var ref: FIRDatabaseReference!
+    var ref: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let navigationController = navigationController {
             navigationController.navigationBar.isTranslucent = false
+            if #available(iOS 11.0, *) {
+                navigationController.navigationBar.prefersLargeTitles = true
+            }
         }
         
-        ref = FIRDatabase.database().reference()
+        ref = Database.database().reference()
         
         timer = Timer.scheduledTimer(timeInterval: 12.0, target: self, selector: #selector(showAlert), userInfo: nil, repeats: false)
+        locationTable.separatorInset = .zero
         
         grabInformationFromServer()
     }
@@ -50,7 +54,7 @@ class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableV
     func grabInformationFromServer() {
         MBProgressHUD.showAdded(to: self.view, animated: true)
         
-        ref.observe(FIRDataEventType.value, with: { (snapshot) in
+        ref.observe(DataEventType.value, with: { (snapshot) in
             self.diningLocations.removeAll()
             self.timer.invalidate()
             
@@ -86,7 +90,7 @@ class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
-    func showAlert() {
+    @objc func showAlert() {
         MBProgressHUD.hide(for: self.view, animated: true)
         
         ref.removeAllObservers()

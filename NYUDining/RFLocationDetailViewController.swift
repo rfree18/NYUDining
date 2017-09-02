@@ -24,6 +24,9 @@ class RFLocationDetailViewController: UIViewController {
         super.viewDidLoad()
 
         navigationItem.title = location.name
+        if #available(iOS 11.0, *) {
+            navigationItem.largeTitleDisplayMode = .never
+        }
         
         MBProgressHUD.showAdded(to: self.navigationController?.view, animated: true)
         

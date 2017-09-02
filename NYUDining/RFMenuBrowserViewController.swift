@@ -53,7 +53,7 @@ class RFMenuBrowserViewController: UIViewController, UIWebViewDelegate {
         MBProgressHUD.hideAllHUDs(for: self.view, animated: true)
     }
     
-    func showAlert() {
+    @objc func showAlert() {
         webView.stopLoading()
         
         MBProgressHUD.hideAllHUDs(for: self.view, animated: true)
