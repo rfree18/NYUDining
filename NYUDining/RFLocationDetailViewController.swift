@@ -8,7 +8,7 @@
 
 import UIKit
 import GoogleMaps
-import MBProgressHUD
+import PKHUD
 
 class RFLocationDetailViewController: UIViewController {
     
@@ -24,8 +24,11 @@ class RFLocationDetailViewController: UIViewController {
         super.viewDidLoad()
 
         navigationItem.title = location.name
+        if #available(iOS 11.0, *) {
+            navigationItem.largeTitleDisplayMode = .never
+        }
         
-        MBProgressHUD.showAdded(to: self.navigationController?.view, animated: true)
+        PKHUD.sharedHUD.show()
         
         DispatchQueue.main.async {
             let url = URL(string: self.location.logoURL!)
@@ -36,7 +39,7 @@ class RFLocationDetailViewController: UIViewController {
                 self.locationLogo.image = UIImage(data: data)
             }
             
-            MBProgressHUD.hide(for: self.navigationController?.view, animated: true)
+            PKHUD.sharedHUD.hide()
             
         }
         
