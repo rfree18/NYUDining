@@ -16,7 +16,7 @@ class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var locationTable: UITableView!
     
     var diningLocations: [RFDiningLocation] = []
-    var timer: Timer! = nil
+    var timer: Timer!
     let hoursOptions: [String] = []
     let tableName: String = ""
     var ref: DatabaseReference!
@@ -66,8 +66,11 @@ class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableV
             let locations = data["results"] as! [[String: AnyObject]]
             
             for locationData in locations {
-                let location = RFDiningLocation(data: locationData, params: params)
-                self.diningLocations.append(location)
+                if let location = RFDiningLocation(data: locationData, params: params) {
+                    self.diningLocations.append(location)
+                } else {
+                    print("Error: Malformed dining hall data")
+                }
             }
             
             self.diningLocations = self.diningLocations.sorted(by: { (a, b) -> Bool in

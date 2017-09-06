@@ -26,19 +26,27 @@ class RFDiningLocation: NSObject {
     let menuURL: String?
     let hours: [String]!
     let address: String!
-    let coordinates: [Double]
+    let coordinates: [Double]!
     let data: [String: AnyObject]
     
-    init(data: [String: AnyObject], params: [String: AnyObject]) {
+    init?(data: [String: AnyObject], params: [String: AnyObject]) {
         self.data = data
         
-        let cal: String = params["calendar"] as! String
-        hours = data[cal] as! [String]
-        name = data["Name"] as! String
-        logoURL = data["logo_URL"] as! String
-        address = data["Address"] as! String
-        menuURL = data["menu_url"] as? String
-        coordinates = data["Coordinates"] as! [Double]
+        guard let cal = params["calendar"] as? String,
+            let hours = data[cal] as? [String],
+            let name = data["Name"] as? String,
+            let logoURL = data["logo_URL"] as? String,
+            let address = data["Address"] as? String,
+            let coordinates = data["coordinates"] as? [Double] else {
+                return nil
+        }
+        
+        self.hours = hours
+        self.name = name
+        self.logoURL = logoURL
+        self.address = address
+        self.menuURL = data["menu_url"] as? String
+        self.coordinates = coordinates
         
     }
      

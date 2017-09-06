@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidFinishLaunching(_ application: UIApplication) {
         FirebaseApp.configure()
-        
         Database.database().isPersistenceEnabled = true
         
         GMSServices.provideAPIKey(Keys.firebase)

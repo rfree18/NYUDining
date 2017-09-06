@@ -244,6 +244,7 @@
 				5E777980F5C15A52E3D02F5B /* [CP] Copy Pods Resources */,
 				FA17573C1D18E0440023AA32 /* ShellScript */,
 				FAD5A2F71D260C2700EC0454 /* ShellScript */,
+				FAAB98901F5F8C680057826E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -445,6 +446,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "FILE=\"${SRCROOT}/HockeySDK-iOS/BuildAgent\"\nif [ -f \"$FILE\" ]; then\n\"$FILE\"\nfi";
+		};
+		FAAB98901F5F8C680057826E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
 		};
 		FAD5A2F71D260C2700EC0454 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -649,6 +663,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				VERSIONING_SYSTEM = "";
 			};
 			name = Debug;
 		};
@@ -671,6 +686,7 @@
 				PROVISIONING_PROFILE = "$(sigh_tools.fastlane.app_development)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				VERSIONING_SYSTEM = "";
 			};
 			name = Release;
 		};
