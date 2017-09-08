@@ -37,7 +37,7 @@ class RFDiningLocation: NSObject {
             let name = data["Name"] as? String,
             let logoURL = data["logo_URL"] as? String,
             let address = data["Address"] as? String,
-            let coordinates = data["coordinates"] as? [Double] else {
+            let coordinates = data["Coordinates"] as? [Double] else {
                 return nil
         }
         
