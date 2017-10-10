@@ -10,9 +10,9 @@ import UIKit
 import PKHUD
 import PureLayout
 
-class RFHoursTableViewController: UIViewController {
+class HoursTableViewController: UIViewController {
     
-    var diningLocation: RFDiningLocation!
+    var diningLocation: DiningLocation!
     fileprivate let hoursTable = UITableView()
     
     fileprivate let cellId = "hours"
@@ -48,7 +48,7 @@ class RFHoursTableViewController: UIViewController {
 
 }
 
-extension RFHoursTableViewController: UITableViewDataSource {
+extension HoursTableViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

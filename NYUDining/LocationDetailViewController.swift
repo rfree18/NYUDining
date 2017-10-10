@@ -10,9 +10,9 @@ import UIKit
 import GoogleMaps
 import PKHUD
 
-class RFLocationDetailViewController: UIViewController {
+class LocationDetailViewController: UIViewController {
     
-    var location: RFDiningLocation!
+    var location: DiningLocation!
     
     @IBOutlet weak var locationLogo: UIImageView!
     @IBOutlet weak var locationStatusLabel: UILabel!
@@ -118,15 +118,14 @@ class RFLocationDetailViewController: UIViewController {
     // MARK: Navigation
     
     @IBAction func goToHoursTable(_ sender: AnyObject) {
-        let tableVc = RFHoursTableViewController()
+        let tableVc = HoursTableViewController()
         tableVc.diningLocation = location
         
         navigationController?.pushViewController(tableVc, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showMenu" {
-            let dest = segue.destination as! RFMenuBrowserViewController
+        if segue.identifier == "showMenu", let dest = segue.destination as? MenuBrowserViewController {
             dest.location = location
         }
     }

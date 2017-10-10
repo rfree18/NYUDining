@@ -11,12 +11,11 @@ import FirebaseDatabase
 import PKHUD
 import Crashlytics
 
-class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class LocationsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var locationTable: UITableView!
     
-    var diningLocations: [RFDiningLocation] = []
-    var timer: Timer!
+    var diningLocations: [DiningLocation] = []
     let hoursOptions: [String] = []
     let tableName: String = ""
     var ref: DatabaseReference!
@@ -33,7 +32,6 @@ class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableV
         
         ref = Database.database().reference()
         
-        timer = Timer.scheduledTimer(timeInterval: 12.0, target: self, selector: #selector(showAlert), userInfo: nil, repeats: false)
         locationTable.separatorInset = .zero
         
         PKHUD.sharedHUD.contentView = PKHUDProgressView()
@@ -58,7 +56,6 @@ class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableV
         
         ref.observe(DataEventType.value, with: { (snapshot) in
             self.diningLocations.removeAll()
-            self.timer.invalidate()
             
             let data = snapshot.value as! [String: AnyObject]
             
@@ -66,7 +63,7 @@ class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableV
             let locations = data["results"] as! [[String: AnyObject]]
             
             for locationData in locations {
-                if let location = RFDiningLocation(data: locationData, params: params) {
+                if let location = DiningLocation(data: locationData, params: params) {
                     self.diningLocations.append(location)
                 } else {
                     print("Error: Malformed dining hall data")
@@ -143,6 +140,7 @@ class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true);
         performSegue(withIdentifier: "showDetails", sender: indexPath)
     }
     
@@ -150,7 +148,7 @@ class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableV
         let path = sender as! IndexPath
         
         let selectedLocation = diningLocations[(path as NSIndexPath).row]
-        let dest = segue.destination as? RFLocationDetailViewController
+        let dest = segue.destination as? LocationDetailViewController
         if let dest = dest {
             dest.location = selectedLocation
             Answers.logContentView(withName: "Dining Hall", contentType: "Location", contentId: selectedLocation.name, customAttributes: nil)

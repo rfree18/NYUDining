@@ -19,7 +19,7 @@ enum DayOfWeek: String {
     case Closed = "Closed"
 }
 
-class RFDiningLocation: NSObject {
+class DiningLocation: NSObject {
     
     let name: String!
     let logoURL: String!

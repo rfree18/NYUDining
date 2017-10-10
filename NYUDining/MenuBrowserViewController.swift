@@ -9,9 +9,9 @@
 import UIKit
 import PKHUD
 
-class RFMenuBrowserViewController: UIViewController, UIWebViewDelegate {
+class MenuBrowserViewController: UIViewController, UIWebViewDelegate {
     
-    var location: RFDiningLocation!
+    var location: DiningLocation!
     var pageTimeout: Timer!
     var progressTime: Timer!
 
