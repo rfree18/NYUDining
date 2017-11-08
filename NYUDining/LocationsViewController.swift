@@ -24,9 +24,10 @@ class LocationsViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         
         if let navigationController = navigationController {
-            navigationController.navigationBar.isTranslucent = false
+//            navigationController.navigationBar.isTranslucent = false
             if #available(iOS 11.0, *) {
                 navigationController.navigationBar.prefersLargeTitles = true
+                navigationController.navigationItem.largeTitleDisplayMode = .automatic
             }
         }
         

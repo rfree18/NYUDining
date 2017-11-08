@@ -21,15 +21,13 @@ class NYUDiningUITests: XCTestCase {
     
     func testSnapshot() {
         snapshot("Home")
-        XCUIApplication().tables.staticTexts["Palladium by LifeWorks"].tap()
-        snapshot("Details Page")
-        XCUIApplication().buttons["Menu"].tap()
-        snapshot("Menu Page")
         
         let app = XCUIApplication()
-        app.navigationBars["Menu"].children(matching: .button).matching(identifier: "Back").element(boundBy: 0).tap()
+        app.tables/*@START_MENU_TOKEN@*/.staticTexts["Palladium by LifeWorks"]/*[[".cells.staticTexts[\"Palladium by LifeWorks\"]",".staticTexts[\"Palladium by LifeWorks\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.buttons["Menu"].tap()
+        app.webViews.children(matching: .other).element.children(matching: .other).element.tap()
+        app.navigationBars["Menu"].buttons["Palladium by LifeWorks"]/*@START_MENU_TOKEN@*/.press(forDuration: 0.8);/*[[".tap()",".press(forDuration: 0.8);"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
         app.navigationBars["Palladium by LifeWorks"].buttons["Hours"].tap()
-        
-        snapshot("Hours Page")
+
     }
 }
