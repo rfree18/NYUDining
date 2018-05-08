@@ -8,7 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
-import MBProgressHUD
+import PKHUD
 import Crashlytics
 
 class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -19,18 +19,24 @@ class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableV
     var timer: Timer! = nil
     let hoursOptions: [String] = []
     let tableName: String = ""
-    var ref: FIRDatabaseReference!
+    var ref: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let navigationController = navigationController {
             navigationController.navigationBar.isTranslucent = false
+            if #available(iOS 11.0, *) {
+                navigationController.navigationBar.prefersLargeTitles = true
+            }
         }
         
-        ref = FIRDatabase.database().reference()
+        ref = Database.database().reference()
         
         timer = Timer.scheduledTimer(timeInterval: 12.0, target: self, selector: #selector(showAlert), userInfo: nil, repeats: false)
+        locationTable.separatorInset = .zero
+        
+        PKHUD.sharedHUD.contentView = PKHUDProgressView()
         
         grabInformationFromServer()
     }
@@ -48,9 +54,9 @@ class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func grabInformationFromServer() {
-        MBProgressHUD.showAdded(to: self.view, animated: true)
+        PKHUD.sharedHUD.show()
         
-        ref.observe(FIRDataEventType.value, with: { (snapshot) in
+        ref.observe(DataEventType.value, with: { (snapshot) in
             self.diningLocations.removeAll()
             self.timer.invalidate()
             
@@ -71,11 +77,11 @@ class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableV
             })
             
             self.locationTable.reloadData()
-            MBProgressHUD.hide(for: self.view, animated: true)
+            PKHUD.sharedHUD.hide()
             
             }) { (error) in
                 print(error.localizedDescription)
-                MBProgressHUD.hide(for: self.view, animated: true)
+                PKHUD.sharedHUD.hide()
                 
                 let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
                 let retry = UIAlertAction(title: "Retry", style: UIAlertActionStyle.default, handler: { (action) in
@@ -86,8 +92,8 @@ class RFLocationsViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
-    func showAlert() {
-        MBProgressHUD.hide(for: self.view, animated: true)
+    @objc func showAlert() {
+        PKHUD.sharedHUD.hide()
         
         ref.removeAllObservers()
         
