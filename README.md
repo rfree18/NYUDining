@@ -1,4 +1,7 @@
 # NYUDining
+## NOTE: No longer available
+Please note that this app is no longer available for download from the App Store. I've graduated from NYU and I simply don't have the time to support this anymore, especially since I need to manually update times whenever there is a change. Feel free to fork/submit a PR for this if you'd like! I will do my best to update this and make it available once again in the future, but I can't guarantee anything.
+
 NYUDining for iPhone makes finding all of the dining halls on campus simple and easy. Never again will you need to dig through CampusDish to find dining hours, location, and other details! Simply download NYUDining and find everything in a matter of seconds. Check back soon for updates!
 
 **Support**: To report any bugs, issues, or feedback, please use the issues page and add a new issue. You can also email me directly at RFreemanApps@gmail.com and I will do my best to get back to you ASAP. Thanks :)
